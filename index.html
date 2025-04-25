@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maria & Luca - Matrimonio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quiche+Flare:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Quiche Flare', serif;
+            background-color: #f5f4ef;
+            color: #445a4b;
+            scroll-behavior: smooth;
+        }
+        
+        .hero {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+        
+        .hero-slide.active {
+            opacity: 1;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.2);
+            z-index: -1;
+        }
+        
+        .hero-content {
+            position: absolute;
+            bottom: 25%;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: #fff;
+            padding: 0 20px;
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+            font-size: 18px;
+            padding: 10px 16px;
+            font-weight: 500;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #445a4b;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .section {
+            min-height: 100vh;
+            padding: 80px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .countdown-item {
+            background: rgba(255,255,255,0.8);
+            border-radius: 16px;
+            padding: 16px;
+            min-width: 80px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .fixed-nav {
+            background-color: #f5f4ef !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 20px 0;
+        }
+        
+        .btn-modern {
+            background-color: #445a4b;
+            color: #f5f4ef;
+            padding: 16px 32px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-size: 18px;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .btn-modern:hover {
+            background-color: #36453a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        
+        .btn-outline-modern {
+            background-color: transparent;
+            color: #ffffff;
+            padding: 16px 32px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-size: 18px;
+            border: 1px solid #ffffff;
+        }
+        
+        .btn-outline-modern:hover {
+            background-color: #ffffff;
+            color: #445a4b;
+        }
+        
+        .location-card {
+            background: #ffffff;
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-radius: 16px;
+            position: relative;
+            padding-left: 60px;
+        }
+        
+        .location-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .location-icon {
+            position: absolute;
+            left: 20px;
+            top: 30px;
+            font-size: 24px;
+            color: #445a4b;
+        }
+        
+        .attendance-btn {
+            flex: 0 0 auto;
+            padding: 12px 20px;
+            border: 1px solid #445a4b;
+            border-radius: 50px;
+            background: transparent;
+            color: #445a4b;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            width: 80px;
+        }
+        
+        .attendance-btn.active {
+            background: #445a4b;
+            color: #ffffff;
+        }
+        
+        .success-message {
+            display: none;
+            background-color: #445a4b;
+            color: #ffffff;
+            padding: 30px;
+            text-align: center;
+            border-radius: 16px;
+        }
+        
+        /* Transparent navbar */
+        .transparent-nav {
+            background-color: transparent !important;
+            box-shadow: none;
+            padding: 24px 0;
+        }
+        
+        .transparent-nav .nav-link {
+            color: #ffffff !important;
+        }
+        
+        .transparent-nav .nav-link::after {
+            background-color: #ffffff !important;
+        }
+        
+        .transparent-nav .btn-modern {
+            background-color: rgba(255,255,255,0.2);
+            color: #ffffff;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        /* Colored nav links when scrolled */
+        .colored-nav .nav-link {
+            color: #445a4b !important;
+        }
+        
+        .colored-nav .nav-link::after {
+            background-color: #445a4b !important;
+        }
+        
+        /* Green buttons when navbar is visible */
+        .colored-nav .nav-link.green-on-scroll {
+            color: #445a4b !important;
+        }
+        
+        .colored-nav .nav-link.green-on-scroll::after {
+            background-color: #445a4b !important;
+        }
+        
+        /* Slideshow dots */
+        .slideshow-dots {
+            position: absolute;
+            bottom: 40px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            z-index: 10;
+        }
+        
+        .slideshow-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .slideshow-dot.active {
+            background-color: #ffffff;
+            transform: scale(1.2);
+        }
+        
+        /* Hide nav links initially */
+        .nav-links {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .nav-links.visible {
+            opacity: 1;
+        }
+        
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            .section {
+                padding: 60px 0;
+                min-height: auto;
+            }
+            
+            .hero-content {
+                bottom: 20%;
+            }
+            
+            .countdown-item {
+                min-width: 60px;
+                padding: 12px;
+            }
+            
+            .location-card {
+                padding: 20px;
+                padding-left: 50px;
+            }
+            
+            .location-icon {
+                left: 15px;
+                top: 20px;
+                font-size: 20px;
+            }
+            
+            .attendance-btn {
+                width: 70px;
+                padding: 10px 15px;
+            }
+            
+            .nav-link {
+                font-size: 16px;
+                padding: 8px 12px;
+            }
+            
+            .btn-modern, .btn-outline-modern {
+                padding: 14px 24px;
+                font-size: 16px;
+            }
+            
+            .slideshow-dots {
+                bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#f5f4ef]">
+    <!-- Navigation -->
+    <nav id="main-nav" class="fixed w-full z-50 bg-[#f5f4ef] bg-opacity-0 transition-all duration-300 transparent-nav">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="flex space-x-4 nav-links">
+                <a href="#story" class="nav-link text-white hover:text-white green-on-scroll">La Nostra Storia</a>
+                <a href="#event" class="nav-link text-white hover:text-white green-on-scroll">Evento</a>
+                <a href="#rsvp" class="nav-link text-white hover:text-white green-on-scroll">Partecipazione</a>
+            </div>
+            <a href="#rsvp" class="btn-modern px-6 py-3">
+                RSVP
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Slideshow -->
+    <section class="hero" id="home">
+        <div class="hero-slideshow">
+            <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Maria e Luca" class="hero-slide active">
+            <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Maria e Luca" class="hero-slide">
+            <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Maria e Luca" class="hero-slide">
+            <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Maria e Luca" class="hero-slide">
+            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Maria e Luca" class="hero-slide">
+        </div>
+        <div class="hero-overlay"></div>
+        
+        <!-- Slideshow dots -->
+        <div class="slideshow-dots">
+            <div class="slideshow-dot active" data-index="0"></div>
+            <div class="slideshow-dot" data-index="1"></div>
+            <div class="slideshow-dot" data-index="2"></div>
+            <div class="slideshow-dot" data-index="3"></div>
+            <div class="slideshow-dot" data-index="4"></div>
+        </div>
+        
+        <div class="hero-content">
+            <h1 class="text-5xl md:text-6xl font-normal mb-4 tracking-wider">MARIA & LUCA</h1>
+            <p class="text-lg md:text-xl mb-8 tracking-widest">7 DICEMBRE 2025</p>
+            <div class="flex justify-center space-x-4">
+                <a href="#story" class="btn-outline-modern">LA NOSTRA STORIA</a>
+                <a href="#event" class="btn-modern">DETTAGLI EVENTO</a>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-0 right-0 flex justify-center">
+            <a href="#story" class="text-white animate-bounce">
+                <i class="fas fa-chevron-down text-xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section id="story" class="section bg-[#f5f4ef]">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl font-normal mb-12 text-[#445a4b] tracking-wider fade-in">LA NOSTRA STORIA</h2>
+                <div class="grid md:grid-cols-2 gap-8 md:gap-12">
+                    <div class="fade-in">
+                        <div class="h-64 bg-cover bg-center mb-6 rounded-2xl" style="background-image: url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80');"></div>
+                        <h3 class="text-xl font-normal mb-4 text-[#445a4b] tracking-wider">IL PRIMO INCONTRO</h3>
+                        <p class="text-[#445a4b] text-sm leading-relaxed">Ci siamo incontrati per la prima volta in una caffetteria nel centro di Firenze. Era una giornata piovosa di ottobre e entrambi cercavamo riparo dalla pioggia. Quel casuale incontro è diventato l'inizio della nostra storia.</p>
+                    </div>
+                    <div class="fade-in">
+                        <div class="h-64 bg-cover bg-center mb-6 rounded-2xl" style="background-image: url #445a4b'));"></div>
+                        <h3 class="text-xl font-normal mb-4 text-[#445a4b] tracking-wider">IL NOSTRO VIAGGIO</h3>
+                        <p class="text-[#445a4b] text-sm leading-relaxed">Negli anni abbiamo viaggiato insieme in molti posti meravigliosi, ma il nostro preferito rimane la costa amalfitana, dove Luca mi ha chiesto di sposarlo al tramonto, con il mare como testimone del nostro amore.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Section -->
+    <section id="event" class="section bg-[#f5f4ef]">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl font-normal mb-12 tracking-wider text-[#445a4b] fade-in">I DETTAGLI DELL'EVENTO</h2>
+                
+                <div class="grid md:grid-cols-2 gap-8 mb-12 text-left">
+                    <div class="fade-in">
+                        <div class="location-card">
+                            <div class="location-icon">
+                                <i class="fas fa-church"></i>
+                            </div>
+                            <h3 class="text-xl font-normal mb-4 tracking-wider text-[#445a4b]">CERIMONIA</h3>
+                            <p class="mb-2 text-sm">7 DICEMBRE 2025 - 15:00</p>
+                            <p class="text-[#445a4b] mb-4 cursor-pointer underline underline-offset-3 decoration-1" onclick="window.open('https://www.google.com/maps/search/Chiesa+di+Sammontana+Sammontana+Empoli')">Chiesa di Sammontana</p>
+                            <p class="text-xs text-[#445a4b] opacity-70">Sammontana, Empoli (FI)</p>
+                        </div>
+                    </div>
+                    <div class="fade-in">
+                        <div class="location-card">
+                            <div class="location-icon">
+                                <i class="fas fa-glass-cheers"></i>
+                            </div>
+                            <h3 class="text-xl font-normal mb-4 tracking-wider text-[#445a4b]">RICEVIMENTO</h3>
+                            <p class="mb-2 text-sm">7 DICEMBRE 2025 - 18:30</p>
+                            <p class="text-[#445a4b] mb-4 cursor-pointer underline underline-offset-3 decoration-1" onclick="window.open('https://www.google.com/maps/search/Villa+Il+Petriccio')">Villa Il Petriccio</p>
+                            <p class="text-xs text-[#445a4b] opacity-70">Empoli (FI)</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fade-in">
+                    <h3 class="text-xl font-normal mb-6 tracking-wider text-[#445a4b]">CONTO ALLA ROVESCIA</h3>
+                    <div class="flex justify-center space-x-4">
+                        <div class="countdown-item">
+                            <div class="text-3xl md:text-4xl font-normal text-[#445a4b]" id="countdown-days">00</div>
+                            <div class="text-xs tracking-wider text-[#445a4b]">GIORNI</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="text-3xl md:text-4xl font-normal text-[#445a4b]" id="countdown-hours">00</div>
+                            <div class="text-xs tracking-wider text-[#445a4b]">ORE</div>
+                        </div>
+        <div class="countdown-item">
+            <div class="text-3xl md:text-4xl font-normal text-[#445a4b]" id="countdown-minutes">00</div>
+            <div class="text-xs tracking-wider text-[#445a4b]">MINUTI</div>
+        </div>
+        <div class="countdown-item">
+            <div class="text-3xl md:text-4xl font-normal text-[#445a4b]" id="countdown-seconds">00</div>
+            <div class="text-xs tracking-wider text-[#445a4b]">SECONDI</div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- RSVP Section -->
+<section id="rsvp" class="py-20 bg-[#e8e6df]">
+    <div class="container mx-auto px-6 max-w-4xl">
+        <h2 class="text-3xl md:text-4xl font-normal mb-12 text-center text-[#445a4b] tracking-wider fade-in">CONFERMA LA TUA PARTECIPAZIONE</h2>
+        
+        <form id="rsvpForm" class="max-w-lg mx-auto fade-in">
+            <div class="mb-8">
+                <input type="text" id="name" name="name" placeholder="Nome e Cognome" class="w-full bg-transparent py-2 px-1 focus:outline-none border-b border-[#445a4b] text-sm placeholder-[#445a4b] placeholder-opacity-70" required>
+            </div>
+            
+            <div class="mb-8">
+                <p class="mb-4 text-sm tracking-wider text-[#445a4b]">PARTECIPERAI?</p>
+                <div class="flex justify-center space-x-4">
+                    <button type="button" class="attendance-btn" data-attendance="yes">Sì</button>
+                    <button type="button" class="attendance-btn" data-attendance="no">No</button>
+                </div>
+                <input type="hidden" id="attendance" name="attendance" required>
+            </div>
+            
+            <div class="mb-8">
+                <input type="number" id="guests" name="guests" min="1" max="10" placeholder="Numero di ospiti" class="w-full bg-transparent py-2 px-1 focus:outline-none border-b border-[#445a4b] text-sm placeholder-[#445a4b] placeholder-opacity-70" required>
+            </div>
+            
+            <div class="mb-8">
+                <textarea id="notes" name="notes" placeholder="Note speciali (allergie, preferenze alimentari, ecc.)" class="w-full bg-transparent py-2 px-1 focus:outline-none border-b border-[#445a4b] h-24 text-sm placeholder-[#445a4b] placeholder-opacity-70"></textarea>
+            </div>
+            
+            <button type="submit" class="w-full btn-modern mt-6 tracking-wider">INVIA</button>
+        </form>
+        
+        <div id="successMessage" class="success-message fade-in mt-8" style="display: none;">
+            <h3 class="text-xl font-normal mb-4 tracking-wider">GRAZIE PER LA TUA RISPOSTA!</h3>
+            <p class="text-sm">Abbiamo ricevuto la tua conferma di partecipazione.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-[#445a4b] text-[#f5f4ef] py-12">
+    <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-6 md:mb-0 text-center md:text-left">
+                <h3 class="text-xl font-normal mb-2 tracking-wider">MARIA & LUCA</h3>
+                <p class="text-sm">7 DICEMBRE 2025</p>
+            </div>
+            <div class="flex space-x-6">
+                <a href="#" class="hover:opacity-70 transition"><i class="fab fa-instagram text-lg"></i></a>
+                <a href="#" class="hover:opacity-70 transition"><i class="fab fa-facebook text-lg"></i></a>
+                <a href="#" class="hover:opacity-70 transition"><i class="fab fa-pinterest text-lg"></i></a>
+            </div>
+        </div>
+        <div class="mt-12 text-center text-xs opacity-70">
+            <p>Creato con amore per il nostro giorno speciale</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Scroll reveal animation
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    const fadeInObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+    
+    fadeElements.forEach(element => {
+        fadeInObserver.observe(element);
+    });
+    
+    // Countdown timer
+    const weddingDate = new Date('December 7, 2025 15:00:00').getTime();
+    
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = weddingDate - now;
+        
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+        document.getElementById('countdown-days').textContent = days.toString().padStart(2, '0');
+        document.getElementById('countdown-hours').textContent = hours.toString().padStart(2, '0');
+        document.getElementById('countdown-minutes').textContent = minutes.toString().padStart(2, '0');
+        document.getElementById('countdown-seconds').textContent = seconds.toString().padStart(2, '0');
+    }
+    
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+    
+    // Navbar scroll effect
+    const navbar = document.getElementById('main-nav');
+    const navLinks = document.querySelector('.nav-links');
+    const rsvpBtn = document.querySelector('.btn-modern');
+    
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.remove('transparent-nav');
+            navbar.classList.add('fixed-nav', 'colored-nav');
+            navLinks.classList.add('visible');
+            rsvpBtn.style.backgroundColor = '#445a4b';
+            rsvpBtn.style.borderColor = '#445a4b';
+        } else {
+            navbar.classList.remove('fixed-nav', 'colored-nav');
+            navbar.classList.add('transparent-nav');
+            navLinks.classList.remove('visible');
+            rsvpBtn.style.backgroundColor = 'rgba(255,255,255,0.2)';
+            rsvpBtn.style.borderColor = 'rgba(255,255,255,0.3)';
+        }
+    });
+    
+    // RSVP Form Attendance Buttons
+    const attendanceButtons = document.querySelectorAll('.attendance-btn');
+    const attendanceInput = document.getElementById('attendance');
+    
+    attendanceButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            attendanceButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            attendanceInput.value = button.dataset.attendance;
+        });
+    });
+    
+    // RSVP Form Submission
+    const rsvpForm = document.getElementById('rsvpForm');
+    const successMessage = document.getElementById('successMessage');
+    
+    rsvpForm.addEventListener('submit', e => {
+        e.preventDefault();
+        
+        if (!attendanceInput.value) {
+            alert('Per favore seleziona se parteciperai o meno');
+            return;
+        }
+        
+        const guestsInput = document.getElementById('guests');
+        if (guestsInput.value < 1 || guestsInput.value > 10) {
+            alert('Per favore inserisci un numero di ospiti tra 1 e 10');
+            return;
+        }
+        
+        // Simulate form submission
+        setTimeout(() => {
+            rsvpForm.style.display = 'none';
+            successMessage.style.display = 'block';
+            successMessage.classList.add('visible');
+            
+            rsvpForm.reset();
+            attendanceButtons.forEach(btn => btn.classList.remove('active'));
+            
+            setTimeout(() => {
+                successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 100);
+        }, 500);
+    });
+    
+    // Hero Slideshow
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots = document.querySelectorAll('.slideshow-dot');
+    let currentSlide = 0;
+    let slideInterval;
+    
+    function showSlide(n) {
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+        
+        currentSlide = (n + slides.length) % slides.length;
+        slides[currentSlide].classList.add('active');
+        dots[currentSlide].classList.add('active');
+    }
+    
+    function nextSlide() {
+        showSlide(currentSlide + 1);
+    }
+    
+    function startSlideShow() {
+        slideInterval = setInterval(nextSlide, 5000);
+    }
+    
+    // Add click event to dots
+    dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+            clearInterval(slideInterval);
+            showSlide(parseInt(dot.dataset.index));
+            startSlideShow();
+        });
+    });
+    
+    // Start slideshow
+    startSlideShow();
+</script>
+</body>
+</html>
