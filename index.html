@@ -484,9 +484,25 @@
     <div class="container mx-auto px-6 max-w-4xl">
         <h2 class="text-3xl md:text-4xl font-normal mb-12 text-center text-[#445a4b] tracking-wider fade-in">CONFERMA LA TUA PARTECIPAZIONE</h2>
         
-        <form id="rsvpForm" class="max-w-lg mx-auto fade-in">
+        <form 
+            id="rsvpForm" 
+            name="rsvp" 
+            method="POST" 
+            data-netlify="true" 
+            class="max-w-lg mx-auto fade-in"
+        >
+            <!-- Campo nascosto per Netlify -->
+            <input type="hidden" name="form-name" value="rsvp" />
+
             <div class="mb-8">
-                <input type="text" id="name" name="name" placeholder="Nome e Cognome" class="w-full bg-transparent py-2 px-1 focus:outline-none border-b border-[#445a4b] text-sm placeholder-[#445a4b] placeholder-opacity-70" required>
+                <input 
+                    type="text" 
+                    id="name" 
+                    name="name" 
+                    placeholder="Nome e Cognome" 
+                    class="w-full bg-transparent py-2 px-1 focus:outline-none border-b border-[#445a4b] text-sm placeholder-[#445a4b] placeholder-opacity-70" 
+                    required
+                >
             </div>
             
             <div class="mb-8">
@@ -499,11 +515,25 @@
             </div>
             
             <div class="mb-8">
-                <input type="number" id="guests" name="guests" min="1" max="10" placeholder="Numero di ospiti" class="w-full bg-transparent py-2 px-1 focus:outline-none border-b border-[#445a4b] text-sm placeholder-[#445a4b] placeholder-opacity-70" required>
+                <input 
+                    type="number" 
+                    id="guests" 
+                    name="guests" 
+                    min="1" 
+                    max="10" 
+                    placeholder="Numero di ospiti" 
+                    class="w-full bg-transparent py-2 px-1 focus:outline-none border-b border-[#445a4b] text-sm placeholder-[#445a4b] placeholder-opacity-70" 
+                    required
+                >
             </div>
             
             <div class="mb-8">
-                <textarea id="notes" name="notes" placeholder="Note speciali (allergie, preferenze alimentari, ecc.)" class="w-full bg-transparent py-2 px-1 focus:outline-none border-b border-[#445a4b] h-24 text-sm placeholder-[#445a4b] placeholder-opacity-70"></textarea>
+                <textarea 
+                    id="notes" 
+                    name="notes" 
+                    placeholder="Note speciali (allergie, preferenze alimentari, ecc.)" 
+                    class="w-full bg-transparent py-2 px-1 focus:outline-none border-b border-[#445a4b] h-24 text-sm placeholder-[#445a4b] placeholder-opacity-70"
+                ></textarea>
             </div>
             
             <button type="submit" class="w-full btn-modern mt-6 tracking-wider">INVIA</button>
