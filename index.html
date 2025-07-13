@@ -622,6 +622,82 @@
     </div>
 </section>
 
+    
+<!-- SEZIONE FAQ -->
+<section class="bg-[#f5f4ef] py-20" id="faq">
+  <div class="container mx-auto px-6 max-w-3xl">
+    <h2 class="text-3xl md:text-4xl font-normal mb-12 text-center text-[#445a4b] tracking-wider fade-in">DOMANDE FREQUENTI</h2>
+    
+    <div class="space-y-4">
+      <!-- FAQ item -->
+      <div class="faq-item border-b border-[#445a4b] pb-4">
+        <button class="faq-toggle flex justify-between items-center w-full text-left text-[#445a4b] text-lg font-medium tracking-wide">
+          <span>C’è un dress code?</span>
+          <span class="icon transition-transform duration-300 text-2xl">+</span>
+        </button>
+        <div class="faq-content mt-3 text-sm text-[#445a4b] hidden">
+          Non c’è un dress code: potete vestirvi come volete! Che preferiate qualcosa di elegante, casual o colorato, l’importante è che vi sentiate voi stessi e pronti a divertirvi con noi.
+        </div>
+      </div>
+
+      <div class="faq-item border-b border-[#445a4b] pb-4">
+        <button class="faq-toggle flex justify-between items-center w-full text-left text-[#445a4b] text-lg font-medium tracking-wide">
+          <span>Ci sono opzioni per allergie o diete particolari?</span>
+          <span class="icon transition-transform duration-300 text-2xl">+</span>
+        </button>
+        <div class="faq-content mt-3 text-sm text-[#445a4b] hidden">
+          Assolutamente sì! Vi chiediamo solo di segnalarci eventuali allergie o preferenze alimentari nel form di RSVP o contattandoci direttamente.
+        </div>
+      </div>
+
+      <div class="faq-item border-b border-[#445a4b] pb-4">
+        <button class="faq-toggle flex justify-between items-center w-full text-left text-[#445a4b] text-lg font-medium tracking-wide">
+          <span>Entro quando devo confermare la mia presenza?</span>
+          <span class="icon transition-transform duration-300 text-2xl">+</span>
+        </button>
+        <div class="faq-content mt-3 text-sm text-[#445a4b] hidden">
+          Ti chiediamo di compilare il Form RSVP entro il 20 Novembre per dare conferma, così da poter organizzare al meglio ogni dettaglio.
+        </div>
+      </div>
+
+      <div class="faq-item border-b border-[#445a4b] pb-4">
+        <button class="faq-toggle flex justify-between items-center w-full text-left text-[#445a4b] text-lg font-medium tracking-wide">
+          <span>Sono disponibili alloggi nei dintorni?</span>
+          <span class="icon transition-transform duration-300 text-2xl">+</span>
+        </button>
+        <div class="faq-content mt-3 text-sm text-[#445a4b] hidden">
+          Per chi arriva da fuori città, ci sono diverse opzioni di alloggio nei pressi della location.<br>Saremo felici di darvi una mano a trovare la soluzione più adatta alle vostre esigenze: scriveteci e vi forniremo volentieri qualche suggerimento.
+        </div>
+      </div>
+
+      <div class="faq-item border-b border-[#445a4b] pb-4">
+        <button class="faq-toggle flex justify-between items-center w-full text-left text-[#445a4b] text-lg font-medium tracking-wide">
+          <span>E se abbiamo altre domande o dubbi?</span>
+          <span class="icon transition-transform duration-300 text-2xl">+</span>
+        </button>
+        <div class="faq-content mt-3 text-sm text-[#445a4b] hidden">
+          Per qualsiasi informazione in più, curiosità o necessità particolare, non esitate a contattarci.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCRIPT toggle FAQ -->
+<script>
+  document.querySelectorAll('.faq-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const content = btn.nextElementSibling;
+      const icon = btn.querySelector('.icon');
+
+      content.classList.toggle('hidden');
+      icon.textContent = content.classList.contains('hidden') ? '+' : '×';
+      icon.classList.toggle('rotate-45', !content.classList.contains('hidden'));
+    });
+  });
+</script>
+
+
 <!-- Footer -->
 <footer class="bg-[#445a4b] text-[#f5f4ef] py-12">
     <div class="container mx-auto px-6">
