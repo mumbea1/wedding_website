@@ -346,6 +346,16 @@
             }
         }
     </style>
+<script>
+    const password = "francescaetommaso2025";
+    const userInput = prompt("Questo sito è riservato agli invitati. Inserisci la password:");
+
+    if (userInput !== password) {
+        document.write("<h1 style='text-align:center; margin-top:20%; color:#445a4b;'>Accesso negato</h1>");
+        throw new Error("Password errata. Accesso bloccato.");
+    }
+</script>
+
 </head>
 <body class="bg-[#f5f4ef]">
     <!-- Navigation -->
@@ -413,27 +423,6 @@
         </div>
     </section>
 
-    <!-- Story Section -->
-    <section id="story" class="section bg-[#f5f4ef]">
-        <div class="container mx-auto px-6">
-            <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-3xl md:text-4xl font-normal mb-12 text-[#445a4b] tracking-wider fade-in">IL NOSTRO VIAGGIO DI NOZZE</h2>
-                <div class="grid md:grid-cols-2 gap-8 md:gap-12">
-                    <div class="fade-in">
-                        <div class="h-64 bg-cover bg-center mb-6 rounded-2xl" style="background-image: url('Foto matrimonio/Foto viaggio_01.jpg');"></div>
-                        <h3 class="text-xl font-normal mb-4 text-[#445a4b] tracking-wider">LE NOSTRE METE</h3>
-                        <p class="text-[#445a4b] text-sm leading-relaxed">Voleremo in Giappone, meta che sognamo da quando ci siamo conosciuti. Esploreremo la cultura giapponese per due settimane partendo subito dopo le nozze. Appassionati di sci e montagna non ci faremo mancare qualche sciata sulle montagne giapponesi!</p>
-                    </div>
-                    <div class="fade-in">
-                        <div class="h-64 bg-cover bg-center mb-6 rounded-2xl" style="background-image:  url('Foto matrimonio/Foto viaggio_02.jpg');"></div>
-                        <h3 class="text-xl font-normal mb-4 text-[#445a4b] tracking-wider">AGENZIA</h3>
-                        <p class="text-[#445a4b] text-sm leading-relaxed">Negli anni abbiamo viaggiato insieme e abbiamo deciso di organizzare il nostro viaggio di nozze in autonomia. Al LINK trovate le informazioni per poterci regalare qualche km del nostro viaggio.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Event Section -->
     <section id="event" class="section bg-[#f5f4ef]">
         <div class="container mx-auto px-6">
@@ -490,6 +479,28 @@
 </div>
 </section>
 
+<!-- Story Section -->
+    <section id="story" class="section bg-[#f5f4ef]">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl font-normal mb-12 text-[#445a4b] tracking-wider fade-in">IL NOSTRO VIAGGIO DI NOZZE</h2>
+                <div class="grid md:grid-cols-2 gap-8 md:gap-12">
+                    <div class="fade-in">
+                        <div class="h-64 bg-cover bg-center mb-6 rounded-2xl" style="background-image: url('Foto matrimonio/Foto viaggio_01.jpg');"></div>
+                        <h3 class="text-xl font-normal mb-4 text-[#445a4b] tracking-wider">LE NOSTRE METE</h3>
+                        <p class="text-[#445a4b] text-sm leading-relaxed">Voleremo in Giappone, meta che sognamo da quando ci siamo conosciuti. Esploreremo la cultura giapponese per due settimane partendo subito dopo le nozze. Appassionati di sci e montagna non ci faremo mancare qualche sciata sulle montagne giapponesi!</p>
+                    </div>
+                    <div class="fade-in">
+                        <div class="h-64 bg-cover bg-center mb-6 rounded-2xl" style="background-image:  url('Foto matrimonio/Foto viaggio_02.jpg');"></div>
+                        <h3 class="text-xl font-normal mb-4 text-[#445a4b] tracking-wider">AGENZIA</h3>
+                        <p class="text-[#445a4b] text-sm leading-relaxed">Negli anni abbiamo viaggiato insieme e abbiamo deciso di organizzare il nostro viaggio di nozze in autonomia. Al LINK trovate le informazioni per poterci regalare qualche km del nostro viaggio.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
 <!-- RSVP Section -->
 <section id="rsvp" class="py-20 bg-[#e8e6df]">
     <div class="container mx-auto px-6 max-w-4xl">
