@@ -399,19 +399,16 @@
     const input = document.getElementById('password-input').value;
     const error = document.getElementById('error-msg');
     if (input === correctPassword) {
-      document.getElementById('password-overlay').style.display = 'none';
+      const overlay = document.getElementById('password-overlay');
+      overlay.style.display = 'none';
+      document.body.style.overflow = 'auto'; // ✅ Sblocca lo scroll
     } else {
       error.style.display = 'block';
     }
   }
 
-  // Previeni scroll mentre l’overlay è attivo
+  // Blocca lo scroll inizialmente
   document.body.style.overflow = 'hidden';
-  window.addEventListener('load', () => {
-    document.getElementById('password-overlay').addEventListener('transitionend', () => {
-      document.body.style.overflow = 'auto';
-    });
-  });
 </script>
 
 </head>
