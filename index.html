@@ -395,11 +395,13 @@
   }
 </style>
 
-<div id="password-overlay">
-  <h1 class="text-2xl font-quiche-special text-[#445a4b] text-center px-4">Sito riservato agli invitati</h1>
-  <input type="password" id="password-input" placeholder="Inserisci la password" />
-  <button onclick="checkPassword()">Entra</button>
-  <p class="error" id="error-msg">Password errata</p>
+<div class="relative w-72">
+  <input type="password" id="password-input" placeholder="Inserisci la password"
+         class="w-full border border-gray-300 py-2 px-4 pr-12 rounded-full text-center font-quiche-special" />
+  <button type="button" id="toggle-password"
+          class="absolute top-1/2 right-3 transform -translate-y-1/2 text-[#445a4b] text-lg">
+    <i class="fas fa-eye"></i>
+  </button>
 </div>
 
 <script>
@@ -423,6 +425,19 @@
       error.style.display = 'block';
     }
   }
+  document.getElementById('toggle-password').addEventListener('click', function () {
+    const input = document.getElementById('password-input');
+    const icon = this.querySelector('i');
+    if (input.type === 'password') {
+      input.type = 'text';
+      icon.classList.remove('fa-eye');
+      icon.classList.add('fa-eye-slash');
+    } else {
+      input.type = 'password';
+      icon.classList.remove('fa-eye-slash');
+      icon.classList.add('fa-eye');
+    }
+  });
 </script>
 
 </head>
@@ -570,20 +585,28 @@
           </div>
 
           <!-- Lato posteriore -->
-          <div class="flip-back absolute w-full h-full backface-hidden rotate-y-180 rounded-2xl bg-white text-[#445a4b] p-8 flex flex-col justify-center items-center space-y-6">
-            <div>
-              <h3 class="text-xl font-normal mb-4 tracking-wider">COME CONTRIBUIRE</h3>
-              <p class="text-sm mb-2">Se vuoi regalarci qualche chilometro di viaggio:</p>
-              <p class="text-sm font-mono bg-[#f5f4ef] p-2 rounded">
-                IBAN: <strong>IT00X0000000000000000000000</strong>
-              </p>
-            </div>
-            <div>
-              <img src="img/qr_code.png" alt="QR PayPal" class="w-48 h-48 object-contain mx-auto">
-              <p class="text-xs opacity-70 mt-2">Scansiona per donare via PayPal</p>
-            </div>
-            <button id="flipToFront" class="btn-outline-modern">Torna indietro</button>
-          </div>
+<div class="flip-back absolute w-full h-full backface-hidden rotate-y-180 rounded-2xl bg-white text-[#445a4b] p-8 flex flex-col justify-center items-center space-y-6 relative">
+
+  <!-- Contenuto -->
+  <div>
+    <h3 class="text-xl font-normal mb-4 tracking-wider">COME CONTRIBUIRE</h3>
+    <p class="text-sm mb-2">Se vuoi regalarci qualche chilometro di viaggio:</p>
+    <p class="text-sm font-mono bg-[#f5f4ef] p-2 rounded">
+      Nome intestatario: Francesca Tatini
+      IBAN: <strong>IT00X0000000000000000000000</strong>
+    </p>
+  </div>
+  <div>
+    <img src="img/qr_code.png" alt="QR PayPal" class="w-48 h-48 object-contain mx-auto">
+    <p class="text-xs opacity-70 mt-2">Scansiona per donare via PayPal</p>
+  </div>
+
+  <!-- Bottone fisso in basso -->
+  <button id="flipToFront"
+          class="btn-outline-modern absolute bottom-6 right-6 md:right-10">
+    Torna indietro
+  </button>
+</div>
           
         </div>
       </div>
@@ -600,6 +623,8 @@
 .flip-card {
   transform-style: preserve-3d;
   transition: transform 0.6s;
+  position: relative;
+  overflow: hidden;
 }
 .flip-card.show-back {
   transform: rotateY(180deg);
