@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Francesca & Tommaso - Matrimonio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -390,15 +390,22 @@
 
 <script>
   const correctPassword = "francescaetommaso2025";
+  const overlay = document.getElementById('password-overlay');
+  const error = document.getElementById('error-msg');
 
-  document.body.style.overflow = 'hidden';
+  // Se la password è già stata salvata
+  if (localStorage.getItem('siteAuth') === correctPassword) {
+    overlay.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  } else {
+    document.body.style.overflow = 'hidden';
+  }
 
   function checkPassword() {
     const input = document.getElementById('password-input').value;
-    const error = document.getElementById('error-msg');
     if (input === correctPassword) {
-      const overlay = document.getElementById('password-overlay');
       overlay.classList.add('hidden');
+      localStorage.setItem('siteAuth', correctPassword);
       setTimeout(() => {
         overlay.style.display = 'none';
         document.body.style.overflow = 'auto';
@@ -422,6 +429,7 @@
     }
   });
 </script>
+
 
 
 </head>
@@ -600,24 +608,71 @@
 
 <!-- CSS flip -->
 <style>
-.perspective {
-  perspective: 1000px;
-}
-.flip-card {
-  transform-style: preserve-3d;
-  transition: transform 0.6s;
-  position: relative;
-  overflow: hidden;
-}
-.flip-card.show-back {
-  transform: rotateY(180deg);
-}
-.backface-hidden {
-  backface-visibility: hidden;
-}
-.flip-back {
-  transform: rotateY(180deg);
-}
+  .perspective {
+    perspective: 1000px;
+  }
+
+  .flip-card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.45, 0, 0.55, 1);
+    will-change: transform;
+  }
+
+  .flip-card.show-back {
+    transform: rotateY(180deg);
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  .flip-front, .flip-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.3s ease;
+  }
+
+  .flip-front {
+    background-size: cover;
+    background-position: center;
+    z-index: 2;
+  }
+
+  .flip-back {
+    transform: rotateY(180deg);
+    background-color: white;
+    z-index: 1;
+  }
+
+  .flip-card-container {
+    transition: box-shadow 0.3s ease;
+  }
+
+  .flip-card.show-back .flip-card-container {
+    box-shadow: 0 0 0 4px #445a4b44;
+  }
+</style>
+    
+<style>
+  .faq-item.open .faq-box {
+    max-height: 300px;
+    opacity: 1;
+  }
+
+  .faq-box {
+    transition: all 0.4s ease;
+  }
+
+  .icon.rotate-45 {
+    transform: rotate(45deg);
+  }
 </style>
 
 <!-- JS per gestione flip -->
@@ -705,7 +760,7 @@
   <div class="container mx-auto px-6 max-w-3xl">
     <h2 class="text-3xl md:text-4xl font-normal mb-12 text-center text-[#445a4b] tracking-wider fade-in">DOMANDE FREQUENTI</h2>
     
-    <div class="space-y-6">
+    <div class="space-y-4" id="faq-list">
       <!-- FAQ ITEM -->
       <div class="faq-item transition-all duration-300 ease-in-out overflow-hidden rounded-2xl bg-[#e8e6df] shadow-md">
         <button class="faq-toggle flex justify-between items-center w-full text-left px-6 py-5">
@@ -944,6 +999,19 @@
     
     // Start slideshow
     startSlideShow();
+</script>
+<script>
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const toggle = item.querySelector('.faq-toggle');
+    toggle.addEventListener('click', () => {
+      // Chiudi tutte le altre
+      document.querySelectorAll('.faq-item').forEach(other => {
+        if (other !== item) other.classList.remove('open');
+      });
+      // Toggle questa
+      item.classList.toggle('open');
+    });
+  });
 </script>
 </body>
 </html>
