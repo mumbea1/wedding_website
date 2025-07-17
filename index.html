@@ -345,6 +345,29 @@
                 bottom: 30px;
             }
         }
+        .faq-item .FAQcontent {
+  padding-bottom: 0;
+}
+.faq-content {
+  max-height: 0 !important;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(0.45,0,0.55,1), opacity 0.45s cubic-bezier(0.45,0,0.55,1), padding-bottom 0.3s;
+  padding-bottom: 0;
+}
+.faq-item.open .faq-content {
+  max-height: 600px !important; /* aumenta se hai risposte super lunghe */
+  opacity: 1;
+  padding-bottom: 1.5rem; /* per la distanza dal fondo box */
+}
+.icon {
+  display: inline-block;
+  transition: transform 0.33s cubic-bezier(0.45,0,0.55,1);
+}
+.faq-item.open .icon {
+  transform: rotate(45deg);
+}
+
     </style>
 <!-- FontAwesome per l'icona occhio -->
 <script src="https://kit.fontawesome.com/a2e0e6c66f.js" crossorigin="anonymous"></script>
@@ -747,48 +770,57 @@ document.getElementById('flipCloseBtn').addEventListener('click', () => {
 <section class="bg-[#f5f4ef] py-20" id="faq">
   <div class="container mx-auto px-6 max-w-3xl">
     <h2 class="text-3xl md:text-4xl font-normal mb-12 text-center text-[#445a4b] tracking-wider fade-in">DOMANDE FREQUENTI</h2>
+   <div class="space-y-4" id="faq-list">
+      <!-- FAQ ITEM -->
+      <div class="faq-item transition-all duration-300 ease-in-out overflow-hidden rounded-2xl bg-[#e8e6df] shadow-md">
+        <button class="faq-toggle flex justify-between items-center w-full text-left px-6 py-5">
+          <span class="text-[#445a4b] text-lg md:text-xl font-normal tracking-wide">C’è un dress code?</span>
+          <span class="icon text-2xl text-[#445a4b] transform transition-transform duration-300 rotate-0">+</span>
+        </button>
+        <div class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out px-6 pb-6 text-[#445a4b] text-sm leading-relaxed">
+          Non c’è un dress code: potete vestirvi come volete! Che preferiate qualcosa di elegante, casual o colorato, l’importante è che vi sentiate voi stessi e pronti a divertirvi con noi.
+        </div>
+      </div>
 
+      <div class="faq-item transition-all duration-300 ease-in-out overflow-hidden rounded-2xl bg-[#e8e6df] shadow-md">
+        <button class="faq-toggle flex justify-between items-center w-full text-left px-6 py-5">
+          <span class="text-[#445a4b] text-lg md:text-xl font-normal tracking-wide">Ci sono opzioni per allergie o diete particolari?</span>
+          <span class="icon text-2xl text-[#445a4b] transform transition-transform duration-300 rotate-0">+</span>
+        </button>
+        <div class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out px-6 pb-6 text-[#445a4b] text-sm leading-relaxed">
+          Assolutamente sì! Vi chiediamo solo di segnalarci eventuali allergie o preferenze alimentari nel form di RSVP o contattandoci direttamente.
+        </div>
+      </div>
 
-    <div class="faq-item">
-  <button class="faq-toggle flex justify-between items-center w-full text-left px-6 py-5">
-    <span class="question">C’è un dress code?</span>
-    <span class="icon">+</span>
-  </button>
-  <div class="faq-content">Non c’è un dress code: potete vestirvi come volete! Che preferiate qualcosa di elegante, casual o colorato, l’importante è che vi sentiate voi stessi e pronti a divertirvi con noi.</div>
-    </div>
+      <div class="faq-item transition-all duration-300 ease-in-out overflow-hidden rounded-2xl bg-[#e8e6df] shadow-md">
+        <button class="faq-toggle flex justify-between items-center w-full text-left px-6 py-5">
+          <span class="text-[#445a4b] text-lg md:text-xl font-normal tracking-wide">Entro quando devo confermare la mia presenza?</span>
+          <span class="icon text-2xl text-[#445a4b] transform transition-transform duration-300 rotate-0">+</span>
+        </button>
+        <div class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out px-6 pb-6 text-[#445a4b] text-sm leading-relaxed">
+          Ti chiediamo di compilare il Form RSVP entro il 20 Novembre per dare conferma, così da poter organizzare al meglio ogni dettaglio.
+        </div>
+      </div>
 
-      <div class="faq-item">
-  <button class="faq-toggle flex justify-between items-center w-full text-left px-6 py-5">
-    <span class="question">Ci sono opzioni per allergie o diete particolari?</span>
-    <span class="icon">+</span>
-  </button>
-  <div class="faq-content">Assolutamente sì! Vi chiediamo solo di segnalarci eventuali allergie o preferenze alimentari nel form di RSVP o contattandoci direttamente.</div>
-    </div>
+      <div class="faq-item transition-all duration-300 ease-in-out overflow-hidden rounded-2xl bg-[#e8e6df] shadow-md">
+        <button class="faq-toggle flex justify-between items-center w-full text-left px-6 py-5">
+          <span class="text-[#445a4b] text-lg md:text-xl font-normal tracking-wide">Sono disponibili alloggi nei dintorni?</span>
+          <span class="icon text-2xl text-[#445a4b] transform transition-transform duration-300 rotate-0">+</span>
+        </button>
+        <div class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out px-6 pb-6 text-[#445a4b] text-sm leading-relaxed">
+          Per chi arriva da fuori città, ci sono diverse opzioni di alloggio nei pressi della location.<br>Saremo felici di darvi una mano a trovare la soluzione più adatta alle vostre esigenze: scriveteci e vi forniremo volentieri qualche suggerimento.
+        </div>
+      </div>
 
-      <div class="faq-item">
-  <button class="faq-toggle flex justify-between items-center w-full text-left px-6 py-5">
-    <span class="question">Entro quando devo confermare la mia presenza?</span>
-    <span class="icon">+</span>
-  </button>
-  <div class="faq-content">Ti chiediamo di compilare il Form RSVP entro il 20 Novembre per dare conferma, così da poter organizzare al meglio ogni dettaglio.</div>
-    </div>
-
-      <div class="faq-item">
-  <button class="faq-toggle flex justify-between items-center w-full text-left px-6 py-5">
-    <span class="question">Sono disponibili alloggi nei dintorni?</span>
-    <span class="icon">+</span>
-  </button>
-  <div class="faq-content">Per chi arriva da fuori città, ci sono diverse opzioni di alloggio nei pressi della location.<br>Saremo felici di darvi una mano a trovare la soluzione più adatta alle vostre esigenze: scriveteci e vi forniremo volentieri qualche suggerimento.</div>
-    </div>
-
-      <div class="faq-item">
-  <button class="faq-toggle flex justify-between items-center w-full text-left px-6 py-5">
-    <span class="question">E se abbiamo altre domande o dubbi?</span>
-    <span class="icon">+</span>
-  </button>
-  <div class="faq-content">Per qualsiasi informazione in più, curiosità o necessità particolare, non esitate a contattarci.</div>
-    </div>
-  
+      <div class="faq-item transition-all duration-300 ease-in-out overflow-hidden rounded-2xl bg-[#e8e6df] shadow-md">
+        <button class="faq-toggle flex justify-between items-center w-full text-left px-6 py-5">
+          <span class="text-[#445a4b] text-lg md:text-xl font-normal tracking-wide">E se abbiamo altre domande o dubbi?</span>
+          <span class="icon text-2xl text-[#445a4b] transform transition-transform duration-300 rotate-0">+</span>
+        </button>
+        <div class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out px-6 pb-6 text-[#445a4b] text-sm leading-relaxed">
+          Per qualsiasi informazione in più, curiosità o necessità particolare, non esitate a contattarci.
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -799,11 +831,17 @@ document.getElementById('flipCloseBtn').addEventListener('click', () => {
   btn.addEventListener('click', function () {
     const currentItem = this.closest('.faq-item');
     const wasOpen = currentItem.classList.contains('open');
-    // Chiudi tutte
-    document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('open'));
-    // Apri solo se non era già aperta
+
+    // Chiudi tutte le FAQ
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.classList.remove('open');
+      item.querySelector('.icon').textContent = '+';
+    });
+
+    // Apri solo quella cliccata (se era chiusa)
     if (!wasOpen) {
       currentItem.classList.add('open');
+      currentItem.querySelector('.icon').textContent = '×';
     }
   });
 });
