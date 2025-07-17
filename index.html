@@ -580,6 +580,11 @@
 
           <!-- Lato Posteriore -->
           <div class="flip-back absolute w-full h-full backface-hidden rounded-2xl bg-white text-[#445a4b] p-8 flex flex-col justify-center items-center space-y-6 transform rotate-y-180">
+              <!-- X chiusura in alto a destra -->
+            <button id="flipCloseBtn" aria-label="Chiudi" 
+              class="absolute top-6 right-6 md:top-8 md:right-10 w-10 h-10 flex items-center justify-center rounded-full bg-[#f5f4ef] text-[#445a4b] text-2xl shadow hover:bg-[#e8e6df] transition">
+              &times;
+            </button>
             <div>
               <h3 class="text-xl font-normal mb-4 tracking-wider">COME CONTRIBUIRE</h3>
               <p class="text-sm mb-2">Se vuoi regalarci qualche chilometro di viaggio:</p>
@@ -662,7 +667,10 @@
 
   document.getElementById('flipToFront').addEventListener('click', () => {
     document.querySelector('.flip-card').classList.remove('show-back');
-  });
+  }); 
+document.getElementById('flipCloseBtn').addEventListener('click', () => {
+  document.querySelector('.flip-card').classList.remove('show-back');
+});
 </script>
 
 
