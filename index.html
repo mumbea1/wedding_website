@@ -630,11 +630,16 @@
     height: 100%;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
     border-radius: 1rem;
+    transform-style: preserve-3d;
+    will-change: transform;
   }
 
   .flip-front {
     z-index: 2;
+    transform: rotateY(0deg);
   }
 
   .flip-back {
