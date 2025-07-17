@@ -555,17 +555,19 @@
 </div>
 </section>
 
-<!-- NUOVA SEZIONE: IL NOSTRO VIAGGIO DI NOZZE -->
+<!-- Sezione Viaggio di Nozze -->
 <section id="story" class="section bg-[#f5f4ef]">
   <div class="container mx-auto px-6">
     <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-3xl md:text-4xl font-normal mb-12 text-[#445a4b] tracking-wider fade-in">IL NOSTRO VIAGGIO DI NOZZE</h2>
-      
-      <!-- Card con flip -->
-      <div class="perspective mx-auto w-full md:w-[600px]">
-        <div class="flip-card relative w-full h-[500px] rounded-2xl shadow-xl transition-transform duration-700 transform-style preserve-3d">
+      <h2 class="text-3xl md:text-4xl font-normal mb-16 text-[#445a4b] tracking-wider fade-in">
+        IL NOSTRO VIAGGIO DI NOZZE
+      </h2>
+
+      <!-- Card Flip -->
+      <div class="perspective mx-auto w-full max-w-md md:max-w-xl h-[500px]">
+        <div class="flip-card relative w-full h-full transition-transform duration-700 transform-style-preserve-3d">
           
-          <!-- Lato frontale -->
+          <!-- Lato Frontale -->
           <div class="flip-front absolute w-full h-full backface-hidden rounded-2xl bg-cover bg-center text-[#445a4b] p-8 flex flex-col justify-end" style="background-image: url('Foto matrimonio/Foto viaggio_01.jpg');">
             <div class="bg-white bg-opacity-80 p-6 rounded-2xl">
               <h3 class="text-xl font-normal mb-2 tracking-wider">LE NOSTRE METE</h3>
@@ -576,94 +578,78 @@
             </div>
           </div>
 
-          <!-- Lato posteriore -->
-<div class="flip-back absolute w-full h-full backface-hidden rotate-y-180 rounded-2xl bg-white text-[#445a4b] p-8 flex flex-col justify-center items-center space-y-6 relative">
+          <!-- Lato Posteriore -->
+          <div class="flip-back absolute w-full h-full backface-hidden rounded-2xl bg-white text-[#445a4b] p-8 flex flex-col justify-center items-center space-y-6 transform rotate-y-180">
+            <div>
+              <h3 class="text-xl font-normal mb-4 tracking-wider">COME CONTRIBUIRE</h3>
+              <p class="text-sm mb-2">Se vuoi regalarci qualche chilometro di viaggio:</p>
+              <p class="text-sm font-mono bg-[#f5f4ef] p-2 rounded">
+                IBAN: <strong>IT00X0000000000000000000000</strong>
+              </p>
+            </div>
 
-  <div>
-    <h3 class="text-xl font-normal mb-4 tracking-wider">COME CONTRIBUIRE</h3>
-    <p class="text-sm mb-2">Se vuoi regalarci qualche chilometro di viaggio:</p>
-    <p class="text-sm font-mono bg-[#f5f4ef] p-2 rounded">
-      IBAN: <strong>IT00X0000000000000000000000</strong>
-    </p>
-  </div>
+            <div>
+              <img src="img/qr_code.png" alt="QR PayPal" class="w-48 h-48 object-contain mx-auto">
+              <p class="text-xs opacity-70 mt-2">Scansiona per donare via PayPal</p>
+            </div>
 
-  <div>
-    <img src="img/qr_code.png" alt="QR PayPal" class="w-48 h-48 object-contain mx-auto">
-    <p class="text-xs opacity-70 mt-2">Scansiona per donare via PayPal</p>
-  </div>
+            <!-- Bottone per tornare indietro -->
+            <button id="flipToFront" class="btn-outline-modern absolute bottom-6 right-6 md:right-10">
+              Torna indietro
+            </button>
+          </div>
 
-  <!-- Bottone fisso in basso -->
-  <button id="flipToFront"
-          class="btn-outline-modern absolute bottom-6 right-6 md:right-10">
-    Torna indietro
-  </button>
-</div>
-          
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- CSS flip -->
+<!-- CSS Flip -->
 <style>
   .perspective {
-    perspective: 1000px;
+    perspective: 1500px;
   }
 
   .flip-card {
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease;
     position: relative;
     width: 100%;
     height: 100%;
-    transform-style: preserve-3d;
-    transition: transform 0.6s cubic-bezier(0.45, 0, 0.55, 1);
-    will-change: transform;
   }
 
   .flip-card.show-back {
     transform: rotateY(180deg);
   }
 
-  .flip-front, .flip-back {
+  .flip-front,
+  .flip-back {
     position: absolute;
     width: 100%;
     height: 100%;
-    top: 0;
-    left: 0;
-    border-radius: 1rem;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+    border-radius: 1rem;
   }
 
   .flip-front {
-    background-size: cover;
-    background-position: center;
     z-index: 2;
-    transform: rotateY(0deg);
   }
 
   .flip-back {
-    background-color: white;
-    z-index: 1;
     transform: rotateY(180deg);
-  }
-    
-  .faq-item.open .faq-box {
-    max-height: 300px;
-    opacity: 1;
+    z-index: 1;
   }
 
-  .faq-box {
-    transition: all 0.4s ease;
-  }
-
-  .icon.rotate-45 {
-    transform: rotate(45deg);
+  @media (max-width: 768px) {
+    .flip-card {
+      height: 550px;
+    }
   }
 </style>
 
-<!-- JS per gestione flip -->
+<!-- JS Flip -->
 <script>
   document.getElementById('flipToBack').addEventListener('click', () => {
     document.querySelector('.flip-card').classList.add('show-back');
@@ -673,6 +659,7 @@
     document.querySelector('.flip-card').classList.remove('show-back');
   });
 </script>
+
 
     
 <!-- RSVP Section -->
