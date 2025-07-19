@@ -944,35 +944,43 @@ document.getElementById('flipCloseBtn').addEventListener('click', () => {
     const rsvpForm = document.getElementById('rsvpForm');
     const successMessage = document.getElementById('successMessage');
     
-    rsvpForm.addEventListener('submit', e => {
-        e.preventDefault();
-        
-        if (!attendanceInput.value) {
-            alert('Per favore seleziona se parteciperai o meno');
-            return;
-        }
-        
-        const guestsInput = document.getElementById('guests');
-        if (guestsInput.value < 1 || guestsInput.value > 10) {
-            alert('Per favore inserisci un numero di ospiti tra 1 e 10');
-            return;
-        }
-        
-        // Simulate form submission
-        setTimeout(() => {
-            rsvpForm.style.display = 'none';
-            successMessage.style.display = 'block';
-            successMessage.classList.add('visible');
-            
-            rsvpForm.reset();
-            attendanceButtons.forEach(btn => btn.classList.remove('active'));
-            
-            setTimeout(() => {
-                successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }, 100);
-        }, 500);
+rsvpForm.addEventListener('submit', e => {
+    e.preventDefault();
+
+    if (!attendanceInput.value) {
+        alert('Per favore seleziona se parteciperai o meno');
+        return;
+    }
+
+    const guestsInput = document.getElementById('guests');
+    if (guestsInput.value < 1 || guestsInput.value > 10) {
+        alert('Per favore inserisci un numero di ospiti tra 1 e 10');
+        return;
+    }
+
+    const data = {
+        name: document.getElementById('name').value,
+        attendance: attendanceInput.value,
+        guests: guestsInput.value,
+        notes: document.getElementById('notes').value,
+    };
+
+    fetch("https://script.google.com/macros/s/ID_DEL_WEBAPP/exec", {
+        method: "POST",
+        body: JSON.stringify(data),
+        mode: "no-cors"
+    }).then(() => {
+        rsvpForm.style.display = 'none';
+        successMessage.style.display = 'block';
+        successMessage.classList.add('visible');
+        // Reset visualizzazione
+        rsvpForm.reset();
+        attendanceButtons.forEach(btn => btn.classList.remove('active'));
+        successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
-    
+});
+
+
     // Hero Slideshow
     const slides = document.querySelectorAll('.hero-slide');
     const dots = document.querySelectorAll('.slideshow-dot');
