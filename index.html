@@ -1101,6 +1101,15 @@ function resetRSVP() {
     localStorage.removeItem('rsvpCompleted');
     document.getElementById('rsvpCompletedSection').style.display = 'none';
     document.getElementById('rsvpFormSection').style.display = 'block';
+    
+    // Pulisci tutti i campi del form
+    document.getElementById('rsvpForm').reset();
+    
+    // Rimuovi la classe active dai bottoni attendance
+    document.querySelectorAll('.attendance-btn').forEach(btn => btn.classList.remove('active'));
+    
+    // Svuota il campo nascosto attendance
+    document.getElementById('attendance').value = '';
 }
 </script>
 
