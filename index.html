@@ -798,7 +798,7 @@ document.getElementById('flipCloseBtn').addEventListener('click', () => {
     <h2 class="text-3xl md:text-4xl font-normal mb-12 text-center text-[#445a4b] tracking-wider fade-in">DOMANDE FREQUENTI</h2>
    <div class="space-y-4" id="faq-list">
       <!-- FAQ ITEM -->
-      <div class="faq-item transition-all duration-300 ease-in-out overflow-hidden rounded-2xl bg-[#e8e6df] shadow-md">
+      <div class="faq-item transition-all duration-300 ease-in-out overflow-hidden rounded-2xl">
         <button class="faq-toggle flex justify-between items-center w-full text-left px-6 py-5">
           <span class="text-[#445a4b] text-lg md:text-xl font-normal tracking-wide">C’è un dress code?</span>
           <span class="icon text-2xl text-[#445a4b] transform transition-transform duration-300 rotate-0">+</span>
@@ -808,7 +808,7 @@ document.getElementById('flipCloseBtn').addEventListener('click', () => {
         </div>
       </div>
 
-      <div class="faq-item transition-all duration-300 ease-in-out overflow-hidden rounded-2xl bg-[#e8e6df] shadow-md">
+      <div class="faq-item transition-all duration-300 ease-in-out overflow-hidden rounded-2xl">
         <button class="faq-toggle flex justify-between items-center w-full text-left px-6 py-5">
           <span class="text-[#445a4b] text-lg md:text-xl font-normal tracking-wide">Ci sono opzioni per allergie o diete particolari?</span>
           <span class="icon text-2xl text-[#445a4b] transform transition-transform duration-300 rotate-0">+</span>
@@ -818,7 +818,7 @@ document.getElementById('flipCloseBtn').addEventListener('click', () => {
         </div>
       </div>
 
-      <div class="faq-item transition-all duration-300 ease-in-out overflow-hidden rounded-2xl bg-[#e8e6df] shadow-md">
+      <div class="faq-item transition-all duration-300 ease-in-out overflow-hidden rounded-2xl">
         <button class="faq-toggle flex justify-between items-center w-full text-left px-6 py-5">
           <span class="text-[#445a4b] text-lg md:text-xl font-normal tracking-wide">Entro quando devo confermare la mia presenza?</span>
           <span class="icon text-2xl text-[#445a4b] transform transition-transform duration-300 rotate-0">+</span>
@@ -828,7 +828,7 @@ document.getElementById('flipCloseBtn').addEventListener('click', () => {
         </div>
       </div>
 
-      <div class="faq-item transition-all duration-300 ease-in-out overflow-hidden rounded-2xl bg-[#e8e6df] shadow-md">
+      <div class="faq-item transition-all duration-300 ease-in-out overflow-hidden rounded-2xl">
         <button class="faq-toggle flex justify-between items-center w-full text-left px-6 py-5">
           <span class="text-[#445a4b] text-lg md:text-xl font-normal tracking-wide">Sono disponibili alloggi nei dintorni?</span>
           <span class="icon text-2xl text-[#445a4b] transform transition-transform duration-300 rotate-0">+</span>
@@ -838,7 +838,7 @@ document.getElementById('flipCloseBtn').addEventListener('click', () => {
         </div>
       </div>
 
-      <div class="faq-item transition-all duration-300 ease-in-out overflow-hidden rounded-2xl bg-[#e8e6df] shadow-md">
+      <div class="faq-item transition-all duration-300 ease-in-out overflow-hidden rounded-2xl">
         <button class="faq-toggle flex justify-between items-center w-full text-left px-6 py-5">
           <span class="text-[#445a4b] text-lg md:text-xl font-normal tracking-wide">E se abbiamo altre domande o dubbi?</span>
           <span class="icon text-2xl text-[#445a4b] transform transition-transform duration-300 rotate-0">+</span>
@@ -858,22 +858,18 @@ document.getElementById('flipCloseBtn').addEventListener('click', () => {
     const faqItem = button.closest('.faq-item');
     const content = faqItem.querySelector('.faq-content');
     const icon = button.querySelector('.icon');
-
     const isOpen = faqItem.classList.contains('open');
-
     document.querySelectorAll('.faq-item').forEach(item => {
       item.classList.remove('open');
       item.querySelector('.faq-content').style.maxHeight = null;
-      item.querySelector('.icon').textContent = '+';
     });
-
     if (!isOpen) {
       faqItem.classList.add('open');
       content.style.maxHeight = content.scrollHeight + 'px';
-      icon.textContent = '×'; // Cambia simbolo
     }
   });
 });
+
 
 </script>
 
