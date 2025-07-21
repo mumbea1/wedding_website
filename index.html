@@ -870,9 +870,6 @@
     document.querySelector('.flip-card').classList.add('show-back');
   });
 
-  document.getElementById('flipToFront').addEventListener('click', () => {
-    document.querySelector('.flip-card').classList.remove('show-back');
-  }); 
 document.getElementById('flipCloseBtn').addEventListener('click', () => {
   document.querySelector('.flip-card').classList.remove('show-back');
 });
@@ -966,7 +963,7 @@ document.getElementById('flipCloseBtn').addEventListener('click', () => {
 <section class="bg-[#f5f4ef] py-20" id="faq">
   <div class="container mx-auto px-6 max-w-3xl">
     <h2 class="text-3xl md:text-4xl font-normal mb-12 text-center text-[#445a4b] tracking-wider fade-in">DOMANDE FREQUENTI</h2>
-   <div class="space-y-4" id="faq-list">
+
       
        
        <!-- FAQ ITEM -->
@@ -1064,6 +1061,7 @@ attendanceButtons.forEach(button => {
         attendanceInput.value = button.dataset.attendance;
     });
 });
+
 // Controlla se l'RSVP è già stato inviato
     document.addEventListener('DOMContentLoaded', function() {
         if (localStorage.getItem('rsvpCompleted') === 'true') {
