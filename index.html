@@ -1125,12 +1125,16 @@ rsvpForm.addEventListener('submit', e => {
         notes: document.getElementById('notes').value,
     };
 
-    fetch("https://script.google.com/macros/s/AKfycbz_La9YyDhC6CCMe-VNuCplG16VykHR2TfWIYNT2m4RZsQKHfKqu-qExuNzZjbXMVkz6g/exec", {
-        method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify(data)
+    const formBody = Object.keys(data)
+  .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+  .join('&');
+
+fetch("https://script.google.com/macros/s/AKfycbz_La9YyDhC6CCMe-VNuCplG16VykHR2TfWIYNT2m4RZsQKHfKqu-qExuNzZjbXMVkz6g/exec", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/x-www-form-urlencoded",  // FORM-DATA STANDARD
+    },
+    body: formBody
 })
 .then(response => response.text())
 .then(responseText => {
@@ -1142,7 +1146,6 @@ rsvpForm.addEventListener('submit', e => {
   successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
 })
 .catch(err => console.error('Errore nel salvataggio:', err));
-})
 
     // Hero Slideshow
 function getActiveSlideshow() {
