@@ -760,7 +760,38 @@
     </div>
   </div>
 </section>
+<!-- CSS RSVP -->
+<style>
+ .attendance-btn input[type="radio"]:checked + .radio-display {
+    background: #445a4b;
+    color: #ffffff;
+}
 
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.radio-display {
+    display: block;
+    padding: 12px 20px;
+    border: 1px solid #445a4b;
+    border-radius: 50px;
+    background: transparent;
+    color: #445a4b;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    text-align: center;
+    width: 80px;
+}   
+  </style>  
 <!-- CSS Flip -->
 <style>
   .perspective {
@@ -873,13 +904,18 @@ document.getElementById('flipCloseBtn').addEventListener('click', () => {
             </div>
             
             <div class="mb-8">
-                <p class="mb-4 text-sm tracking-wider text-[#445a4b]">PARTECIPERAI?</p>
-                <div class="flex justify-center space-x-4">
-                    <button type="button" class="attendance-btn" data-attendance="yes">Sì</button>
-                    <button type="button" class="attendance-btn" data-attendance="no">No</button>
-                </div>
-                <input type="hidden" id="attendance" name="attendance" required>
-            </div>
+    <p class="mb-4 text-sm tracking-wider text-[#445a4b]">PARTECIPERAI?</p>
+    <div class="flex justify-center space-x-4">
+        <label class="attendance-btn cursor-pointer">
+            <input type="radio" name="attendance" value="yes" class="sr-only" required>
+            <span class="radio-display">Sì</span>
+        </label>
+        <label class="attendance-btn cursor-pointer">
+            <input type="radio" name="attendance" value="no" class="sr-only" required>
+            <span class="radio-display">No</span>
+        </label>
+    </div>
+</div>
             
             <div class="mb-8">
                 <input 
@@ -1086,18 +1122,7 @@ document.querySelectorAll('.faq-dialog-close').forEach(btn => {
         }
     });
     
-    // RSVP Form Attendance Buttons
-    const attendanceButtons = document.querySelectorAll('.attendance-btn');
-    const attendanceInput = document.getElementById('attendance');
-    
-    attendanceButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            attendanceButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-            attendanceInput.value = button.dataset.attendance;
-        });
-    });
-    
+   
     
     // Hero Slideshow
 function getActiveSlideshow() {
