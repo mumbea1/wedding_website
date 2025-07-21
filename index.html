@@ -857,6 +857,7 @@ document.getElementById('flipCloseBtn').addEventListener('click', () => {
             id="rsvpForm" 
             name="rsvp" 
             method="POST" 
+            action="https://script.google.com/macros/s/AKfycbz_La9YyDhC6CCMe-VNuCplG16VykHR2TfWIYNT2m4RZsQKHfKqu-qExuNzZjbXMVkz6g/exec"
             class="max-w-lg mx-auto fade-in"
         >
 
@@ -1097,53 +1098,7 @@ document.querySelectorAll('.faq-dialog-close').forEach(btn => {
         });
     });
     
-    // RSVP Form Submission
-    const rsvpForm = document.getElementById('rsvpForm');
-    const successMessage = document.getElementById('successMessage');
     
-rsvpForm.addEventListener('submit', e => {
-    e.preventDefault();
-
-    if (!attendanceInput.value) {
-        alert('Per favore seleziona se parteciperai o meno');
-        return;
-    }
-
-    const guestsInput = document.getElementById('guests');
-    if (guestsInput.value < 1 || guestsInput.value > 10) {
-        alert('Per favore inserisci un numero di ospiti tra 1 e 10');
-        return;
-    }
-
-    const data = {
-        name: document.getElementById('name').value,
-        attendance: attendanceInput.value,
-        guests: guestsInput.value,
-        notes: document.getElementById('notes').value,
-    };
-
-    const formBody = Object.keys(data)
-  .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-  .join('&');
-
-fetch("https://script.google.com/macros/s/AKfycbz_La9YyDhC6CCMe-VNuCplG16VykHR2TfWIYNT2m4RZsQKHfKqu-qExuNzZjbXMVkz6g/exec", {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/x-www-form-urlencoded",  // FORM-DATA STANDARD
-    },
-    body: formBody
-})
-.then(response => response.text())
-.then(responseText => {
-  rsvpForm.style.display = 'none';
-  successMessage.style.display = 'block';
-  successMessage.classList.add('visible');
-  rsvpForm.reset();
-  attendanceButtons.forEach(btn => btn.classList.remove('active'));
-  successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-})
-.catch(err => console.error('Errore nel salvataggio:', err));
-});
     // Hero Slideshow
 function getActiveSlideshow() {
   return window.innerWidth <= 768
