@@ -213,23 +213,27 @@
         }
         
         .attendance-btn {
-            flex: 0 0 auto;
-            padding: 12px 20px;
-            border: 1px solid #445a4b;
-            border-radius: 50px;
-            background: transparent;
-            color: #445a4b;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
-            width: 80px;
-        }
-        
-        .attendance-btn.active {
-            background: #445a4b;
-            color: #ffffff;
-        }
+    padding: 12px 20px;
+    border: 1px solid #445a4b;
+    border-radius: 50px;
+    background: transparent;
+    color: #445a4b;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    width: 80px;
+}
+
+.attendance-btn:hover {
+    background: rgba(68, 90, 75, 0.1);
+}
+
+.attendance-btn.active {
+    background: #445a4b;
+    color: #ffffff;
+}
+
         
         .success-message {
             display: none;
@@ -906,16 +910,12 @@ document.getElementById('flipCloseBtn').addEventListener('click', () => {
             <div class="mb-8">
     <p class="mb-4 text-sm tracking-wider text-[#445a4b]">PARTECIPERAI?</p>
     <div class="flex justify-center space-x-4">
-        <label class="attendance-btn cursor-pointer">
-            <input type="radio" name="attendance" value="yes" class="sr-only" required>
-            <span class="radio-display">Sì</span>
-        </label>
-        <label class="attendance-btn cursor-pointer">
-            <input type="radio" name="attendance" value="no" class="sr-only" required>
-            <span class="radio-display">No</span>
-        </label>
+        <button type="button" class="attendance-btn" data-attendance="yes">Sì</button>
+        <button type="button" class="attendance-btn" data-attendance="no">No</button>
     </div>
+    <input type="hidden" id="attendance" name="attendance" required>
 </div>
+
             
             <div class="mb-8">
                 <input 
@@ -1041,7 +1041,17 @@ document.querySelectorAll('.faq-dialog-close').forEach(btn => {
   });
 });
 
+// RSVP Form Attendance Buttons
+const attendanceButtons = document.querySelectorAll('.attendance-btn');
+const attendanceInput = document.getElementById('attendance');
 
+attendanceButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        attendanceButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        attendanceInput.value = button.dataset.attendance;
+    });
+});
 
 
 </script>
