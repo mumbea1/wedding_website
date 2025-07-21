@@ -171,6 +171,22 @@
             background-color: #ffffff;
             color: #445a4b;
         }
+        .btn-back-visible {
+            background-color: #445a4b;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 9999px;
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            }
+        .btn-back-visible:hover {
+          background-color: #36453a;
+            }
         
         .location-card {
             background: #ffffff;
@@ -345,7 +361,7 @@
                 bottom: 30px;
             }
         }
-        .faq-item .FAQcontent {
+        .faq-item.FAQcontent {
   padding-bottom: 0;
 }
 .faq-content {
@@ -355,8 +371,13 @@
   transition: max-height 0.45s cubic-bezier(0.45,0,0.55,1), opacity 0.45s cubic-bezier(0.45,0,0.55,1), padding-bottom 0.3s;
   padding-bottom: 0;
 }
+.faq-item {
+  background-color: transparent;
+  box-shadow: none;
+  transition: all 0.3s ease;
+}
 .faq-item.open {
-  background-color: #e8e6df; /* stesso colore della section RSVP */
+  background-color: #e8e6df;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 .icon {
@@ -413,7 +434,7 @@
 </div>
 
 <script>
-  const correctPassword = "francescaetommaso2025";
+  const correctPassword = "dicembre2025";
   const overlay = document.getElementById('password-overlay');
   const error = document.getElementById('error-msg');
 
@@ -624,7 +645,7 @@
             </div>
 
             <!-- Bottone per tornare indietro -->
-            <button id="flipToFront" class="btn-outline-modern absolute bottom-6 right-6 md:right-10">
+            <button id="flipToFront" class="absolute bottom-6 right-6 md:right-10 bg-[#445a4b] text-white px-6 py-2 rounded-full">
               Torna indietro
             </button>
           </div>
@@ -973,18 +994,21 @@ rsvpForm.addEventListener('submit', e => {
 
     fetch("https://script.google.com/macros/s/AKfycbwUVUbKbNSOPXAOMn4S9DPFadGK5i3nkDDBZZUXYdB9yeoIUmvt-_QPywW9YN8v6G4Ubw/exec", {
         method: "POST",
-        body: JSON.stringify(data),
-        mode: "no-cors"
-    }).then(() => {
-        rsvpForm.style.display = 'none';
-        successMessage.style.display = 'block';
-        successMessage.classList.add('visible');
-        // Reset visualizzazione
-        rsvpForm.reset();
-        attendanceButtons.forEach(btn => btn.classList.remove('active'));
-        successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    });
-});
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify(data)
+})
+.then(response => response.text())
+.then(responseText => {
+  rsvpForm.style.display = 'none';
+  successMessage.style.display = 'block';
+  successMessage.classList.add('visible');
+  rsvpForm.reset();
+  attendanceButtons.forEach(btn => btn.classList.remove('active'));
+  successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+})
+.catch(err => console.error('Errore nel salvataggio:', err));
 
 
     // Hero Slideshow
