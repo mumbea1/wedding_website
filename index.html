@@ -387,17 +387,29 @@
 .icon {
   display: inline-block;
   transition: transform 0.33s cubic-bezier(0.45,0,0.55,1);
-  font-size: 2.5rem;       /* aumenta la dimensione */
+  font-size: 2.5rem;
   line-height: 1;
-  width: 2.7rem;            /* mantiene l’allineamento anche se la x è larga */
+  width: 2.7rem;
   text-align: center;
 }
+
 .faq-toggle {
-  padding-top: 0.7rem; 
-  padding-bottom: 0.7rem; 
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+  font-size: 1rem;
 }
+
+.faq-item:not(.open) .faq-toggle {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.faq-item:not(.open) {
+  margin-bottom: 0.2rem;
+}
+
         
 .faq-item.open .icon {
   transform: rotate(45deg);
