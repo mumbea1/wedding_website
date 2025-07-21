@@ -1045,18 +1045,5 @@ rsvpForm.addEventListener('submit', e => {
     // Start slideshow
     startSlideShow();
 </script>
-<script>
-  document.querySelectorAll('.faq-item').forEach(item => {
-    const toggle = item.querySelector('.faq-toggle');
-    toggle.addEventListener('click', () => {
-      // Chiudi tutte le altre
-      document.querySelectorAll('.faq-item').forEach(other => {
-        if (other !== item) other.classList.remove('open');
-      });
-      // Toggle questa
-      item.classList.toggle('open');
-    });
-  });
-</script>
 </body>
 </html>
