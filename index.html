@@ -583,6 +583,8 @@
       icon.classList.add('fa-eye');
     }
   });
+
+
 </script>
 
 
@@ -886,14 +888,16 @@ document.getElementById('flipCloseBtn').addEventListener('click', () => {
 <!-- RSVP Section -->
 <section id="rsvp" class="py-20 bg-[#e8e6df]">
     <div class="container mx-auto px-6 max-w-4xl">
-        <h2 class="text-3xl md:text-4xl font-normal mb-12 text-center text-[#445a4b] tracking-wider fade-in">CONFERMA LA TUA PARTECIPAZIONE</h2>
-        
+        <!-- Form RSVP originale -->
+        <div id="rsvpFormSection">
+            <h2 class="text-3xl md:text-4xl font-normal mb-12 text-center text-[#445a4b] tracking-wider fade-in">CONFERMA LA TUA PARTECIPAZIONE</h2>        
         <form 
             id="rsvpForm" 
             name="rsvp" 
             method="POST" 
-            action="https://script.google.com/macros/s/AKfycbwIA-lnB8BpP0a2qV7HOhLYQzBK5fAltay8hjOttR5C5WGsqCnw6_uR8QRjFHXobZ1yWg/exec"
-            class="max-w-lg mx-auto fade-in"
+            action="https://script.google.com/macros/s/AKfycbydpaplR6BvUtooNteBzgsnw6G7ThXFqnt61xNdi9VM75lyXiXXt7xSjeMJ-T2g67nBuQ/exec"
+            target="_blank"
+                class="max-w-lg mx-auto fade-in"
         >
 
             <div class="mb-8">
@@ -947,6 +951,19 @@ document.getElementById('flipCloseBtn').addEventListener('click', () => {
             <p class="text-sm">Abbiamo ricevuto la tua conferma di partecipazione.</p>
         </div>
     </div>
+    <!-- Messaggio di ringraziamento -->
+<div id="rsvpCompletedSection" class="text-center fade-in" style="display: none;">
+    <h2 class="text-3xl md:text-4xl font-normal mb-8 text-[#445a4b] tracking-wider">GRAZIE PER LA TUA RISPOSTA!</h2>
+    <div class="max-w-lg mx-auto">
+        <p class="text-lg text-[#445a4b] mb-6">Abbiamo ricevuto la tua conferma di partecipazione.</p>
+        
+        <!-- PULSANTE PER MODIFICARE LA RISPOSTA -->
+        <button onclick="resetRSVP()" class="mt-4 text-sm text-[#445a4b] underline cursor-pointer">
+            Devi mandare un altra risposta?
+        </button>
+    </div>
+</div>
+
 </section>
 
     
@@ -1052,8 +1069,44 @@ attendanceButtons.forEach(button => {
         attendanceInput.value = button.dataset.attendance;
     });
 });
+// Controlla se l'RSVP è già stato inviato
+    document.addEventListener('DOMContentLoaded', function() {
+        if (localStorage.getItem('rsvpCompleted') === 'true') {
+            showRSVPCompleted();
+        }
+    });
 
+    // Ascolta i messaggi dalla finestra di ringraziamento
+    window.addEventListener('message', function(event) {
+        if (event.data === 'rsvp_completed') {
+            localStorage.setItem('rsvpCompleted', 'true');
+            showRSVPCompleted();
+        }
+    });
 
+    // Funzione per mostrare il messaggio di ringraziamento
+    function showRSVPCompleted() {
+        const formSection = document.getElementById('rsvpFormSection');
+        const completedSection = document.getElementById('rsvpCompletedSection');
+        
+        if (formSection && completedSection) {
+            formSection.style.display = 'none';
+            completedSection.style.display = 'block';
+        }
+    }
+
+    // Modifica anche il submit del form per salvare lo stato
+    document.getElementById('rsvpForm').addEventListener('submit', function() {
+        localStorage.setItem('rsvpCompleted', 'true');
+        // Dopo 2 secondi mostra il messaggio (tempo per aprire la nuova finestra)
+        setTimeout(showRSVPCompleted, 2000);
+    });
+
+function resetRSVP() {
+    localStorage.removeItem('rsvpCompleted');
+    document.getElementById('rsvpCompletedSection').style.display = 'none';
+    document.getElementById('rsvpFormSection').style.display = 'block';
+}
 </script>
 
     
