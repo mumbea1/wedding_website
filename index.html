@@ -968,26 +968,27 @@ document.getElementById('flipCloseBtn').addEventListener('click', () => {
 
 <!-- SCRIPT FAQ -->
 <script>
-  document.querySelectorAll('.faq-toggle').forEach(btn => {
+document.querySelectorAll('.faq-toggle').forEach(btn => {
   btn.addEventListener('click', function() {
     // Chiudi eventuali altre modali aperte
-    document.querySelectorAll('.faq-modal.active').forEach(modal => modal.classList.remove('active'));
+    document.querySelectorAll('.faq-dialog.active').forEach(modal => modal.classList.remove('active'));
     // Apri questa
-    this.parentElement.querySelector('.faq-modal').classList.add('active');
+    this.parentElement.querySelector('.faq-dialog').classList.add('active');
   });
 });
 
 // Chiudi modale quando clicchi sulla X o fuori dal box
-document.querySelectorAll('.faq-modal').forEach(modal => {
+document.querySelectorAll('.faq-dialog').forEach(modal => {
   modal.addEventListener('click', function(e) {
     if (e.target === this) this.classList.remove('active');
   });
 });
-document.querySelectorAll('.faq-modal-close').forEach(btn => {
+document.querySelectorAll('.faq-dialog-close').forEach(btn => {
   btn.addEventListener('click', function() {
-    this.closest('.faq-modal').classList.remove('active');
+    this.closest('.faq-dialog').classList.remove('active');
   });
 });
+
 
 
 
