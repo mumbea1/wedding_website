@@ -1099,28 +1099,31 @@ attendanceButtons.forEach(button => {
         }
     }
 
-    // Modifica anche il submit del form per salvare lo stato
-    document.getElementById('rsvpForm').addEventListener('submit', function() {
-        localStorage.setItem('rsvpCompleted', 'true');
-        // Dopo 2 secondi mostra il messaggio (tempo per aprire la nuova finestra)
-        setTimeout(showRSVPCompleted, 2000);
-    });
+    // Event listener completo per la validazione e invio del form
+document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+    // Controlla che sia selezionata la partecipazione
+    if (!attendanceInput.value) {
+        e.preventDefault();
+        alert('Per favore seleziona se parteciperai o meno');
+        return;
+    }
+
+    // Validazione numero ospiti
     const guestAInput = document.getElementById('guest_a');
     const guestBInput = document.getElementById('guest_b');
     const totalGuests = parseInt(guestAInput.value || 0) + parseInt(guestBInput.value || 0);
 
     if (totalGuests < 1 || totalGuests > 10) {
+        e.preventDefault();
         alert('Per favore inserisci un numero totale di ospiti tra 1 e 10');
         return;
     }
 
-    const data = {
-        name: document.getElementById('name').value,
-        attendance: attendanceInput.value,
-        guest_a: guestAInput.value,
-        guest_b: guestBInput.value,
-        notes: document.getElementById('notes').value,
-};
+    // Se tutto è ok, salva lo stato e procedi con l'invio
+    localStorage.setItem('rsvpCompleted', 'true');
+    setTimeout(showRSVPCompleted, 2000);
+});
+
 
 
 function resetRSVP() {
