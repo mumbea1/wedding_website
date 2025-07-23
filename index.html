@@ -982,7 +982,7 @@ document.getElementById('flipCloseBtn').addEventListener('click', () => {
   </div>
 </section>
 
-
+<script>
 <!-- SCRIPT FAQ -->
 document.querySelectorAll('.faq-toggle').forEach(btn => {
   btn.addEventListener('click', function(){
@@ -1010,16 +1010,6 @@ document.querySelectorAll('.faq-toggle').forEach(btn => {
 window.addEventListener('resize', () => {
   document.querySelectorAll('.faq-item.active .faq-content').forEach(content => {
     content.style.maxHeight = content.scrollHeight + "px";
-  });
-});
-
-
-
-
-// Opzionale: resetta le altezze per adattarsi se cambia il font/carattere
-window.addEventListener('resize', () => {
-  document.querySelectorAll('.faq-item.open .faq-content').forEach(content => {
-    content.style.maxHeight = content.scrollHeight + 'px';
   });
 });
 
