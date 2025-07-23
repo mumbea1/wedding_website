@@ -415,21 +415,28 @@
   transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s;
 }
 .faq-content {
+  max-height: 0;
   opacity: 0;
+  overflow: hidden;
+  transition:
+    max-height 0.45s cubic-bezier(0.45,0,0.55,1),
+    opacity 0.35s cubic-bezier(0.45,0,0.55,1),
+    padding-bottom 0.25s;
+  padding-bottom: 0;
 }
 .faq-item.open .faq-content {
+  max-height: 400px;
   opacity: 1;
+  padding-bottom: 1.2rem;
+}
+.faq-item.open .faq-question {
+  font-weight: 700 !important;
 }
 .faq-toggle {
-  font-size: 1.15rem;
-  background: transparent;
-  border: none;
   outline: none;
-  cursor: pointer;
 }
-/* Mantieni margin-left largo sulla freccia se vuoi più aria */
-.faq-toggle i {
-  margin-left: 1rem;
+.faq-item.open .faq-toggle i {
+  transform: rotate(90deg);
 }
 
 .icon {
@@ -981,8 +988,11 @@ document.getElementById('flipCloseBtn').addEventListener('click', () => {
     </h2>
     <div class="bg-white rounded-3xl shadow-sm overflow-hidden mb-8">
       <div class="faq-item border-b border-gray-100 last:border-b-0">
-        <button class="faq-toggle w-full px-6 py-5 flex items-center group text-left">
-          <span class="text-[#445a4b] font-medium text-left flex-1">C'è un dress code?</span>
+        <button
+          class="faq-toggle w-full px-6 py-5 flex items-center group text-left transition font-normal"
+          type="button"
+        >
+          <span class="faq-question flex-1 text-[#445a4b] text-left transition font-normal">C'è un dress code?</span>
           <i class="fas fa-chevron-right text-[#445a4b] opacity-60 ml-4 transition-transform duration-200"></i>
         </button>
         <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-white">
@@ -992,8 +1002,8 @@ document.getElementById('flipCloseBtn').addEventListener('click', () => {
         </div>
       </div>
       <div class="faq-item border-b border-gray-100 last:border-b-0">
-        <button class="faq-toggle w-full px-6 py-5 flex items-center group text-left">
-          <span class="text-[#445a4b] font-medium text-left flex-1">Ci sono opzioni per allergie o diete particolari?</span>
+        <button class="faq-toggle w-full px-6 py-5 flex items-center group text-left transition font-normal" type="button">
+          <span class="faq-question flex-1 text-[#445a4b] text-left transition font-normal">Ci sono opzioni per allergie o diete particolari?</span>
           <i class="fas fa-chevron-right text-[#445a4b] opacity-60 ml-4 transition-transform duration-200"></i>
         </button>
         <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-white">
@@ -1003,8 +1013,8 @@ document.getElementById('flipCloseBtn').addEventListener('click', () => {
         </div>
       </div>
       <div class="faq-item border-b border-gray-100 last:border-b-0">
-        <button class="faq-toggle w-full px-6 py-5 flex items-center group text-left">
-          <span class="text-[#445a4b] font-medium text-left flex-1">Entro quando devo confermare la mia presenza?</span>
+        <button class="faq-toggle w-full px-6 py-5 flex items-center group text-left transition font-normal" type="button">
+          <span class="faq-question flex-1 text-[#445a4b] text-left transition font-normal">Entro quando devo confermare la mia presenza?</span>
           <i class="fas fa-chevron-right text-[#445a4b] opacity-60 ml-4 transition-transform duration-200"></i>
         </button>
         <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-white">
@@ -1014,8 +1024,8 @@ document.getElementById('flipCloseBtn').addEventListener('click', () => {
         </div>
       </div>
       <div class="faq-item border-b border-gray-100 last:border-b-0">
-        <button class="faq-toggle w-full px-6 py-5 flex items-center group text-left">
-          <span class="text-[#445a4b] font-medium text-left flex-1">Sono disponibili alloggi nei dintorni?</span>
+        <button class="faq-toggle w-full px-6 py-5 flex items-center group text-left transition font-normal" type="button">
+          <span class="faq-question flex-1 text-[#445a4b] text-left transition font-normal">Sono disponibili alloggi nei dintorni?</span>
           <i class="fas fa-chevron-right text-[#445a4b] opacity-60 ml-4 transition-transform duration-200"></i>
         </button>
         <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-white">
@@ -1025,8 +1035,8 @@ document.getElementById('flipCloseBtn').addEventListener('click', () => {
         </div>
       </div>
       <div class="faq-item">
-        <button class="faq-toggle w-full px-6 py-5 flex items-center group text-left">
-          <span class="text-[#445a4b] font-medium text-left flex-1">E se abbiamo altre domande o dubbi?</span>
+        <button class="faq-toggle w-full px-6 py-5 flex items-center group text-left transition font-normal" type="button">
+          <span class="faq-question flex-1 text-[#445a4b] text-left transition font-normal">E se abbiamo altre domande o dubbi?</span>
           <i class="fas fa-chevron-right text-[#445a4b] opacity-60 ml-4 transition-transform duration-200"></i>
         </button>
         <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-white">
@@ -1038,7 +1048,6 @@ document.getElementById('flipCloseBtn').addEventListener('click', () => {
     </div>
   </div>
 </section>
-
 
 <!-- SCRIPT FAQ -->
 <script>
@@ -1061,6 +1070,12 @@ document.querySelectorAll('.faq-toggle').forEach(button => {
     }
   });
 });
+window.addEventListener('resize', () => {
+  document.querySelectorAll('.faq-item.open .faq-content').forEach(content => {
+    content.style.maxHeight = content.scrollHeight + 'px';
+  });
+});
+
 
 // Opzionale: resetta le altezze per adattarsi se cambia il font/carattere
 window.addEventListener('resize', () => {
