@@ -688,30 +688,27 @@
           <button class="btn-modern w-full" id="contribuisciBtn1">Contribuisci al viaggio</button>
         </div>
       </div>
-        <!-- Retro -->
-            <!-- Lato Posteriore -->
-<div class="flip-back absolute w-full h-full backface-hidden rounded-2xl bg-white text-[#445a4b] p-8 flex flex-col justify-center items-center space-y-6 transform rotate-y-180">
-  <!-- Bottone di chiusura (X) in alto a destra -->
-  <button id="flipCloseBtn" aria-label="Chiudi" 
+        <!-- Lato Posteriore -->
+<div class="flip-back absolute w-full h-full backface-hidden rounded-2xl bg-white text-[#445a4b] p-8 flex flex-col justify-center items-center space-y-8 transform rotate-y-180 relative">
+  <!-- Bottone di chiusura (X) -->
+  <button id="flipCloseBtn" aria-label="Chiudi"
     class="absolute top-6 right-6 md:top-8 md:right-10 w-10 h-10 flex items-center justify-center rounded-full bg-[#f5f4ef] text-[#445a4b] text-2xl shadow hover:bg-[#e8e6df] transition">
     &times;
   </button>
-
-  <!-- Titolo e istruzioni -->
-  <div>
-    <h3 class="text-xl font-normal mb-4 tracking-wider">COME CONTRIBUIRE</h3>
+  <!-- Blocco centrale -->
+  <div class="w-full flex flex-col items-center text-center space-y-4">
+    <h3 class="text-xl font-normal mb-2 tracking-wider">COME CONTRIBUIRE</h3>
     <p class="text-sm mb-2">Se vuoi regalarci qualche chilometro di viaggio:</p>
     <p class="text-sm font-mono bg-[#f5f4ef] p-2 rounded">
       IBAN: <strong>IT00X0000000000000000000000</strong>
     </p>
   </div>
-
-  <!-- QR Code e istruzioni PayPal -->
-  <div>
+  <div class="w-full flex flex-col items-center text-center">
     <img src="img/qr_code.png" alt="QR PayPal" class="w-48 h-48 object-contain mx-auto">
     <p class="text-xs opacity-70 mt-2">Scansiona per donare via PayPal</p>
   </div>
 </div>
+
 
           </div>
         </div>
@@ -1235,7 +1232,13 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-
+document.getElementById('flipCloseBtn').addEventListener('click', function () {
+  // Trova la flip box principale partendo dal bottone
+  var flipBox = this.closest('.flip-box');
+  if (flipBox) {
+    flipBox.classList.remove('flipped');
+  }
+});
 </script>
 </body>
 </html>
