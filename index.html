@@ -373,24 +373,26 @@
 }
 
 .faq-item {
-  border-bottom: 1px solid #eceae3;
+  width: 100%;
+  /* niente display:flex, niente justify-content: center */
+  background: none;
 }
 
 .faq-toggle {
   width: 100%;
   display: flex;
   align-items: center;
+  padding: 1.25rem 1.5rem;
   background: transparent;
   border: none;
-  outline: none;
   cursor: pointer;
+  color: #445a4b;
+  transition: background 0.2s;
+  font-size: 1.14rem;
   text-align: left;
-  padding: 1.25rem 2rem;
-  transition: background 0.22s cubic-bezier(.22,.61,.36,1);
-  font-size: 1.15rem;
+  outline: none;
   font-family: inherit;
-  color: #494f3a;
-  border-radius: 0;
+  margin: 0;
 }
 
 .faq-toggle:focus,
@@ -399,56 +401,55 @@
   border-radius: 0.9rem;
 }
 
-.faq-question {
+/* Domanda in grassetto solo se la FAQ è aperta */
+.faq-item.open .faq-toggle .faq-question {
+  font-weight: 700;
+}
+
+.faq-toggle .faq-question {
   flex: 1 1 0;
   text-align: left;
-  transition: font-weight .16s;
+  transition: font-weight 0.18s;
   word-break: break-word;
 }
 
-.faq-item.active .faq-toggle {
-  background: #e8e6df;
-  font-weight: 600;
-  border-radius: 18px 18px 0 0;
-  color: #494f3a;
+.faq-toggle i {
+  font-size: 1.3rem;
+  color: #445a4b;
+  margin-left: 1em;
+  transition: transform 0.29s cubic-bezier(0.4,0,0.2,1);
 }
 
-.faq-arrow {
-  margin-left: auto;
-  font-size: 2rem;
-  transition: transform .32s cubic-bezier(.45,0,.55,1);
-  color: #949686;
-}
-
-.faq-item.active .faq-arrow {
+.faq-item.open .faq-toggle i {
   transform: rotate(90deg);
-  color: #949686;
 }
 
-/* RISPOSTA, con animazione max-height super smooth */
+/* Risposta */
 .faq-content {
-  background: #e8e6df;
-  color: #494f3a;
-  font-size: 1rem;
-  padding: 0 2rem;
-  border-radius: 0 0 18px 18px;
-  transition:
-    max-height 0.60s cubic-bezier(.23,1,.32,1),
-    opacity 0.38s cubic-bezier(.23,1,.32,1),
-    padding-bottom 0.34s cubic-bezier(.23,1,.32,1);
-  max-height: 0 !important;
+  max-height: 0;
   opacity: 0;
   overflow: hidden;
-  padding-bottom: 0;
+  transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.35s cubic-bezier(0.4,0,0.2,1);
 }
-.faq-item.active .faq-content {
-  max-height: 400px !important; /* oppure anche 1000px se la risposta è lunga */
+
+.faq-item.open .faq-content {
+  max-height: 350px;  /* aumenta se hai risposte molte lunghe */
   opacity: 1;
-  padding-bottom: 1.2rem;
 }
 
+.faq-content > div {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-bottom: 1.2rem;
+  color: #445a4b;
+  font-size: 1rem;
+  line-height: 1.6;
+  background: white;
+}
 
-
+.faq-item.open .faq-toggle .faq-question {
+  font-weight: 700;
+}
     </style>
 <!-- FontAwesome per l'icona occhio -->
 <script src="https://kit.fontawesome.com/a2e0e6c66f.js" crossorigin="anonymous"></script>
@@ -926,92 +927,96 @@ document.getElementById('flipCloseBtn').addEventListener('click', () => {
       DOMANDE FREQUENTI
     </h2>
     <div class="bg-white rounded-3xl shadow-sm overflow-hidden mb-8">
-
-      <!-- 1 -->
-      <div class="faq-item">
-        <button type="button" class="faq-toggle">
-          <span class="faq-question">C'è un dress code?</span>
-          <span class="faq-arrow">&#8250;</span>
+      <div class="faq-item border-b border-gray-100 last:border-b-0">
+        <button
+          class="faq-toggle w-full px-6 py-5 flex items-center group text-left transition font-normal"
+          type="button"
+        >
+          <span class="faq-question flex-1 text-[#445a4b] text-left transition font-normal">C'è un dress code?</span>
+          <i class="fas fa-chevron-right text-[#445a4b] opacity-60 ml-4 transition-transform duration-200"></i>
         </button>
-        <div class="faq-content">
-          Non c'è un dress code: potete vestirvi come volete! Che preferiate qualcosa di elegante, casual o colorato, l'importante è che vi sentiate voi stessi e pronti a divertirvi con noi.
+        <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-white">
+          <div class="px-6 pb-5 text-[#445a4b] text-sm leading-relaxed">
+            Non c'è un dress code: potete vestirvi come volete! Che preferiate qualcosa di elegante, casual o colorato, l'importante è che vi sentiate voi stessi e pronti a divertirvi con noi.
+          </div>
         </div>
       </div>
-      <!-- 2 -->
-      <div class="faq-item">
-        <button type="button" class="faq-toggle">
-          <span class="faq-question">Ci sono opzioni per allergie o diete particolari?</span>
-          <span class="faq-arrow">&#8250;</span>
+      <div class="faq-item border-b border-gray-100 last:border-b-0">
+        <button class="faq-toggle w-full px-6 py-5 flex items-center group text-left transition font-normal" type="button">
+          <span class="faq-question flex-1 text-[#445a4b] text-left transition font-normal">Ci sono opzioni per allergie o diete particolari?</span>
+          <i class="fas fa-chevron-right text-[#445a4b] opacity-60 ml-4 transition-transform duration-200"></i>
         </button>
-        <div class="faq-content">
-          Assolutamente sì! Vi chiediamo solo di segnalarci eventuali allergie o preferenze alimentari nel form di RSVP o contattandoci direttamente.
+        <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-white">
+          <div class="px-6 pb-5 text-[#445a4b] text-sm leading-relaxed">
+            Assolutamente sì! Vi chiediamo solo di segnalarci eventuali allergie o preferenze alimentari nel form di RSVP o contattandoci direttamente.
+          </div>
         </div>
       </div>
-      <!-- 3 -->
-      <div class="faq-item">
-        <button type="button" class="faq-toggle">
-          <span class="faq-question">Entro quando devo confermare la mia presenza?</span>
-          <span class="faq-arrow">&#8250;</span>
+      <div class="faq-item border-b border-gray-100 last:border-b-0">
+        <button class="faq-toggle w-full px-6 py-5 flex items-center group text-left transition font-normal" type="button">
+          <span class="faq-question flex-1 text-[#445a4b] text-left transition font-normal">Entro quando devo confermare la mia presenza?</span>
+          <i class="fas fa-chevron-right text-[#445a4b] opacity-60 ml-4 transition-transform duration-200"></i>
         </button>
-        <div class="faq-content">
-          Ti chiediamo di compilare il Form RSVP entro il 31 ottobre per dare conferma, così da poter organizzare al meglio ogni dettaglio.
+        <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-white">
+          <div class="px-6 pb-5 text-[#445a4b] text-sm leading-relaxed">
+            Ti chiediamo di compilare il Form RSVP entro il 31 ottobre per dare conferma, così da poter organizzare al meglio ogni dettaglio.
+          </div>
         </div>
       </div>
-      <!-- 4 -->
-      <div class="faq-item">
-        <button type="button" class="faq-toggle">
-          <span class="faq-question">Sono disponibili alloggi nei dintorni?</span>
-          <span class="faq-arrow">&#8250;</span>
+      <div class="faq-item border-b border-gray-100 last:border-b-0">
+        <button class="faq-toggle w-full px-6 py-5 flex items-center group text-left transition font-normal" type="button">
+          <span class="faq-question flex-1 text-[#445a4b] text-left transition font-normal">Sono disponibili alloggi nei dintorni?</span>
+          <i class="fas fa-chevron-right text-[#445a4b] opacity-60 ml-4 transition-transform duration-200"></i>
         </button>
-        <div class="faq-content">
-          Per chi arriva da fuori città, ci sono diverse opzioni di alloggio nei pressi della location.<br>
-          Saremo felici di darvi una mano a trovare la soluzione più adatta alle vostre esigenze: scriveteci e vi forniremo volentieri qualche suggerimento.
+        <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-white">
+          <div class="px-6 pb-5 text-[#445a4b] text-sm leading-relaxed">
+            Per chi arriva da fuori città, ci sono diverse opzioni di alloggio nei pressi della location.<br>Saremo felici di darvi una mano a trovare la soluzione più adatta alle vostre esigenze: scriveteci e vi forniremo volentieri qualche suggerimento.
+          </div>
         </div>
       </div>
-      <!-- 5 -->
       <div class="faq-item">
-        <button type="button" class="faq-toggle">
-          <span class="faq-question">E se abbiamo altre domande o dubbi?</span>
-          <span class="faq-arrow">&#8250;</span>
+        <button class="faq-toggle w-full px-6 py-5 flex items-center group text-left transition font-normal" type="button">
+          <span class="faq-question flex-1 text-[#445a4b] text-left transition font-normal">E se abbiamo altre domande o dubbi?</span>
+          <i class="fas fa-chevron-right text-[#445a4b] opacity-60 ml-4 transition-transform duration-200"></i>
         </button>
-        <div class="faq-content">
-          Per qualsiasi informazione in più, curiosità o necessità particolare, non esitate a contattarci.
+        <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-white">
+          <div class="px-6 pb-5 text-[#445a4b] text-sm leading-relaxed">
+            Per qualsiasi informazione in più, curiosità o necessità particolare, non esitate a contattarci.
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+
 <script>
 <!-- SCRIPT FAQ -->
-document.querySelectorAll('.faq-toggle').forEach(btn => {
-  btn.addEventListener('click', function(){
-    const item = this.closest('.faq-item');
-    // Chiudi altre FAQ
-    document.querySelectorAll('.faq-item').forEach(i => {
-      if (i !== item) {
-        i.classList.remove('active');
-        const fc = i.querySelector('.faq-content');
-        fc && (fc.style.maxHeight = '0');
-      }
-    });
-    // Toggle questa
-    const content = item.querySelector('.faq-content');
-    if (!item.classList.contains('active')) {
-      item.classList.add('active');
-      content.style.maxHeight = content.scrollHeight + "px";
+document.querySelectorAll('.faq-toggle').forEach(button => {
+  button.addEventListener('click', function() {
+    const faqItem = button.closest('.faq-item');
+    const faqContent = faqItem.querySelector('.faq-content');
+    if (!faqItem.classList.contains('open')) {
+      // Chiudi tutte le altre FAQ
+      document.querySelectorAll('.faq-item.open').forEach(el => {
+        el.classList.remove('open');
+        el.querySelector('.faq-content').style.maxHeight = '0';
+      });
+      // Apri questa
+      faqItem.classList.add('open');
+      faqContent.style.maxHeight = faqContent.scrollHeight + 'px';
     } else {
-      item.classList.remove('active');
-      content.style.maxHeight = '0';
+      faqItem.classList.remove('open');
+      faqContent.style.maxHeight = '0';
     }
   });
 });
-// Fluidità anche su resize
 window.addEventListener('resize', () => {
-  document.querySelectorAll('.faq-item.active .faq-content').forEach(content => {
-    content.style.maxHeight = content.scrollHeight + "px";
+  document.querySelectorAll('.faq-item.open .faq-content').forEach(content => {
+    content.style.maxHeight = content.scrollHeight + 'px';
   });
 });
+
 
 
 // RSVP Form Attendance Buttons
