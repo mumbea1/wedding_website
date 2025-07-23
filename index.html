@@ -805,11 +805,11 @@
 <!-- JS Flip -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  const flipBox = document.getElementById('honeymoonFlipBox');
-  const contribuisciBtn = document.getElementById('contribuisciBtn');
+  const flipBox = document.getElementById('honeymoonFlipBox1');
+  const contribuisciBtn1 = document.getElementById('contribuisciBtn1');
   const chiudiBtn = document.getElementById('chiudiFlipBtn');
   
-  contribuisciBtn.addEventListener('click', () => flipBox.classList.add('show-back'));
+  contribuisciBtn1.addEventListener('click', () => flipBox.classList.add('show-back'));
   chiudiBtn.addEventListener('click', () => flipBox.classList.remove('show-back'));
 });
 
@@ -1222,26 +1222,16 @@ showSlide(currentSlide);
 startSlideShow();
     
 document.addEventListener('DOMContentLoaded', () => {
-  [1,2].forEach(num => {
-    const box = document.getElementById('honeymoonFlipBox'+num);
-    if (!box) return;
-    const openBtn = document.getElementById('contribuisciBtn'+num);
-    const closeBtn = document.getElementById('chiudiFlipBtn'+num);
+  // Per ogni flip-box (puoi gestirne più di una in futuro)
+  [1].forEach(num => {
+    const box = document.getElementById('honeymoonFlipBox' + num);
+    const openBtn = document.getElementById('contribuisciBtn' + num);
+    const closeBtn = document.getElementById('flipCloseBtn' + num); // OCCHIO: "flip" NON "chiudi"
     openBtn && openBtn.addEventListener('click', () => box.classList.add('show-back'));
     closeBtn && closeBtn.addEventListener('click', () => box.classList.remove('show-back'));
   });
 });
 
-
-// Funziona per più card. Da inserire DOPO che il DOM è caricato
-document.querySelectorAll('[id^="flipCloseBtn"]').forEach(btn => {
-  btn.addEventListener('click', function () {
-    const flipBox = this.closest('.flip-box');
-    if (flipBox) {
-      flipBox.classList.remove('show-back');
-    }
-  });
-});
 
 </script>
 </body>
