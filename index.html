@@ -670,24 +670,25 @@
     </h2>
     <div class="flex flex-col md:flex-row gap-8 max-w-3xl mx-auto">
 
-      <!-- PRIMA CARD / IMMAGINE+FLIPBOX -->
-      <div class="flex flex-1 flex-col md:flex-row bg-white rounded-3xl shadow-md overflow-hidden min-h-[420px] relative">
-        <div class="w-full md:w-1/2 relative min-h-[250px]">
-          <img src="Foto matrimonio/Foto viaggio_01.jpg" alt="Viaggio di nozze" class="w-full h-full object-cover object-center">
+     <!-- PRIMA CARD / IMMAGINE+FLIPBOX -->
+<div class="flex flex-1 flex-col md:flex-row bg-white rounded-3xl shadow-md overflow-hidden min-h-[420px] relative">
+  <div class="w-full md:w-1/2 relative min-h-[250px]">
+    <img src="Foto matrimonio/Foto viaggio_01.jpg" alt="Viaggio di nozze" class="w-full h-full object-cover object-center">
+  </div>
+  <div class="flex-1 md:w-1/2 relative min-h-[250px] flex items-stretch">
+    <div class="flip-box w-full h-full" id="honeymoonFlipBox1">
+      <!-- Fronte -->
+      <div class="flip-front absolute w-full h-full backface-hidden flex flex-col justify-center items-end p-8 bg-white/90" style="border-radius: 0 24px 24px 0;">
+        <div class="w-full">
+          <h3 class="text-xl font-normal mb-2 tracking-wider text-[#445a4b]">Le nostre mete</h3>
+          <p class="text-sm leading-relaxed mb-4 text-[#445a4b]">
+           Voleremo in Giappone, meta che sogniamo da quando ci siamo conosciuti. Esploreremo la cultura e la cucina giapponese, appassionati di sci e montagna, non ci faremo mancare qualche sciata a Hakuba!<br>
+  Potete accompagnarci anche in questo viaggio e regalarci qualche km.
+          </p>
+          <button class="btn-modern w-full" id="contribuisciBtn1">Contribuisci al viaggio</button>
         </div>
-        <div class="flex-1 md:w-1/2 relative min-h-[250px] flex items-stretch">
-          <div class="flip-box w-full h-full" id="honeymoonFlipBox1">
-            <!-- Fronte -->
-            <div class="flip-front absolute w-full h-full backface-hidden flex flex-col justify-center items-end p-8 bg-white/90" style="border-radius: 0 24px 24px 0;">
-              <div class="w-full">
-                <h3 class="text-xl font-normal mb-2 tracking-wider text-[#445a4b]">Le nostre mete</h3>
-                <p class="text-sm leading-relaxed mb-4 text-[#445a4b]">
-                  Voleremo in Giappone, meta che sogniamo da quando ci siamo conosciuti...
-                </p>
-                <button class="btn-modern w-full" id="contribuisciBtn1">Contribuisci al viaggio</button>
-              </div>
-            </div>
-            <!-- Retro -->
+      </div>
+        <!-- Retro -->
             <div class="flip-back absolute w-full h-full backface-hidden flex flex-col justify-center items-end p-8 bg-white" style="border-radius:0 24px 24px 0;transform:rotateY(180deg);">
               <button aria-label="Chiudi"
                 class="absolute top-5 right-6 w-8 h-8 flex items-center justify-center rounded-full bg-[#f5f4ef] text-[#445a4b] text-lg shadow hover:bg-[#e8e6df] transition"
@@ -703,46 +704,6 @@
           </div>
         </div>
       </div>
-
-      <!-- SECONDA CARD / IMMAGINE+FLIPBOX -->
-      <div class="flex flex-1 flex-col md:flex-row bg-white rounded-3xl shadow-md overflow-hidden min-h-[420px] relative">
-        <div class="w-full md:w-1/2 relative min-h-[250px]">
-          <img src="Foto matrimonio/Foto viaggio_02.jpg" alt="Souvenir dal viaggio" class="w-full h-full object-cover object-center">
-        </div>
-        <div class="flex-1 md:w-1/2 relative min-h-[250px] flex items-stretch">
-          <div class="flip-box w-full h-full" id="honeymoonFlipBox2">
-            <!-- Fronte -->
-            <div class="flip-front absolute w-full h-full backface-hidden flex flex-col justify-center items-end p-8 bg-white/90" style="border-radius: 0 24px 24px 0;">
-              <div class="w-full">
-                <h3 class="text-xl font-normal mb-2 tracking-wider text-[#445a4b]">Souvenir dal Giappone</h3>
-                <p class="text-sm leading-relaxed mb-4 text-[#445a4b]">
-                  Siamo curiosi di scoprire la cultura, le tradizioni e magari portare a casa qualche piccola sorpresa dal nostro viaggio!
-                </p>
-                <button class="btn-modern w-full" id="contribuisciBtn2">Contribuisci al viaggio</button>
-              </div>
-            </div>
-            <!-- Retro -->
-            <div class="flip-back absolute w-full h-full backface-hidden flex flex-col justify-center items-end p-8 bg-white" style="border-radius:0 24px 24px 0;transform:rotateY(180deg);">
-              <button aria-label="Chiudi"
-                class="absolute top-5 right-6 w-8 h-8 flex items-center justify-center rounded-full bg-[#f5f4ef] text-[#445a4b] text-lg shadow hover:bg-[#e8e6df] transition"
-                id="chiudiFlipBtn2"
-              >&times;</button>
-              <div class="w-full flex flex-col items-end">
-                <p class="text-sm font-mono mt-4 mb-3 bg-[#f5f4ef] px-3 py-2 rounded select-all">
-                  IBAN: <strong>IT00X0000000000000000000000</strong>
-                </p>
-                <img src="img/qr_code.png" alt="QR PayPal" class="w-32 h-32 object-contain mb-2">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
 
 <!-- CSS RSVP -->
 <style>
