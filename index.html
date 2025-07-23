@@ -974,90 +974,107 @@ document.getElementById('flipCloseBtn').addEventListener('click', () => {
 <section class="bg-[#f5f4ef] py-20" id="faq">
   <div class="container mx-auto px-6 max-w-3xl">
     <h2 class="text-3xl md:text-4xl font-normal mb-12 text-center text-[#445a4b] tracking-wider fade-in">DOMANDE FREQUENTI</h2>
-
+    
+    <!-- Container FAQ con stile iOS -->
+    <div class="bg-white rounded-3xl shadow-sm overflow-hidden mb-8">
       
-       
-       <!-- FAQ ITEM -->
-       <div id="faq-list">
-  <div class="faq-item">
-    <button class="faq-toggle">C’è un dress code?</button>
-    <div class="faq-dialog">
-      <div class="faq-dialog-content">
-        <button class="faq-dialog-close" aria-label="Chiudi">&times;</button>
-        <div class="faq-question">C’è un dress code?</div>
-        <div class="faq-answer">Non c’è un dress code: potete vestirvi come volete! Che preferiate qualcosa di elegante, casual o colorato, l’importante è che vi sentiate voi stessi e pronti a divertirvi con noi.
-</div>
+      <!-- FAQ Item 1 -->
+      <div class="faq-item border-b border-gray-100 last:border-b-0">
+        <button class="faq-toggle w-full px-6 py-5 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+          <span class="text-[#445a4b] font-medium">C'è un dress code?</span>
+          <i class="fas fa-chevron-right text-[#445a4b] opacity-60 transition-transform duration-200"></i>
+        </button>
+        <div class="faq-content overflow-hidden transition-all duration-300 ease-out max-h-0">
+          <div class="px-6 pb-5 text-[#445a4b] text-sm leading-relaxed">
+            Non c'è un dress code: potete vestirvi come volete! Che preferiate qualcosa di elegante, casual o colorato, l'importante è che vi sentiate voi stessi e pronti a divertirvi con noi.
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
- <div class="faq-item">
-    <button class="faq-toggle">Ci sono opzioni per allergie o diete particolari?</button>
-    <div class="faq-dialog">
-      <div class="faq-dialog-content">
-        <button class="faq-dialog-close" aria-label="Chiudi">&times;</button>
-        <div class="faq-question">Ci sono opzioni per allergie o diete particolari?</div>
-        <div class="faq-answer">Assolutamente sì! Vi chiediamo solo di segnalarci eventuali allergie o preferenze alimentari nel form di RSVP o contattandoci direttamente.</div>
-      </div>
-    </div>
-  </div>
-<div class="faq-item">
-    <button class="faq-toggle">Entro quando devo confermare la mia presenza?</button>
-    <div class="faq-dialog">
-      <div class="faq-dialog-content">
-        <button class="faq-dialog-close" aria-label="Chiudi">&times;</button>
-        <div class="faq-question">Entro quando devo confermare la mia presenza?</div>
-        <div class="faq-answer">Ti chiediamo di compilare il Form RSVP entro il 31 ottobre per dare conferma, così da poter organizzare al meglio ogni dettaglio.
-</div>
-      </div>
-    </div>
-  </div>
-<div class="faq-item">
-    <button class="faq-toggle">Sono disponibili alloggi nei dintorni?</button>
-    <div class="faq-dialog">
-      <div class="faq-dialog-content">
-        <button class="faq-dialog-close" aria-label="Chiudi">&times;</button>
-        <div class="faq-question">Sono disponibili alloggi nei dintorni?</div>
-        <div class="faq-answer">Per chi arriva da fuori città, ci sono diverse opzioni di alloggio nei pressi della location.<br>Saremo felici di darvi una mano a trovare la soluzione più adatta alle vostre esigenze: scriveteci e vi forniremo volentieri qualche suggerimento.
-</div>
-      </div>
-    </div>
-  </div>
-<div class="faq-item">
-    <button class="faq-toggle">E se abbiamo altre domande o dubbi?</button>
-    <div class="faq-dialog">
-      <div class="faq-dialog-content">
-        <button class="faq-dialog-close" aria-label="Chiudi">&times;</button>
-        <div class="faq-question">E se abbiamo altre domande o dubbi?</div>
-        <div class="faq-answer">Per qualsiasi informazione in più, curiosità o necessità particolare, non esitate a contattarci.
-</div>
-      </div>
-    </div>
-  </div>
-</div>
 
-      
+      <!-- FAQ Item 2 -->
+      <div class="faq-item border-b border-gray-100 last:border-b-0">
+        <button class="faq-toggle w-full px-6 py-5 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+          <span class="text-[#445a4b] font-medium">Ci sono opzioni per allergie o diete particolari?</span>
+          <i class="fas fa-chevron-right text-[#445a4b] opacity-60 transition-transform duration-200"></i>
+        </button>
+        <div class="faq-content overflow-hidden transition-all duration-300 ease-out max-h-0">
+          <div class="px-6 pb-5 text-[#445a4b] text-sm leading-relaxed">
+            Assolutamente sì! Vi chiediamo solo di segnalarci eventuali allergie o preferenze alimentari nel form di RSVP o contattandoci direttamente.
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Item 3 -->
+      <div class="faq-item border-b border-gray-100 last:border-b-0">
+        <button class="faq-toggle w-full px-6 py-5 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+          <span class="text-[#445a4b] font-medium">Entro quando devo confermare la mia presenza?</span>
+          <i class="fas fa-chevron-right text-[#445a4b] opacity-60 transition-transform duration-200"></i>
+        </button>
+        <div class="faq-content overflow-hidden transition-all duration-300 ease-out max-h-0">
+          <div class="px-6 pb-5 text-[#445a4b] text-sm leading-relaxed">
+            Ti chiediamo di compilare il Form RSVP entro il 31 ottobre per dare conferma, così da poter organizzare al meglio ogni dettaglio.
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Item 4 -->
+      <div class="faq-item border-b border-gray-100 last:border-b-0">
+        <button class="faq-toggle w-full px-6 py-5 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+          <span class="text-[#445a4b] font-medium">Sono disponibili alloggi nei dintorni?</span>
+          <i class="fas fa-chevron-right text-[#445a4b] opacity-60 transition-transform duration-200"></i>
+        </button>
+        <div class="faq-content overflow-hidden transition-all duration-300 ease-out max-h-0">
+          <div class="px-6 pb-5 text-[#445a4b] text-sm leading-relaxed">
+            Per chi arriva da fuori città, ci sono diverse opzioni di alloggio nei pressi della location.<br>Saremo felici di darvi una mano a trovare la soluzione più adatta alle vostre esigenze: scriveteci e vi forniremo volentieri qualche suggerimento.
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Item 5 -->
+      <div class="faq-item border-b border-gray-100 last:border-b-0">
+        <button class="faq-toggle w-full px-6 py-5 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200">
+          <span class="text-[#445a4b] font-medium">E se abbiamo altre domande o dubbi?</span>
+          <i class="fas fa-chevron-right text-[#445a4b] opacity-60 transition-transform duration-200"></i>
+        </button>
+        <div class="faq-content overflow-hidden transition-all duration-300 ease-out max-h-0">
+          <div class="px-6 pb-5 text-[#445a4b] text-sm leading-relaxed">
+            Per qualsiasi informazione in più, curiosità o necessità particolare, non esitate a contattarci.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </section>
+
 
 <!-- SCRIPT FAQ -->
 <script>
-document.querySelectorAll('.faq-toggle').forEach(btn => {
-  btn.addEventListener('click', function() {
-    // Chiudi eventuali altre modali aperte
-    document.querySelectorAll('.faq-dialog.active').forEach(modal => modal.classList.remove('active'));
-    // Apri questa
-    this.parentElement.querySelector('.faq-dialog').classList.add('active');
-  });
-});
-
-// Chiudi modale quando clicchi sulla X o fuori dal box
-document.querySelectorAll('.faq-dialog').forEach(modal => {
-  modal.addEventListener('click', function(e) {
-    if (e.target === this) this.classList.remove('active');
-  });
-});
-document.querySelectorAll('.faq-dialog-close').forEach(btn => {
-  btn.addEventListener('click', function() {
-    this.closest('.faq-dialog').classList.remove('active');
+document.querySelectorAll('.faq-toggle').forEach(button => {
+  button.addEventListener('click', () => {
+    const faqItem = button.closest('.faq-item');
+    const content = faqItem.querySelector('.faq-content');
+    const icon = button.querySelector('i');
+    const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+    
+    // Chiudi tutte le altre FAQ
+    document.querySelectorAll('.faq-item').forEach(item => {
+      const otherContent = item.querySelector('.faq-content');
+      const otherIcon = item.querySelector('i');
+      if (item !== faqItem) {
+        otherContent.style.maxHeight = '0px';
+        otherIcon.style.transform = 'rotate(0deg)';
+      }
+    });
+    
+    // Apri/chiudi la FAQ selezionata
+    if (isOpen) {
+      content.style.maxHeight = '0px';
+      icon.style.transform = 'rotate(0deg)';
+    } else {
+      content.style.maxHeight = content.scrollHeight + 'px';
+      icon.style.transform = 'rotate(90deg)';
+    }
   });
 });
 
