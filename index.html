@@ -368,147 +368,85 @@
         .faq-item.FAQcontent {
   padding-bottom: 0;
 }
-.faq-content {
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  transition: max-height 0.45s cubic-bezier(0.45,0,0.55,1), opacity 0.45s cubic-bezier(0.45,0,0.55,1), padding-bottom 0.3s;
-  padding-bottom: 0;
-}
 #faq-list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: block;         /* NON serve flex qui */
 }
 
 .faq-item {
   width: 100%;
-  display: flex;
-  justify-content: center;
+  /* niente display:flex, niente justify-content: center */
+  background: none;
 }
 
 .faq-toggle {
   width: 100%;
-  text-align: center;
-  font-size: 1.13rem;
+  display: flex;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
   background: transparent;
   border: none;
-  padding: 0.9rem 0;
   cursor: pointer;
   color: #445a4b;
   transition: background 0.2s;
+  font-size: 1.14rem;
+  text-align: left;
   outline: none;
   font-family: inherit;
   margin: 0;
 }
+
 .faq-toggle:focus,
 .faq-toggle:hover {
   background: #e8e6df;
-  border-radius: 999px;
+  border-radius: 0.9rem;
 }
+
+/* Domanda in grassetto solo se la FAQ è aperta */
+.faq-item.open .faq-toggle .faq-question {
+  font-weight: 700;
+}
+
+.faq-toggle .faq-question {
+  flex: 1 1 0;
+  text-align: left;
+  transition: font-weight 0.18s;
+  word-break: break-word;
+}
+
+.faq-toggle i {
+  font-size: 1.3rem;
+  color: #445a4b;
+  margin-left: 1em;
+  transition: transform 0.29s cubic-bezier(0.4,0,0.2,1);
+}
+
 .faq-item.open .faq-toggle i {
   transform: rotate(90deg);
 }
-.faq-item.open .faq-content {
-  max-height: 500px;
-  opacity: 1;
-  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s;
-}
+
+
 .faq-content {
   max-height: 0;
   opacity: 0;
   overflow: hidden;
-  transition:
-    max-height 0.45s cubic-bezier(0.45,0,0.55,1),
-    opacity 0.35s cubic-bezier(0.45,0,0.55,1),
-    padding-bottom 0.25s;
-  padding-bottom: 0;
+  transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.35s cubic-bezier(0.4,0,0.2,1);
 }
+
 .faq-item.open .faq-content {
-  max-height: 400px;
+  max-height: 350px;  /* aumenta se hai risposte molte lunghe */
   opacity: 1;
+}
+
+.faq-content > div {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
   padding-bottom: 1.2rem;
-}
-.faq-item.open .faq-question {
-  font-weight: 700 !important;
-}
-.faq-toggle {
-  outline: none;
-}
-.faq-item.open .faq-toggle i {
-  transform: rotate(90deg);
-}
-
-.icon {
-  display: inline-block;
-  transition: transform 0.33s cubic-bezier(0.45,0,0.55,1);
-  font-size: 2.5rem;
-  line-height: 1;
-  width: 2.7rem;
-  text-align: center;
-}
-
-.faq-dialog {
-  display: none;
-  position: fixed;
-  z-index: 2000;
-  top: 0; left: 0; width: 100vw; height: 100vh;
-  background: rgba(0,0,0,0.05);
-  justify-content: center;
-  align-items: center;
-}
-
-.faq-dialog.active {
-  display: flex;
-  animation: fadeIn 0.33s cubic-bezier(.22,.61,.36,1);
-}
-
-@keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
-
-.faq-dialog-content {
-  background: #e8e6df;
-  box-shadow: 0 10px 32px rgba(44,45,61,.10), 0 1.5px 8px rgba(44,45,61,.04);
-  border-radius: 26px;
-  padding: 2rem 1.5rem 1.25rem 1.5rem;
-  max-width: 450px;
-  width: calc(100vw - 40px); 
-  animation: slideUp 0.38s cubic-bezier(.3,1.33,.33,1.1);
-  position: relative;
   color: #445a4b;
+  font-size: 1rem;
+  line-height: 1.6;
+  background: white;
 }
 
-@keyframes slideUp {
-  0% { transform: translateY(80px) scale(.96); opacity: 0;}
-  100% { transform: translateY(0) scale(1); opacity: 1;}
-}
-
-.faq-dialog-close {
-  position: absolute; top: 18px; right: 22px; 
-  border: none; background: none; 
-  font-size: 2rem; color: #445a4b; 
-  opacity: .64;
-  cursor: pointer; transition: opacity .2s;
-}
-
-.faq-dialog-close:hover { opacity: 1; }
-
-.faq-question {
-  font-weight: 500; font-size: 1.18rem; margin-bottom: 1rem;
-  color: #445a4b;
-}
-
-.faq-answer {
-  font-size: 1rem; color: #445a4b;
-}
-
-.faq-toggle .icon {
-  font-size: 2rem;
-  margin-left: 1em;
-  transition: transform 0.3s cubic-bezier(.45,0,.55,1);
-}        
 
     </style>
 <!-- FontAwesome per l'icona occhio -->
