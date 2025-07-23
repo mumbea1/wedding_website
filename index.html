@@ -913,18 +913,29 @@ document.getElementById('flipCloseBtn').addEventListener('click', () => {
 </div>
 
             
-            <div class="mb-8">
-                <input 
-                    type="number" 
-                    id="guests" 
-                    name="guests" 
-                    min="1" 
-                    max="10" 
-                    placeholder="Numero di ospiti" 
-                    class="w-full bg-transparent py-2 px-1 focus:outline-none border-b border-[#445a4b] text-sm placeholder-[#445a4b] placeholder-opacity-70" 
-                    required
-                >
-            </div>
+           <div class="mb-8">
+    <div class="grid grid-cols-2 gap-4">
+        <input 
+            type="number" 
+            id="guest_a" 
+            name="guest_a" 
+            min="0" 
+            max="10" 
+            placeholder="Numero adulti" 
+            class="w-full bg-transparent py-2 px-1 focus:outline-none border-b border-[#445a4b] text-sm placeholder-[#445a4b] placeholder-opacity-70" 
+            required
+        >
+        <input 
+            type="number" 
+            id="guest_b" 
+            name="guest_b" 
+            min="0" 
+            max="10" 
+            placeholder="Numero bambini" 
+            class="w-full bg-transparent py-2 px-1 focus:outline-none border-b border-[#445a4b] text-sm placeholder-[#445a4b] placeholder-opacity-70"
+        >
+    </div>
+</div>
             
             <div class="mb-8">
                 <textarea 
@@ -1094,6 +1105,23 @@ attendanceButtons.forEach(button => {
         // Dopo 2 secondi mostra il messaggio (tempo per aprire la nuova finestra)
         setTimeout(showRSVPCompleted, 2000);
     });
+    const guestAInput = document.getElementById('guest_a');
+    const guestBInput = document.getElementById('guest_b');
+    const totalGuests = parseInt(guestAInput.value || 0) + parseInt(guestBInput.value || 0);
+
+    if (totalGuests < 1 || totalGuests > 10) {
+        alert('Per favore inserisci un numero totale di ospiti tra 1 e 10');
+        return;
+    }
+
+    const data = {
+        name: document.getElementById('name').value,
+        attendance: attendanceInput.value,
+        guest_a: guestAInput.value,
+        guest_b: guestBInput.value,
+        notes: document.getElementById('notes').value,
+};
+
 
 function resetRSVP() {
     localStorage.removeItem('rsvpCompleted');
@@ -1102,6 +1130,10 @@ function resetRSVP() {
     
     // Pulisci tutti i campi del form
     document.getElementById('rsvpForm').reset();
+
+    // Assicurati che i nuovi campi siano puliti
+    document.getElementById('guest_a').value = '';
+    document.getElementById('guest_b').value = '';
     
     // Rimuovi la classe active dai bottoni attendance
     document.querySelectorAll('.attendance-btn').forEach(btn => btn.classList.remove('active'));
