@@ -887,7 +887,7 @@ document.getElementById('flipCloseBtn').addEventListener('click', () => {
             id="rsvpForm" 
             name="rsvp" 
             method="POST" 
-            action="https://script.google.com/macros/s/AKfycbzEDgI5OasrXqjuqW3a_roZREMtik_a0XeuHIImXzqoLq-gouTDafsjk9wsPk6w2HMZ1A/exec"
+            action="https://script.google.com/macros/s/AKfycbxGmsPS8bw7oiFlCWNMUEIUtKCG8_oLubiNP4mtYhQdGw86DzZh_iiF24690N3q_IOXHQ/exec"
             target="_blank"
                 class="max-w-lg mx-auto fade-in"
         >
@@ -1108,7 +1108,7 @@ document.getElementById('rsvpForm').addEventListener('submit', function(e) {
         return;
     }
 
-    // Validazione numero ospiti
+    // Validazione numero ospiti (DENTRO l'event listener)
     const guestAInput = document.getElementById('guest_a');
     const guestBInput = document.getElementById('guest_b');
     const totalGuests = parseInt(guestAInput.value || 0) + parseInt(guestBInput.value || 0);
@@ -1123,7 +1123,6 @@ document.getElementById('rsvpForm').addEventListener('submit', function(e) {
     localStorage.setItem('rsvpCompleted', 'true');
     setTimeout(showRSVPCompleted, 2000);
 });
-
 
 
 function resetRSVP() {
