@@ -385,22 +385,27 @@
   outline: none;
   cursor: pointer;
   text-align: left;
-  padding: 1.3rem 2rem;
-  transition: background 0.2s;
+  padding: 1.25rem 2rem;
+  transition: background 0.22s cubic-bezier(.22,.61,.36,1);
   font-size: 1.15rem;
   font-family: inherit;
   color: #494f3a;
   border-radius: 0;
 }
 
-.faq-arrow {
-  margin-left: auto;
-  font-size: 2rem;
-  transition: transform 0.26s;
-  color: #949686;
+.faq-toggle:focus,
+.faq-toggle:hover {
+  background: #e8e6df;
+  border-radius: 0.9rem;
 }
 
-/* STATO ATTIVO */
+.faq-question {
+  flex: 1 1 0;
+  text-align: left;
+  transition: font-weight .16s;
+  word-break: break-word;
+}
+
 .faq-item.active .faq-toggle {
   background: #e8e6df;
   font-weight: 600;
@@ -408,25 +413,40 @@
   color: #494f3a;
 }
 
+.faq-arrow {
+  margin-left: auto;
+  font-size: 2rem;
+  transition: transform .32s cubic-bezier(.45,0,.55,1);
+  color: #949686;
+}
+
 .faq-item.active .faq-arrow {
   transform: rotate(90deg);
   color: #949686;
 }
 
-/* RISPOSTA */
+/* RISPOSTA, con animazione max-height super smooth */
 .faq-content {
-  display: none;
-  background: #e8e6df;         /* stesso colore box attivo */
+  background: #e8e6df;
   color: #494f3a;
   font-size: 1rem;
-  padding: 0 2rem 1.2rem 2rem;
+  padding: 0 2rem;
   border-radius: 0 0 18px 18px;
-  transition: background 0.2s;
+  transition:
+    max-height 0.60s cubic-bezier(.23,1,.32,1),
+    opacity 0.38s cubic-bezier(.23,1,.32,1),
+    padding-bottom 0.34s cubic-bezier(.23,1,.32,1);
+  max-height: 0 !important;
+  opacity: 0;
+  overflow: hidden;
+  padding-bottom: 0;
+}
+.faq-item.active .faq-content {
+  max-height: 400px !important; /* oppure anche 1000px se la risposta è lunga */
+  opacity: 1;
+  padding-bottom: 1.2rem;
 }
 
-.faq-item.active .faq-content {
-  display: block;
-}
 
 
     </style>
@@ -964,18 +984,35 @@ document.getElementById('flipCloseBtn').addEventListener('click', () => {
 
 
 <!-- SCRIPT FAQ -->
-<script>
 document.querySelectorAll('.faq-toggle').forEach(btn => {
   btn.addEventListener('click', function(){
     const item = this.closest('.faq-item');
-    // Chiudi tutte le altre
+    // Chiudi altre FAQ
     document.querySelectorAll('.faq-item').forEach(i => {
-      if (i !== item) i.classList.remove('active');
+      if (i !== item) {
+        i.classList.remove('active');
+        const fc = i.querySelector('.faq-content');
+        fc && (fc.style.maxHeight = '0');
+      }
     });
     // Toggle questa
-    item.classList.toggle('active');
+    const content = item.querySelector('.faq-content');
+    if (!item.classList.contains('active')) {
+      item.classList.add('active');
+      content.style.maxHeight = content.scrollHeight + "px";
+    } else {
+      item.classList.remove('active');
+      content.style.maxHeight = '0';
+    }
   });
 });
+// Fluidità anche su resize
+window.addEventListener('resize', () => {
+  document.querySelectorAll('.faq-item.active .faq-content').forEach(content => {
+    content.style.maxHeight = content.scrollHeight + "px";
+  });
+});
+
 
 
 
