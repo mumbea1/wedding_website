@@ -689,18 +689,30 @@
         </div>
       </div>
         <!-- Retro -->
-            <div class="flip-back absolute w-full h-full backface-hidden flex flex-col justify-center items-end p-8 bg-white" style="border-radius:0 24px 24px 0;transform:rotateY(180deg);">
-              <button aria-label="Chiudi"
-                class="absolute top-5 right-6 w-8 h-8 flex items-center justify-center rounded-full bg-[#f5f4ef] text-[#445a4b] text-lg shadow hover:bg-[#e8e6df] transition"
-                id="chiudiFlipBtn1"
-              >&times;</button>
-              <div class="w-full flex flex-col items-end">
-                <p class="text-sm font-mono mt-4 mb-3 bg-[#f5f4ef] px-3 py-2 rounded select-all">
-                  IBAN: <strong>IT00X0000000000000000000000</strong>
-                </p>
-                <img src="img/qr_code.png" alt="QR PayPal" class="w-32 h-32 object-contain mb-2">
-              </div>
-            </div>
+            <!-- Lato Posteriore -->
+<div class="flip-back absolute w-full h-full backface-hidden rounded-2xl bg-white text-[#445a4b] p-8 flex flex-col justify-center items-center space-y-6 transform rotate-y-180">
+  <!-- Bottone di chiusura (X) in alto a destra -->
+  <button id="flipCloseBtn" aria-label="Chiudi" 
+    class="absolute top-6 right-6 md:top-8 md:right-10 w-10 h-10 flex items-center justify-center rounded-full bg-[#f5f4ef] text-[#445a4b] text-2xl shadow hover:bg-[#e8e6df] transition">
+    &times;
+  </button>
+
+  <!-- Titolo e istruzioni -->
+  <div>
+    <h3 class="text-xl font-normal mb-4 tracking-wider">COME CONTRIBUIRE</h3>
+    <p class="text-sm mb-2">Se vuoi regalarci qualche chilometro di viaggio:</p>
+    <p class="text-sm font-mono bg-[#f5f4ef] p-2 rounded">
+      IBAN: <strong>IT00X0000000000000000000000</strong>
+    </p>
+  </div>
+
+  <!-- QR Code e istruzioni PayPal -->
+  <div>
+    <img src="img/qr_code.png" alt="QR PayPal" class="w-48 h-48 object-contain mx-auto">
+    <p class="text-xs opacity-70 mt-2">Scansiona per donare via PayPal</p>
+  </div>
+</div>
+
           </div>
         </div>
       </div>
