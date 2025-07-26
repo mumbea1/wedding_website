@@ -729,44 +729,53 @@
     </h2>
     <div class="flex flex-col md:flex-row gap-8 max-w-3xl mx-auto">
 
-<div class="flip-box rounded-3xl overflow-hidden shadow-md" id="honeymoonFlipBox1">
-  <!-- Fronte: immagine + info viaggio + bottone -->
-  <div class="flip-front flex flex-col md:flex-row w-full h-full bg-white relative rounded-3xl">
-    <div class="w-full md:w-1/2">
+<div class="flipbox-master rounded-3xl shadow-lg overflow-hidden relative" id="honeymoonFlipBox1">
+  <!-- Fronte: Immagine + testo + bottone -->
+  <div class="flip-front flex flex-col md:flex-row w-full h-full bg-white rounded-3xl relative">
+    <div class="w-full md:w-1/2 flex-shrink-0">
       <img src="Foto matrimonio/Foto viaggio_01.jpg" alt="Viaggio di nozze"
-           class="w-full h-full object-cover object-center rounded-t-3xl md:rounded-l-3xl md:rounded-tr-none" />
+        class="w-full h-full object-cover object-center rounded-t-3xl md:rounded-l-3xl md:rounded-tr-none transition-all duration-300" />
     </div>
-    <div class="w-full md:w-1/2 flex flex-col justify-center items-center bg-white/90 p-8 rounded-b-3xl md:rounded-r-3xl md:rounded-bl-none">
-      <h3 class="text-xl font-normal mb-2 tracking-wider text-[#445a4b]">Le nostre mete</h3>
-      <p class="text-sm leading-relaxed mb-4 text-[#445a4b]">
-        Non abbiamo previsto una lista nozze tradizionale: il nostro desiderio è vivere un'esperienza indimenticabile insieme!
-        Voleremo in Giappone, una meta che sogniamo da sempre. Esploreremo la cultura, la cucina e… non ci faremo mancare qualche sciata sulle nevi di Hakuba!
-        Se vorrai regalarci qualche chilometro verso questo sogno, ci farai felicissimi.
+    <div class="w-full md:w-1/2 flex flex-col justify-center items-center px-6 py-10 md:py-12 bg-white/90 rounded-b-3xl md:rounded-r-3xl md:rounded-bl-none relative">
+      <h3 class="text-2xl font-semibold mb-3 tracking-wide text-[#445a4b] text-center md:text-left">Il nostro viaggio</h3>
+      <p class="text-base leading-7 mb-6 text-[#445a4b] text-center md:text-left">
+        Il regalo più grande è condividere con noi questa esperienza unica. Voleremo in Giappone, una meta che sogniamo da sempre. Se desideri aiutarci a realizzare questo sogno, puoi contribuire qui sotto.
       </p>
-      <button class="btn-modern w-full mt-2" id="contribuisciBtn1">Contribuisci al viaggio</button>
+      <!-- Bottone visibile sempre, anche su mobile -->
+      <button class="btn-modern block w-full max-w-xs mx-auto mt-2" id="contribuisciBtn1">Contribuisci al viaggio</button>
     </div>
   </div>
 
-  <!-- Retro: IBAN e PayPal -->
-  <div class="flip-back bg-white flex flex-col md:flex-row w-full h-full absolute left-0 top-0 rounded-3xl box-bianco-custom" style="z-index:2;">
-   <button id="flipCloseBtn1" aria-label="Chiudi" class="close-btn-circle">&times;</button>
-    <!-- IBAN box stondato unico -->
-    <div class="w-full md:w-1/2 flex justify-center items-center p-6">
-      <div class="bg-[#f5f4ef] rounded-2xl w-full px-4 py-6 flex flex-col items-center">
-        <h3 class="text-lg font-bold mb-2 tracking-wider text-[#445a4b] text-center">Dati bonifico</h3>
-        <p class="text-sm text-[#445a4b] mb-1">Nome: <strong>Tommaso Lenzi</strong></p>
-        <p class="text-sm font-mono text-[#445a4b] break-all text-center">IBAN: <strong>IT63D0623009572000057282021</strong></p>
+  <!-- Retro: IBAN e PayPal, allineamento e visibilità Apple-level -->
+  <div class="flip-back glass-effect flex flex-col md:flex-row w-full h-full absolute left-0 top-0 rounded-3xl p-0 bg-white/95"
+      style="z-index:2;">
+    <!-- Pulsante X cerchiato e raffinato -->
+    <button id="flipCloseBtn1" aria-label="Chiudi" class="close-btn-circle">&times;</button>
+
+    <!-- BOX IBAN E NOME, stondato, centrato perfetto -->
+    <div class="w-full md:w-1/2 flex flex-col justify-center items-center md:items-end px-7 py-10">
+      <div class="bg-[#f5f4ef] rounded-2xl px-6 py-7 shadow-sm flex flex-col items-center w-full max-w-xs mx-auto">
+        <h4 class="text-lg font-bold mb-2 tracking-widest text-[#445a4b] text-center">Bonifico bancario</h4>
+        <span class="block text-sm text-[#445a4b] mb-1 text-center">Intestato a:</span>
+        <span class="block text-base font-semibold text-[#445a4b] mb-1 text-center">Tommaso Lenzi</span>
+        <span class="block text-sm font-mono text-[#445a4b] break-all text-center mt-2">IBAN:<br>
+          <strong>IT63D0623009572000057282021</strong>
+        </span>
       </div>
     </div>
-    <!-- PayPal box -->
-    <div class="w-full md:w-1/2 flex flex-col justify-center items-center p-6">
-      <h3 class="text-lg font-bold mb-2 tracking-wider text-[#445a4b] text-center">PayPal</h3>
-      <img src="qr_code_paypal.png" alt="QR PayPal" class="w-40 h-40 object-contain mb-2" style="max-width:100%;">
-      <p class="text-xs opacity-70 mt-2 font-bold text-[#445a4b]">QR PayPal</p>
-      <p class="text-xs opacity-70 mt-2 text-[#445a4b]">Scansiona per donare via PayPal</p>
+    <!-- BOX PAYPAL, QR codificato Apple style -->
+    <div class="w-full md:w-1/2 flex flex-col justify-center items-center px-7 py-10">
+      <div class="rounded-2xl px-6 py-7 shadow-sm flex flex-col items-center w-full max-w-xs mx-auto bg-[#f7faf8]">
+        <h4 class="text-lg font-bold mb-2 tracking-widest text-[#445a4b] text-center">PayPal</h4>
+        <img src="qr_code_paypal.png" alt="QR PayPal"
+          class="w-32 h-32 object-contain mb-2 rounded-xl ring-2 ring-[#e5e9e7] shadow-inner" style="background: #fff;">
+        <span class="text-xs opacity-80 mt-1 font-bold text-[#445a4b]">QR PayPal</span>
+        <span class="text-xs opacity-70 mt-2 text-[#445a4b] text-center">Scansiona per donare</span>
+      </div>
     </div>
   </div>
 </div>
+
 
 
           </div>
@@ -806,17 +815,21 @@
   </style>  
 <!-- CSS Flip -->
 <style>
-.flip-box {
+/* --- Effetto flip Apple-level --- */
+.flipbox-master {
   perspective: 1200px;
-  width: 100%;
-  min-height: 500px;
+  min-height: 540px;
+  background: transparent;
+  border-radius: 1.5rem;
   position: relative;
-  border-radius: 1.5rem; /* 24px –– uguale su box, fronte e retro */
-  overflow: hidden;
+  width: 100%;
+  transition: box-shadow 0.23s;
+  box-shadow: 0 12px 38px 0 rgba(68,90,75,0.09);
+  overflow: visible;
 }
-.flip-box > .flip-front,
-.flip-box > .flip-back {
-  transition: transform 0.82s cubic-bezier(.25,.8,.25,1);
+.flipbox-master > .flip-front,
+.flipbox-master > .flip-back {
+  transition: transform 0.83s cubic-bezier(.18,.72,.4,.97), box-shadow 0.2s;
   backface-visibility: hidden;
   width: 100%;
   height: 100%;
@@ -824,33 +837,30 @@
   left: 0; top: 0;
   border-radius: 1.5rem;
   background: #fff;
+  box-shadow: none;
+  overflow: visible;
 }
-.flip-box > .flip-front { z-index: 2; transform: rotateY(0); }
-.flip-box > .flip-back { z-index: 1; transform: rotateY(180deg); }
-.flip-box.show-back > .flip-front { transform: rotateY(180deg); }
-.flip-box.show-back > .flip-back { transform: rotateY(0); }
+.flipbox-master > .flip-front { z-index: 2; transform: rotateY(0); }
+.flipbox-master > .flip-back  { z-index: 1; transform: rotateY(180deg); filter: drop-shadow(0 4px 12px rgba(68,90,75,0.07)); }
+.flipbox-master.show-back > .flip-front { transform: rotateY(180deg); }
+.flipbox-master.show-back > .flip-back  { transform: rotateY(0); }
 
-.box-bianco-custom {
-  /* Già presente, assicurati abbia */
-  background: #fff;
-  border-radius: 1.5rem;
-  width: 100%;
-  min-height: 500px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-  box-sizing: border-box;
+.glass-effect {
+  background: rgba(245,244,239, 0.98);
+  backdrop-filter: blur(8px) saturate(1.15);
+  box-shadow: 0 10px 32px 2px rgba(68,90,75,0.06);
 }
-    .close-btn-circle {
+
+/* Bottone X a cerchio Apple */
+.close-btn-circle {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 1.2rem;
+  right: 1.2rem;
   z-index: 10;
-  background-color: rgba(68, 90, 75, 0.15); /* cerchio leggermente verde scuro trasparente */
-  border-radius: 50%;    /* forma cerchio */
-  width: 36px;
-  height: 36px;
+  background-color: rgba(68,90,75,0.17);
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -858,35 +868,28 @@
   border: none;
   font-size: 1.8rem;
   color: #445a4b;
-  transition: background-color 0.3s ease;
+  transition: background 0.28s cubic-bezier(.41,.07,1,.81);
+  box-shadow: 0 2px 10px rgba(68,90,75,0.07);
   user-select: none;
 }
-
 .close-btn-circle:hover, .close-btn-circle:focus {
-  background-color: rgba(68, 90, 75, 0.35); /* più scuro al hover/focus */
+  background-color: rgba(68,90,75,0.32);
   outline: none;
 }
 
+/* Responsive, pulizia, massima UX */
+@media (max-width:900px) {
+  .flipbox-master, .flipbox-master > .flip-front, .flipbox-master > .flip-back { border-radius: 1.5rem !important; min-height: 540px; }
+  .flip-front, .flip-back {
+    flex-direction: column !important;
+  }
+}
+@media (max-width:600px) {
+  .flipbox-master, .flipbox-master > .flip-front, .flipbox-master > .flip-back { border-radius: 1.5rem !important; min-height: 620px; }
+  .flipbox-master .btn-modern { font-size: 1rem; padding: 13px 1em; }
+  .flip-box .btn-modern { min-width: 0; } /* Eventuali override se usi .flip-box ancora */
+}
 
-/* RIMUOVI i separatori tra IBAN e PayPal su mobile */
-@media (min-width: 768px) {
-  .flip-back > div {
-    border-left: 1px solid #e8e6df;
-  }
-  .flip-back > div:first-child {
-    border-left: none;
-  }
-}
-@media (max-width: 767px) {
-  .flip-back > div {
-    border: none !important;
-  }
-  .flip-front,
-  .flip-back,
-  .box-bianco-custom {
-    border-radius: 1.5rem !important;
-  }
-}
 
 
 
@@ -921,11 +924,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const flipBox = document.getElementById('honeymoonFlipBox1');
   const contribBtn = document.getElementById('contribuisciBtn1');
   const closeBtn = document.getElementById('flipCloseBtn1');
+  // Fallback per sicurezza, gestisci gracefully
   if(flipBox && contribBtn && closeBtn){
     contribBtn.addEventListener('click', () => flipBox.classList.add('show-back'));
     closeBtn.addEventListener('click', () => flipBox.classList.remove('show-back'));
   }
 });
+
 
 
 </script>
