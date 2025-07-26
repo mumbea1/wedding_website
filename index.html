@@ -832,7 +832,6 @@
   </style>  
 <!-- CSS Flip -->
 <style>
-/* --- Effetto flip Apple-level --- */
 .flipcard-root {
   perspective: 1200px;
   width: 100%;
@@ -846,15 +845,16 @@
 .flipcard-inner {
   width: 100%;
   min-height: 540px;
-  position: relative;
   transform-style: preserve-3d;
   transition: transform 0.83s cubic-bezier(.18,.72,.4,.97), box-shadow 0.2s;
+  position: relative;
 }
 
 .flipcard-root.show-back .flipcard-inner {
   transform: rotateY(180deg);
 }
 
+/* FRONTE E RETRO SOVRAPPOSTE */
 .flipcard-front, .flipcard-back {
   position: absolute;
   top: 0; left: 0;
@@ -864,6 +864,7 @@
   box-shadow: none;
   overflow: visible;
   backface-visibility: hidden;
+  display: block;
 }
 
 .flipcard-front {
@@ -878,6 +879,7 @@
   transform: rotateY(180deg);
   display: flex;
   align-items: stretch;
+  justify-content: center;
 }
 
 .close-btn-circle {
@@ -895,33 +897,45 @@
   cursor: pointer;
   user-select: none;
   transition: background 0.21s;
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  z-index: 10;
 }
 .close-btn-circle:hover, .close-btn-circle:focus {
   background: #f3f3f1;
   outline: none;
 }
 
-/* Responsive & centratura mobile */
+/* Responsive fix !*/
 @media (max-width: 900px) {
-  .flipcard-root, .flipcard-inner, .flipcard-front, .flipcard-back {
+  .flipcard-root, .flipcard-inner {
     min-height: 0 !important;
     height: auto !important;
-    border-radius: 1.5rem !important;
   }
-  .flipcard-back, .flipcard-front {
+  .flipcard-front, .flipcard-back {
     position: absolute;
     top: 0; left: 0;
     width: 100%;
+    height: auto !important;
+    min-height: 440px;
+    border-radius: 1.5rem !important;
   }
-  .flipcard-back .p-7,
-  .flipcard-front .p-7 {
-    padding: 2rem 1rem !important;
+  .flipcard-back, .flipcard-front {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
   }
 }
 
+/* Mobile correction per min-height automatica e centratura box retro */
 @media (max-width: 600px) {
-  .flipcard-root, .flipcard-inner, .flipcard-front, .flipcard-back {
+  .flipcard-root, .flipcard-inner {
     min-height: 0 !important;
+    height: auto !important;
+  }
+  .flipcard-front, .flipcard-back {
+    min-height: 550px !important;
     height: auto !important;
     border-radius: 1.5rem !important;
   }
@@ -932,14 +946,14 @@
   .btn-modern { font-size: 1rem; padding: 13px 1em;}
 }
 
-/* Box Bonifico/PayPal identici e centrati */
 .flipcard-back > .flex > div > div,
 .flipcard-back .bg-[#f3f3f1] {
-  min-height: 230px;
+  min-height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
+
 
 
 
@@ -964,6 +978,14 @@
     display: block !important;
   }
 }
+@media (max-width: 700px) {
+  .hero-content {
+    bottom: 42% !important;    /* Più in alto rispetto a bottom: 20% o 25% */
+    top: 0;
+    transform: translateY(-10%);
+  }
+}
+
     
 </style>    
 
