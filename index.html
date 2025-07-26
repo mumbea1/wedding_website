@@ -730,7 +730,7 @@
     <div class="flex flex-col md:flex-row gap-8 max-w-3xl mx-auto">
 
 <div class="flipbox-master rounded-3xl shadow-lg overflow-hidden relative" id="honeymoonFlipBox1">
-  <!-- Fronte: Immagine + testo + bottone -->
+  <!-- Fronte -->
   <div class="flip-front flex flex-col md:flex-row w-full h-full bg-white rounded-3xl relative">
     <div class="w-full md:w-1/2 flex-shrink-0">
       <img src="Foto matrimonio/Foto viaggio_01.jpg" alt="Viaggio di nozze"
@@ -739,45 +739,40 @@
     <div class="w-full md:w-1/2 flex flex-col justify-center items-center px-6 py-10 md:py-12 bg-white/90 rounded-b-3xl md:rounded-r-3xl md:rounded-bl-none relative">
       <h3 class="text-2xl font-semibold mb-3 tracking-wide text-[#445a4b] text-center md:text-left">Il nostro viaggio</h3>
       <p class="text-base leading-7 mb-6 text-[#445a4b] text-center md:text-left">
-        Non abbiamo previsto una lista nozze tradizionale, perché ciò che davvero desideriamo è vivere un’esperienza indimenticabile insieme.
-Voleremo in Giappone, una meta che sogniamo da quando ci siamo conosciuti. Esploreremo la cultura e la cucina giapponese e, da appassionati di montagna, non ci faremo mancare qualche sciata tra le nevi di Hakuba!
-Se vorrete accompagnarci anche in questo viaggio, potrete regalarci qualche chilometro verso il nostro sogno.     </p>
-      <!-- Bottone visibile sempre, anche su mobile -->
+        Il regalo più grande è condividere con noi questa esperienza unica. Voleremo in Giappone, una meta che sogniamo da sempre. Se desideri aiutarci a realizzare questo sogno, puoi contribuire qui sotto.
+      </p>
       <button class="btn-modern block w-full max-w-xs mx-auto mt-2" id="contribuisciBtn1">Contribuisci al viaggio</button>
     </div>
   </div>
 
-  <!-- Retro: IBAN e PayPal, allineamento e visibilità Apple-level -->
-  <div class="flip-back glass-effect flex flex-col md:flex-row w-full h-full absolute left-0 top-0 rounded-3xl p-0 bg-white/95"
-      style="z-index:2;">
-    <!-- Pulsante X cerchiato e raffinato -->
-    <button id="flipCloseBtn1" aria-label="Chiudi" class="close-btn-circle">&times;</button>
+  <!-- Retro -->
+  <div class="flip-back glass-effect flex flex-col md:flex-row w-full h-full absolute left-0 top-0 rounded-3xl p-0" style="z-index:2;">
+    <button id="flipCloseBtn1" aria-label="Chiudi" class="close-btn-circle same-bg">&times;</button>
 
-    <!-- BOX IBAN E NOME, stondato, centrato perfetto -->
-    <div class="w-full md:w-1/2 flex flex-col justify-center items-center md:items-end px-7 py-10">
-      <div class="bg-[#f5f4ef] rounded-2xl px-6 py-7 shadow-sm flex flex-col items-center w-full max-w-xs mx-auto">
+    <!-- BOX BONIFICO -->
+    <div class="w-full md:w-1/2 flex flex-col justify-center items-center p-7">
+      <div class="same-bg rounded-2xl shadow-sm flex flex-col items-center w-full max-w-xs mx-auto py-8 px-6 min-h-[270px]">
         <h4 class="text-lg font-bold mb-2 tracking-widest text-[#445a4b] text-center">Bonifico bancario</h4>
         <span class="block text-sm text-[#445a4b] mb-1 text-center">Intestato a:</span>
         <span class="block text-base font-semibold text-[#445a4b] mb-1 text-center">Tommaso Lenzi</span>
-        <span class="block text-sm font-mono text-[#445a4b] break-all text-center mt-2">IBAN:<br>
+        <span class="block text-sm font-mono text-[#445a4b] break-all text-center mt-2">
+          IBAN:<br>
           <strong>IT63D0623009572000057282021</strong>
         </span>
       </div>
     </div>
-    <!-- BOX PAYPAL, QR codificato Apple style -->
-    <div class="w-full md:w-1/2 flex flex-col justify-center items-center px-7 py-10">
-      <div class="rounded-2xl px-6 py-7 shadow-sm flex flex-col items-center w-full max-w-xs mx-auto bg-[#f7faf8]">
+    <!-- BOX PAYPAL -->
+    <div class="w-full md:w-1/2 flex flex-col justify-center items-center p-7">
+      <div class="same-bg rounded-2xl shadow-sm flex flex-col items-center w-full max-w-xs mx-auto py-8 px-6 min-h-[270px]">
         <h4 class="text-lg font-bold mb-2 tracking-widest text-[#445a4b] text-center">PayPal</h4>
         <img src="qr_code_paypal.png" alt="QR PayPal"
-          class="w-32 h-32 object-contain mb-2 rounded-xl ring-2 ring-[#e5e9e7] shadow-inner" style="background: #fff;">
+          class="w-32 h-32 object-contain mb-2 rounded-xl ring-2 ring-[#e5e9e7] shadow-inner" style="background:#fff;">
         <span class="text-xs opacity-80 mt-1 font-bold text-[#445a4b]">QR PayPal</span>
         <span class="text-xs opacity-70 mt-2 text-[#445a4b] text-center">Scansiona per donare</span>
       </div>
     </div>
   </div>
 </div>
-
-
 
           </div>
         </div>
@@ -817,48 +812,52 @@ Se vorrete accompagnarci anche in questo viaggio, potrete regalarci qualche chil
 <!-- CSS Flip -->
 <style>
 /* --- Effetto flip Apple-level --- */
+.glass-effect,
+.same-bg {
+  background: rgba(245, 244, 239, 0.98) !important; /* stesso bg ovunque */
+  backdrop-filter: blur(8px) saturate(1.15);
+  box-shadow: 0 10px 32px 2px rgba(68,90,75,0.06);
+}
+
 .flipbox-master {
   perspective: 1200px;
   min-height: 540px;
-  background: transparent;
   border-radius: 1.5rem;
+  background: transparent;
   position: relative;
   width: 100%;
-  transition: box-shadow 0.23s;
   box-shadow: 0 12px 38px 0 rgba(68,90,75,0.09);
-  overflow: visible;
 }
+
 .flipbox-master > .flip-front,
 .flipbox-master > .flip-back {
-  transition: transform 0.83s cubic-bezier(.18,.72,.4,.97), box-shadow 0.2s;
-  backface-visibility: hidden;
+  position: relative;
   width: 100%;
-  height: 100%;
+  /* height: auto; */         /* Usare height:auto o non definire affatto height */
+  min-height: 540px;          /* Puoi lasciare min-height per un minimo di eleganza, ma senza height! */
   position: absolute;
   left: 0; top: 0;
   border-radius: 1.5rem;
   background: #fff;
   box-shadow: none;
   overflow: visible;
-}
-.flipbox-master > .flip-front { z-index: 2; transform: rotateY(0); }
-.flipbox-master > .flip-back  { z-index: 1; transform: rotateY(180deg); filter: drop-shadow(0 4px 12px rgba(68,90,75,0.07)); }
-.flipbox-master.show-back > .flip-front { transform: rotateY(180deg); }
-.flipbox-master.show-back > .flip-back  { transform: rotateY(0); }
-
-.glass-effect {
-  background: rgba(245,244,239, 0.98);
-  backdrop-filter: blur(8px) saturate(1.15);
-  box-shadow: 0 10px 32px 2px rgba(68,90,75,0.06);
+  transition: transform 0.83s cubic-bezier(.18,.72,.4,.97), box-shadow 0.2s;
+  backface-visibility: hidden;
 }
 
-/* Bottone X a cerchio Apple */
-.close-btn-circle {
+
+.flipbox-master > .flip-front   { z-index: 2; transform: rotateY(0);}
+.flipbox-master > .flip-back    { z-index: 1; transform: rotateY(180deg);
+                                overflow-y: auto; /* scrolla solo se davvero necessario */}
+.flipbox-master.show-back > .flip-front { transform: rotateY(180deg);}
+.flipbox-master.show-back > .flip-back  { transform: rotateY(0);}
+
+.close-btn-circle.same-bg {
   position: absolute;
   top: 1.2rem;
   right: 1.2rem;
   z-index: 10;
-  background-color: rgba(68,90,75,0.17);
+  background: rgba(245, 244, 239, 0.98) !important;
   border-radius: 50%;
   width: 38px;
   height: 38px;
@@ -869,26 +868,44 @@ Se vorrete accompagnarci anche in questo viaggio, potrete regalarci qualche chil
   border: none;
   font-size: 1.8rem;
   color: #445a4b;
-  transition: background 0.28s cubic-bezier(.41,.07,1,.81);
   box-shadow: 0 2px 10px rgba(68,90,75,0.07);
   user-select: none;
+  transition: background 0.25s;
 }
-.close-btn-circle:hover, .close-btn-circle:focus {
-  background-color: rgba(68,90,75,0.32);
+.close-btn-circle.same-bg:hover, .close-btn-circle.same-bg:focus {
+  background: rgba(230, 226, 218, 0.89) !important;
   outline: none;
 }
 
-/* Responsive, pulizia, massima UX */
+.same-bg {
+  background: rgba(245, 244, 239, 0.98)!important;
+}
+
 @media (max-width:900px) {
-  .flipbox-master, .flipbox-master > .flip-front, .flipbox-master > .flip-back { border-radius: 1.5rem !important; min-height: 540px; }
-  .flip-front, .flip-back {
-    flex-direction: column !important;
+  .flipbox-master, .flipbox-master > .flip-front, .flipbox-master > .flip-back {
+    min-height: 0 !important;
   }
 }
 @media (max-width:600px) {
-  .flipbox-master, .flipbox-master > .flip-front, .flipbox-master > .flip-back { border-radius: 1.5rem !important; min-height: 620px; }
-  .flipbox-master .btn-modern { font-size: 1rem; padding: 13px 1em; }
-  .flip-box .btn-modern { min-width: 0; } /* Eventuali override se usi .flip-box ancora */
+  .flipbox-master, .flipbox-master > .flip-front, .flipbox-master > .flip-back {
+    min-height: 0 !important;
+  }
+}
+
+
+/* Allinea alla stessa altezza i due box sia su desktop che mobile */
+.flip-back > div > .same-bg {
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.flip-front > .w-full,
+.flip-back > .w-full {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 
