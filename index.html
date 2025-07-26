@@ -729,42 +729,45 @@
     </h2>
     <div class="flex flex-col md:flex-row gap-8 max-w-3xl mx-auto">
 
-<div class="flip-box" id="honeymoonFlipBox1">
-  <!-- Fronte: immagine + box testo -->
-  <div class="flip-front flex flex-col md:flex-row w-full h-full">
+<div class="flip-box rounded-3xl overflow-hidden shadow-md" id="honeymoonFlipBox1">
+  <!-- Fronte: immagine + info viaggio + bottone -->
+  <div class="flip-front flex flex-col md:flex-row w-full h-full bg-white relative rounded-3xl">
     <div class="w-full md:w-1/2">
-      <img src="Foto matrimonio/Foto viaggio_01.jpg" alt="Viaggio di nozze" class="w-full h-full object-cover object-center" />
+      <img src="Foto matrimonio/Foto viaggio_01.jpg" alt="Viaggio di nozze"
+           class="w-full h-full object-cover object-center rounded-t-3xl md:rounded-l-3xl md:rounded-tr-none" />
     </div>
-    <div class="w-full md:w-1/2 flex flex-col justify-center items-center bg-white/90 p-8" style="border-radius: 0 24px 24px 0;">
+    <div class="w-full md:w-1/2 flex flex-col justify-center items-center bg-white/90 p-8 rounded-b-3xl md:rounded-r-3xl md:rounded-bl-none">
       <h3 class="text-xl font-normal mb-2 tracking-wider text-[#445a4b]">Le nostre mete</h3>
       <p class="text-sm leading-relaxed mb-4 text-[#445a4b]">
-        Non abbiamo previsto una lista nozze tradizionale ...
+        Non abbiamo previsto una lista nozze tradizionale: il nostro desiderio è vivere un'esperienza indimenticabile insieme!
+        Voleremo in Giappone, una meta che sogniamo da sempre. Esploreremo la cultura, la cucina e… non ci faremo mancare qualche sciata sulle nevi di Hakuba!
+        Se vorrai regalarci qualche chilometro verso questo sogno, ci farai felicissimi.
       </p>
-      <button class="btn-modern w-full" id="contribuisciBtn1">Contribuisci al viaggio</button>
+      <button class="btn-modern w-full mt-2" id="contribuisciBtn1">Contribuisci al viaggio</button>
     </div>
   </div>
 
   <!-- Retro: IBAN e PayPal -->
-  <div class="flip-back flex flex-col md:flex-row w-full h-full bg-white box-bianco-custom relative" style="border-radius: 24px;">
-    <button id="flipCloseBtn1" aria-label="Chiudi"
-      style="position:absolute; top:1rem; right:1rem; z-index:10; background:transparent; border:none; font-size:2rem; color:#445a4b; cursor:pointer;">&times;</button>
-    <!-- IBAN a sinistra -->
-    <div class="w-full md:w-1/2 flex flex-col justify-center items-center p-6">
-      <h3 class="text-xl font-bold mb-2 tracking-wider text-[#445a4b] text-center md:text-left">Dati IBAN</h3>
-      <p class="text-sm mb-2 text-[#445a4b] text-center md:text-left">Nome: <strong>Tommaso Lenzi</strong></p>
-      <p class="text-sm font-mono bg-[#f5f4ef] p-2 rounded text-[#445a4b] text-center md:text-left break-all">
-        IBAN: <strong>IT63D0623009572000057282021</strong>
-      </p>
+  <div class="flip-back bg-white flex flex-col md:flex-row w-full h-full absolute left-0 top-0 rounded-3xl box-bianco-custom" style="z-index:2;">
+   <button id="flipCloseBtn1" aria-label="Chiudi" class="close-btn-circle">&times;</button>
+    <!-- IBAN box stondato unico -->
+    <div class="w-full md:w-1/2 flex justify-center items-center p-6">
+      <div class="bg-[#f5f4ef] rounded-2xl w-full px-4 py-6 flex flex-col items-center">
+        <h3 class="text-lg font-bold mb-2 tracking-wider text-[#445a4b] text-center">Dati bonifico</h3>
+        <p class="text-sm text-[#445a4b] mb-1">Nome: <strong>Tommaso Lenzi</strong></p>
+        <p class="text-sm font-mono text-[#445a4b] break-all text-center">IBAN: <strong>IT63D0623009572000057282021</strong></p>
+      </div>
     </div>
-    <!-- PayPal a destra -->
-    <div class="w-full md:w-1/2 flex flex-col justify-center items-center p-6 border-t md:border-t-0 md:border-l border-[#e8e6df]">
-      <h3 class="text-xl font-bold mb-2 tracking-wider text-[#445a4b] text-center md:text-left">PayPal</h3>
+    <!-- PayPal box -->
+    <div class="w-full md:w-1/2 flex flex-col justify-center items-center p-6">
+      <h3 class="text-lg font-bold mb-2 tracking-wider text-[#445a4b] text-center">PayPal</h3>
       <img src="qr_code_paypal.png" alt="QR PayPal" class="w-40 h-40 object-contain mb-2" style="max-width:100%;">
       <p class="text-xs opacity-70 mt-2 font-bold text-[#445a4b]">QR PayPal</p>
       <p class="text-xs opacity-70 mt-2 text-[#445a4b]">Scansiona per donare via PayPal</p>
     </div>
   </div>
 </div>
+
 
           </div>
         </div>
@@ -808,6 +811,8 @@
   width: 100%;
   min-height: 500px;
   position: relative;
+  border-radius: 1.5rem; /* 24px –– uguale su box, fronte e retro */
+  overflow: hidden;
 }
 .flip-box > .flip-front,
 .flip-box > .flip-back {
@@ -817,21 +822,55 @@
   height: 100%;
   position: absolute;
   left: 0; top: 0;
-  display: flex;
-  flex-direction: column;
+  border-radius: 1.5rem;
+  background: #fff;
 }
 .flip-box > .flip-front { z-index: 2; transform: rotateY(0); }
 .flip-box > .flip-back { z-index: 1; transform: rotateY(180deg); }
 .flip-box.show-back > .flip-front { transform: rotateY(180deg); }
 .flip-box.show-back > .flip-back { transform: rotateY(0); }
-/* Responsive: righe sotto l'altro su mobile */
+
+.box-bianco-custom {
+  /* Già presente, assicurati abbia */
+  background: #fff;
+  border-radius: 1.5rem;
+  width: 100%;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+}
+    .close-btn-circle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+  background-color: rgba(68, 90, 75, 0.15); /* cerchio leggermente verde scuro trasparente */
+  border-radius: 50%;    /* forma cerchio */
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  font-size: 1.8rem;
+  color: #445a4b;
+  transition: background-color 0.3s ease;
+  user-select: none;
+}
+
+.close-btn-circle:hover, .close-btn-circle:focus {
+  background-color: rgba(68, 90, 75, 0.35); /* più scuro al hover/focus */
+  outline: none;
+}
+
+
+/* RIMUOVI i separatori tra IBAN e PayPal su mobile */
 @media (min-width: 768px) {
-  .flip-box > .flip-front,
-  .flip-box > .flip-back {
-    flex-direction: row;
-  }
   .flip-back > div {
-    border-top: none;
     border-left: 1px solid #e8e6df;
   }
   .flip-back > div:first-child {
@@ -840,13 +879,15 @@
 }
 @media (max-width: 767px) {
   .flip-back > div {
-    border-top: 1px solid #e8e6df;
-    border-left: none;
+    border: none !important;
   }
-  .flip-back > div:first-child {
-    border-top: none;
+  .flip-front,
+  .flip-back,
+  .box-bianco-custom {
+    border-radius: 1.5rem !important;
   }
 }
+
 
 
 
