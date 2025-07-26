@@ -158,19 +158,43 @@
         }
         
         .btn-outline-modern {
-            background-color: transparent;
-            color: #ffffff;
-            padding: 16px 32px;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            font-size: 18px;
-            border: 1px solid #ffffff;
-        }
-        
-        .btn-outline-modern:hover {
-            background-color: #ffffff;
-            color: #445a4b;
-        }
+  display: flex;                  /* Centra il contenuto in entrambe le direzioni */
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;  /* Sfondo trasparente */
+  color: #ffffff;                 /* Testo bianco */
+  padding: 16px 32px;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  font-size: 18px;
+  border: 1px solid #ffffff;      /* Bordo bianco */
+  text-align: center;             /* Ridondante, ma ok */
+  font-family: 'Quiche Flare', serif; /* Font elegante */
+  font-weight: 400;
+  cursor: pointer;
+  min-width: 0;                   /* Impedisce problemi con testo lungo */
+  width: auto;
+  outline: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.07); /* Leggera ombra, opzionale */
+  gap: 0.5em;                     /* Spazio orizzontale tra eventuali icone e testo */
+}
+.btn-outline-modern:hover, .btn-outline-modern:focus {
+  background-color: #ffffff;
+  color: #445a4b;
+  border-color: #445a4b;
+  transition: all 0.21s cubic-bezier(.56,.37,.4,.92);
+  box-shadow: 0 5px 12px rgba(68,90,75,0.14);
+  text-decoration: none;
+}
+
+/* Responsive: padding minore su schermi piccoli */
+@media (max-width: 768px) {
+  .btn-outline-modern {
+    padding: 13px 18px;
+    font-size: 16px;
+  }
+}
+
         .btn-back-visible {
             background-color: #445a4b;
             color: #fff;
@@ -460,10 +484,11 @@
   max-width: 500px;
   margin: auto;
   width: 100%;
-  min-height: 250px;
+  min-height: 340px; /* <--- aumenta questa */
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative;
 }
 
 @media (max-width: 900px) {
@@ -472,12 +497,14 @@
     border-radius: 0 0 24px 24px;
     padding: 1.5rem 1rem;
     margin: 0;
+    min-height: 380px; /* <--- ancora più spazio su mobile */
   }
 }
 @media (max-width: 600px) {
   .box-bianco-custom {
     padding: 1rem 0.5rem;
     font-size: 1rem;
+    min-height: 460px; /* <--- aumenta di nuovo se ti serve */
   }
 }
 
@@ -626,7 +653,7 @@
              <p class="text-lg md:text-4xl mb-8 tracking-widest font-quiche-special">7 dicembre 2025</p> 
             <div class="flex justify-center space-x-4">
                 <a href="#event" class="btn-outline-modern">DETTAGLI EVENTO</a>
-                <a href="#story" class="btn-outline-modern">IL NOSTRO VIAGGIO DI NOZZE</a>
+                <a href="#honeymoon" class="btn-outline-modern">IL NOSTRO VIAGGIO DI NOZZE</a>
 
             </div>
         </div>
@@ -723,17 +750,16 @@ Se vorrete accompagnarci anche in questo viaggio, potrete regalarci qualche chil
       </div>
         <!-- Lato Posteriore -->
 <div class="flip-back box-bianco-custom absolute w-full h-full backface-hidden text-[#445a4b] flex flex-col justify-center items-center space-y-8 transform rotate-y-180 relative">
-  <button id="flipCloseBtn1" aria-label="Chiudi" ...>&times;</button>
+  <button id="flipCloseBtn1" aria-label="Chiudi" style="position:absolute; top:1rem; right:1rem; z-index:10; background:transparent; border:none; font-size:2rem; color:#445a4b; cursor:pointer;">&times;</button>
   <div class="w-full flex flex-col items-center text-center space-y-4">
     <h3 class="text-xl font-bold mb-2 tracking-wider">COME CONTRIBUIRE</h3>
     <p class="text-sm mb-2">Se vuoi regalarci qualche chilometro di viaggio:</p>
     <p class="text-sm font-mono bg-[#f5f4ef] p-2 rounded">
-      Nome: <strong>Tommaso Lenzi</strong>
-      IBAN: <strong>IT00X0000000000000000000000</strong>
+      Nome: <strong>Tommaso Lenzi</strong> IBAN: <strong>IT63D0623009572000057282021</strong>
     </p>
   </div>
   <div class="w-full flex flex-col items-center text-center">
-    <img src="qr_code_paypal.png" alt="QR PayPal" class="w-48 h-48 object-contain mx-auto">
+    <img src="qr_code_paypal.png" alt="QR PayPal" class="w-48 h-48 object-contain mx-auto" style="max-width:100%;">
     <p class="text-xs opacity-70 mt-2 font-bold">QR code PayPal</p>
     <p class="text-xs opacity-70 mt-2">Scansiona per donare via PayPal</p>
   </div>
@@ -1253,7 +1279,7 @@ document.addEventListener('DOMContentLoaded', () => {
   [1].forEach(num => {
     const box = document.getElementById('honeymoonFlipBox' + num);
     const openBtn = document.getElementById('contribuisciBtn' + num);
-    const closeBtn = document.getElementById('flipCloseBtn' + num); // OCCHIO: "flip" NON "chiudi"
+    const closeBtn = document.getElementById('flipCloseBtn' + num); 
     openBtn && openBtn.addEventListener('click', () => box.classList.add('show-back'));
     closeBtn && closeBtn.addEventListener('click', () => box.classList.remove('show-back'));
   });
