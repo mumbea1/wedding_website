@@ -729,44 +729,45 @@
     </h2>
     <div class="flex flex-col md:flex-row gap-8 max-w-3xl mx-auto">
 
-     <!-- PRIMA CARD / IMMAGINE+FLIPBOX -->
-<div class="flex flex-1 flex-col md:flex-row bg-white rounded-3xl shadow-md overflow-hidden min-h-[420px] relative">
-  <div class="w-full md:w-1/2 relative min-h-[250px]">
-    <img src="Foto matrimonio/Foto viaggio_01.jpg" alt="Viaggio di nozze" class="w-full h-full object-cover object-center">
+<div class="flip-box" id="honeymoonFlipBox1">
+  <!-- Fronte: immagine + box testo -->
+  <div class="flip-front flex flex-col md:flex-row w-full h-full">
+    <div class="w-full md:w-1/2">
+      <img src="Foto matrimonio/Foto viaggio_01.jpg" alt="Viaggio di nozze" class="w-full h-full object-cover object-center" />
+    </div>
+    <div class="w-full md:w-1/2 flex flex-col justify-center items-center bg-white/90 p-8" style="border-radius: 0 24px 24px 0;">
+      <h3 class="text-xl font-normal mb-2 tracking-wider text-[#445a4b]">Le nostre mete</h3>
+      <p class="text-sm leading-relaxed mb-4 text-[#445a4b]">
+        Non abbiamo previsto una lista nozze tradizionale ...
+      </p>
+      <button class="btn-modern w-full" id="contribuisciBtn1">Contribuisci al viaggio</button>
+    </div>
   </div>
-  <div class="flex-1 md:w-1/2 relative min-h-[250px] flex items-stretch">
-    <div class="flip-box w-full h-full" id="honeymoonFlipBox1">
-      <!-- Fronte -->
-      <div class="flip-front absolute w-full h-full backface-hidden flex flex-col justify-center md:items-end items-center p-8 bg-white/90" style="border-radius: 0 24px 24px 0;">
-          <div class="w-full">
-          <h3 class="text-xl font-normal mb-2 tracking-wider text-[#445a4b]">Le nostre mete</h3>
-          <p class="text-sm leading-relaxed mb-4 text-[#445a4b]">
-           Non abbiamo previsto una lista nozze tradizionale, perché ciò che davvero desideriamo è vivere un’esperienza indimenticabile insieme.
-Voleremo in Giappone, una meta che sogniamo da quando ci siamo conosciuti. Esploreremo la cultura e la cucina giapponese e, da appassionati di montagna, non ci faremo mancare qualche sciata tra le nevi di Hakuba!
-Se vorrete accompagnarci anche in questo viaggio, potrete regalarci qualche chilometro verso il nostro sogno.
-          </p>
-          <button class="btn-modern w-full" id="contribuisciBtn1">Contribuisci al viaggio</button>
-        </div>
-      </div>
-        <!-- Lato Posteriore -->
-<div class="flip-back box-bianco-custom absolute w-full h-full backface-hidden text-[#445a4b] flex flex-col justify-center items-center space-y-8 transform rotate-y-180 relative">
-  <button id="flipCloseBtn1" aria-label="Chiudi" style="position:absolute; top:1rem; right:1rem; z-index:10; background:transparent; border:none; font-size:2rem; color:#445a4b; cursor:pointer;">&times;</button>
-  <div class="w-full flex flex-col items-center text-center space-y-4">
-    <h3 class="text-xl font-bold mb-2 tracking-wider">COME CONTRIBUIRE</h3>
-    <p class="text-sm mb-2">Se vuoi regalarci qualche chilometro di viaggio:</p>
-    <p class="text-sm font-mono bg-[#f5f4ef] p-2 rounded">
-      Nome: <strong>Tommaso Lenzi</strong> IBAN: <strong>IT63D0623009572000057282021</strong>
-    </p>
-  </div>
-  <div class="w-full flex flex-col items-center text-center">
-    <img src="qr_code_paypal.png" alt="QR PayPal" class="w-48 h-48 object-contain mx-auto" style="max-width:100%;">
-    <p class="text-xs opacity-70 mt-2 font-bold">QR code PayPal</p>
-    <p class="text-xs opacity-70 mt-2">Scansiona per donare via PayPal</p>
+
+  <!-- Retro: IBAN e PayPal -->
+  <div class="flip-back flex flex-col md:flex-row w-full h-full bg-white box-bianco-custom relative" style="border-radius: 24px;">
+    <button id="flipCloseBtn1" aria-label="Chiudi"
+      style="position:absolute; top:1rem; right:1rem; z-index:10; background:transparent; border:none; font-size:2rem; color:#445a4b; cursor:pointer;">&times;</button>
+    <!-- IBAN a sinistra -->
+    <div class="w-full md:w-1/2 flex flex-col justify-center items-center p-6">
+      <h3 class="text-xl font-bold mb-2 tracking-wider text-[#445a4b] text-center md:text-left">Dati IBAN</h3>
+      <p class="text-sm mb-2 text-[#445a4b] text-center md:text-left">Nome: <strong>Tommaso Lenzi</strong></p>
+      <p class="text-sm font-mono bg-[#f5f4ef] p-2 rounded text-[#445a4b] text-center md:text-left break-all">
+        IBAN: <strong>IT63D0623009572000057282021</strong>
+      </p>
+    </div>
+    <!-- PayPal a destra -->
+    <div class="w-full md:w-1/2 flex flex-col justify-center items-center p-6 border-t md:border-t-0 md:border-l border-[#e8e6df]">
+      <h3 class="text-xl font-bold mb-2 tracking-wider text-[#445a4b] text-center md:text-left">PayPal</h3>
+      <img src="qr_code_paypal.png" alt="QR PayPal" class="w-40 h-40 object-contain mb-2" style="max-width:100%;">
+      <p class="text-xs opacity-70 mt-2 font-bold text-[#445a4b]">QR PayPal</p>
+      <p class="text-xs opacity-70 mt-2 text-[#445a4b]">Scansiona per donare via PayPal</p>
+    </div>
   </div>
 </div>
+
           </div>
         </div>
-      </div>
 </section>
 <!-- CSS RSVP -->
 <style>
@@ -802,14 +803,11 @@ Se vorrete accompagnarci anche in questo viaggio, potrete regalarci qualche chil
   </style>  
 <!-- CSS Flip -->
 <style>
-.perspective {
-  perspective: 1400px;
-}
 .flip-box {
   perspective: 1200px;
-  height: 100%;
+  width: 100%;
+  min-height: 500px;
   position: relative;
-  min-width: 0;
 }
 .flip-box > .flip-front,
 .flip-box > .flip-back {
@@ -819,16 +817,37 @@ Se vorrete accompagnarci anche in questo viaggio, potrete regalarci qualche chil
   height: 100%;
   position: absolute;
   left: 0; top: 0;
+  display: flex;
+  flex-direction: column;
 }
 .flip-box > .flip-front { z-index: 2; transform: rotateY(0); }
 .flip-box > .flip-back { z-index: 1; transform: rotateY(180deg); }
 .flip-box.show-back > .flip-front { transform: rotateY(180deg); }
 .flip-box.show-back > .flip-back { transform: rotateY(0); }
-@media (max-width: 900px) {
-  .flex.md\:flex-row { flex-direction: column !important; }
+/* Responsive: righe sotto l'altro su mobile */
+@media (min-width: 768px) {
   .flip-box > .flip-front,
-  .flip-box > .flip-back { border-radius: 0 0 24px 24px !important; }
+  .flip-box > .flip-back {
+    flex-direction: row;
+  }
+  .flip-back > div {
+    border-top: none;
+    border-left: 1px solid #e8e6df;
+  }
+  .flip-back > div:first-child {
+    border-left: none;
+  }
 }
+@media (max-width: 767px) {
+  .flip-back > div {
+    border-top: 1px solid #e8e6df;
+    border-left: none;
+  }
+  .flip-back > div:first-child {
+    border-top: none;
+  }
+}
+
 
 
 </style>
@@ -859,12 +878,14 @@ Se vorrete accompagnarci anche in questo viaggio, potrete regalarci qualche chil
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const flipBox = document.getElementById('honeymoonFlipBox1');
-  const contribuisciBtn1 = document.getElementById('contribuisciBtn1');
-  const chiudiBtn = document.getElementById('chiudiFlipBtn');
-  
-  contribuisciBtn1.addEventListener('click', () => flipBox.classList.add('show-back'));
-  chiudiBtn.addEventListener('click', () => flipBox.classList.remove('show-back'));
+  const contribBtn = document.getElementById('contribuisciBtn1');
+  const closeBtn = document.getElementById('flipCloseBtn1');
+  if(flipBox && contribBtn && closeBtn){
+    contribBtn.addEventListener('click', () => flipBox.classList.add('show-back'));
+    closeBtn.addEventListener('click', () => flipBox.classList.remove('show-back'));
+  }
 });
+
 
 </script>
 
