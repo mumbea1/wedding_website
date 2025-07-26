@@ -742,51 +742,58 @@
     </h2>
     <div class="flex flex-col md:flex-row gap-8 max-w-3xl mx-auto">
 
-<div class="flipbox-master rounded-3xl shadow-lg overflow-hidden relative" id="honeymoonFlipBox1">
+<div class="flipcard-root" id="honeymoonFlipBox1">
   <!-- FRONTE -->
-  <div class="flip-front flex flex-col md:flex-row w-full bg-white rounded-3xl relative">
-    <div class="w-full md:w-1/2 flex-shrink-0">
-      <img src="Foto matrimonio/Foto viaggio_01.jpg" alt="Viaggio di nozze"
-        class="w-full h-full object-cover object-center rounded-t-3xl md:rounded-l-3xl md:rounded-tr-none transition-all duration-300" />
-    </div>
-    <div class="w-full md:w-1/2 flex flex-col justify-center items-center px-6 py-10 md:py-12 bg-white/90 rounded-b-3xl md:rounded-r-3xl md:rounded-bl-none relative">
-      <h3 class="text-2xl font-semibold mb-3 tracking-wide text-[#445a4b] text-center md:text-left">Il nostro viaggio</h3>
-      <p class="text-base leading-7 mb-6 text-[#445a4b] text-center md:text-left">
-        Non abbiamo previsto una lista nozze tradizionale, perché ciò che davvero desideriamo è vivere un’esperienza indimenticabile insieme.
-Voleremo in Giappone, una meta che sogniamo da quando ci siamo conosciuti. Esploreremo la cultura e la cucina giapponese e, da appassionati di montagna, non ci faremo mancare qualche sciata tra le nevi di Hakuba!
-Se vorrete accompagnarci anche in questo viaggio, potrete regalarci qualche chilometro verso il nostro sogno.      </p>
-      <!-- Bottone ben visibile anche su mobile -->
-      <button class="btn-modern block w-full max-w-xs mx-auto mt-2" id="contribuisciBtn1">Contribuisci al viaggio</button>
-    </div>
-  </div>
-
-  <!-- RETRO -->
-  <div class="flip-back glass-effect flex flex-col md:flex-row w-full absolute left-0 top-0 rounded-3xl p-0 !h-auto" style="z-index:2;">
-    <button id="flipCloseBtn1" aria-label="Chiudi" class="close-btn-circle same-bg">&times;</button>
-    <!-- Bonifico -->
-    <div class="w-full md:w-1/2 flex flex-col justify-center items-center p-7">
-      <div class="same-bg rounded-2xl shadow-sm flex flex-col items-center w-full max-w-xs mx-auto py-8 px-6 min-h-[270px]">
-        <h4 class="text-lg font-bold mb-2 tracking-widest text-[#445a4b] text-center">Bonifico bancario</h4>
-        <span class="block text-sm text-[#445a4b] mb-1 text-center">Intestato a:</span>
-        <span class="block text-base font-semibold text-[#445a4b] mb-1 text-center">Tommaso Lenzi</span>
-        <span class="block text-sm font-mono text-[#445a4b] break-all text-center mt-2">
-          IBAN:<br>
-          <strong>IT63D0623009572000057282021</strong>
-        </span>
+  <div class="flipcard-inner">
+    <div class="flipcard-front">
+      <div class="flex flex-col md:flex-row w-full h-full rounded-3xl bg-white relative overflow-hidden">
+        <div class="w-full md:w-1/2 flex-shrink-0 flex items-stretch">
+          <img src="Foto matrimonio/Foto viaggio_01.jpg" alt="Viaggio di nozze"
+            class="w-full h-full object-cover object-center rounded-t-3xl md:rounded-l-3xl md:rounded-tr-none" />
+        </div>
+        <div class="w-full md:w-1/2 flex flex-col justify-center items-center px-6 py-10 md:py-12 bg-white/90 rounded-b-3xl md:rounded-r-3xl md:rounded-bl-none relative">
+          <h3 class="text-2xl font-semibold mb-3 tracking-wide text-[#445a4b] text-center md:text-left">Il nostro viaggio</h3>
+          <p class="text-base leading-7 mb-6 text-[#445a4b] text-center md:text-left">
+            Non abbiamo previsto una lista nozze tradizionale, perché ciò che desideriamo davvero è vivere un’esperienza indimenticabile insieme.<br>
+            Voleremo in Giappone, la meta che sogniamo da quando ci siamo conosciuti. Esploreremo la cultura, la cucina e, da appassionati di montagna, qualche sciata tra le nevi di Hakuba!<br>
+            Se vorrete accompagnarci anche in questo viaggio, potrete regalarci qualche chilometro verso il nostro sogno.
+          </p>
+          <button class="btn-modern w-full max-w-xs mt-2" id="contribuisciBtn1">Contribuisci al viaggio</button>
+        </div>
       </div>
     </div>
-    <!-- PayPal -->
-    <div class="w-full md:w-1/2 flex flex-col justify-center items-center p-7">
-      <div class="same-bg rounded-2xl shadow-sm flex flex-col items-center w-full max-w-xs mx-auto py-8 px-6 min-h-[270px]">
-        <h4 class="text-lg font-bold mb-2 tracking-widest text-[#445a4b] text-center">PayPal</h4>
-        <img src="qr_code_paypal.png" alt="QR PayPal"
-          class="w-32 h-32 object-contain mb-2 rounded-xl ring-2 ring-[#e5e9e7] shadow-inner" style="background:#fff;">
-        <span class="text-xs opacity-80 mt-1 font-bold text-[#445a4b]">QR PayPal</span>
-        <span class="text-xs opacity-70 mt-2 text-[#445a4b] text-center">Scansiona per donare</span>
+    <!-- RETRO -->
+    <div class="flipcard-back">
+      <div class="flex flex-col md:flex-row w-full h-full rounded-3xl bg-white justify-center items-stretch relative overflow-hidden">
+        <button id="flipCloseBtn1" aria-label="Chiudi"
+          class="close-btn-circle absolute top-6 right-6 z-10 bg-white shadow-sm border border-[#f3f3f1] hover:bg-[#f8f8f6] transition">&times;</button>
+        <!-- Box BONIFICO -->
+        <div class="w-full md:w-1/2 flex justify-center items-center p-7">
+          <div class="bg-[#f3f3f1] rounded-2xl shadow flex flex-col items-center w-full max-w-xs mx-auto py-8 px-6 min-h-[230px] justify-center">
+            <h4 class="text-lg font-bold mb-2 tracking-widest text-[#445a4b] text-center">Bonifico bancario</h4>
+            <span class="block text-sm text-[#445a4b] mb-1 text-center">Intestato a:</span>
+            <span class="block text-base font-semibold text-[#445a4b] mb-1 text-center">Tommaso Lenzi</span>
+            <span class="block text-sm font-mono text-[#445a4b] break-all text-center mt-2">
+              IBAN:<br>
+              <strong>IT63D0623009572000057282021</strong>
+            </span>
+          </div>
+        </div>
+        <!-- Box PAYPAL -->
+        <div class="w-full md:w-1/2 flex justify-center items-center p-7">
+          <div class="bg-[#f3f3f1] rounded-2xl shadow flex flex-col items-center w-full max-w-xs mx-auto py-8 px-6 min-h-[230px] justify-center">
+            <h4 class="text-lg font-bold mb-2 tracking-widest text-[#445a4b] text-center">PayPal</h4>
+            <img src="qr_code_paypal.png" alt="QR PayPal"
+              class="w-32 h-32 object-contain mb-2 rounded-xl ring-2 ring-[#e5e9e7] shadow-inner bg-white">
+            <span class="text-xs opacity-80 mt-1 font-bold text-[#445a4b]">QR PayPal</span>
+            <span class="text-xs opacity-70 mt-2 text-[#445a4b] text-center">Scansiona per donare</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
 
           </div>
         </div>
@@ -826,92 +833,114 @@ Se vorrete accompagnarci anche in questo viaggio, potrete regalarci qualche chil
 <!-- CSS Flip -->
 <style>
 /* --- Effetto flip Apple-level --- */
-.glass-effect,
-.same-bg {
-  background: rgba(245, 244, 239, 0.98) !important;
-  backdrop-filter: blur(8px) saturate(1.15);
-  box-shadow: 0 10px 32px 2px rgba(68,90,75,0.06);
-}
-
-.flipbox-master {
+.flipcard-root {
   perspective: 1200px;
-  min-height: 540px;
-  border-radius: 1.5rem;
-  background: transparent;
-  position: relative;
   width: 100%;
-  box-shadow: 0 12px 38px 0 rgba(68,90,75,0.09);
+  max-width: 900px;
+  margin: 0 auto;
+  min-height: 540px;
+  position: relative;
+  border-radius: 1.5rem;
 }
 
-.flipbox-master > .flip-front,
-.flipbox-master > .flip-back {
-  position: absolute;   /* <- Questa deve essere absolute, NON relative! */
+.flipcard-inner {
+  width: 100%;
+  min-height: 540px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.83s cubic-bezier(.18,.72,.4,.97), box-shadow 0.2s;
+}
+
+.flipcard-root.show-back .flipcard-inner {
+  transform: rotateY(180deg);
+}
+
+.flipcard-front, .flipcard-back {
+  position: absolute;
   top: 0; left: 0;
   width: 100%;
-  height: 100%;          /* height: 100% va bene quando il genitore (flipbox-master) ha min-height o height */
+  height: 100%;
   border-radius: 1.5rem;
-  background: #fff;
   box-shadow: none;
   overflow: visible;
-  transition: transform 0.83s cubic-bezier(.18,.72,.4,.97), box-shadow 0.2s;
   backface-visibility: hidden;
 }
 
-.flipbox-master > .flip-front   { z-index: 2; transform: rotateY(0);}
-.flipbox-master > .flip-back    { z-index: 1; transform: rotateY(180deg); overflow-y: auto;}
-.flipbox-master.show-back > .flip-front { transform: rotateY(180deg); z-index: 1;}
-.flipbox-master.show-back > .flip-back  { transform: rotateY(0);      z-index: 2;}
-@media (max-width:900px) {
-  .flipbox-master, .flipbox-master > .flip-front, .flipbox-master > .flip-back {
-    min-height: 0 !important;
-  }
+.flipcard-front {
+  z-index: 2;
+  background: #fff;
+  transform: rotateY(0);
 }
-@media (max-width:600px) {
-  .flipbox-master, .flipbox-master > .flip-front, .flipbox-master > .flip-back {
-    min-height: 0 !important;
-  }
+
+.flipcard-back {
+  z-index: 1;
+  background: #fff;
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: stretch;
 }
-.close-btn-circle.same-bg {
-  position: absolute;
-  top: 1.2rem;
-  right: 1.2rem;
-  z-index: 10;
-  background: rgba(245, 244, 239, 0.98) !important;
+
+.close-btn-circle {
   border-radius: 50%;
   width: 38px;
   height: 38px;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  border: none;
   font-size: 1.8rem;
   color: #445a4b;
+  border: none;
+  background: #fff;
   box-shadow: 0 2px 10px rgba(68,90,75,0.07);
+  cursor: pointer;
   user-select: none;
-  transition: background 0.25s;
+  transition: background 0.21s;
 }
-.close-btn-circle.same-bg:hover, .close-btn-circle.same-bg:focus {
-  background: rgba(230, 226, 218, 0.89) !important;
+.close-btn-circle:hover, .close-btn-circle:focus {
+  background: #f3f3f1;
   outline: none;
 }
 
-.same-bg {
-  background: rgba(245, 244, 239, 0.98)!important;
+/* Responsive & centratura mobile */
+@media (max-width: 900px) {
+  .flipcard-root, .flipcard-inner, .flipcard-front, .flipcard-back {
+    min-height: 0 !important;
+    height: auto !important;
+    border-radius: 1.5rem !important;
+  }
+  .flipcard-back, .flipcard-front {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+  }
+  .flipcard-back .p-7,
+  .flipcard-front .p-7 {
+    padding: 2rem 1rem !important;
+  }
 }
-.flip-back > div > .same-bg {
-  min-height: 220px;
+
+@media (max-width: 600px) {
+  .flipcard-root, .flipcard-inner, .flipcard-front, .flipcard-back {
+    min-height: 0 !important;
+    height: auto !important;
+    border-radius: 1.5rem !important;
+  }
+  .flipcard-back .p-7,
+  .flipcard-front .p-7 {
+    padding: 1.2rem .6rem !important;
+  }
+  .btn-modern { font-size: 1rem; padding: 13px 1em;}
+}
+
+/* Box Bonifico/PayPal identici e centrati */
+.flipcard-back > .flex > div > div,
+.flipcard-back .bg-[#f3f3f1] {
+  min-height: 230px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.flip-front > .w-full,
-.flip-back > .w-full {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
 
 
 </style>
@@ -942,13 +971,15 @@ Se vorrete accompagnarci anche in questo viaggio, potrete regalarci qualche chil
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const flipBox = document.getElementById('honeymoonFlipBox1');
+  const inner = flipBox.querySelector('.flipcard-inner');
   const contribBtn = document.getElementById('contribuisciBtn1');
   const closeBtn = document.getElementById('flipCloseBtn1');
-  if (flipBox && contribBtn && closeBtn) {
+  if (flipBox && inner && contribBtn && closeBtn) {
     contribBtn.addEventListener('click', () => flipBox.classList.add('show-back'));
     closeBtn.addEventListener('click', () => flipBox.classList.remove('show-back'));
   }
 });
+
 
 
 
@@ -1268,7 +1299,8 @@ function resetRSVP() {
     });
     
     // Countdown timer
-    const weddingDate = new Date('December 7, 2025 15:00:00').getTime();
+    
+ const weddingDate = new Date('December 7, 2025 15:00:00 GMT+0100').getTime()
     
     function updateCountdown() {
         const now = new Date().getTime();
