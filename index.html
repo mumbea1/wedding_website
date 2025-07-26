@@ -617,11 +617,16 @@
     <section class="hero" id="home">
        <!-- Slideshow Desktop -->
 <div class="hero-slideshow desktop-slideshow">
-    <img src="Foto matrimonio/Foto_01.jpg" alt="Francesca e Tommaso" class="hero-slide active">
+    <img src="Foto matrimonio/Foto_07.dng" alt="Francesca e Tommaso" class="hero-slide active">
     <img src="Foto matrimonio/Foto_02.jpg" alt="Francesca e Tommaso" class="hero-slide">
     <img src="Foto matrimonio/Foto_05.jpg" alt="Francesca e Tommaso" class="hero-slide">
     <img src="Foto matrimonio/Foto_03.jpg" alt="Francesca e Tommaso" class="hero-slide">
     <img src="Foto matrimonio/Foto_06.jpg" alt="Francesca e Tommaso" class="hero-slide">
+    <img src="Foto matrimonio/Foto_01.jpg" alt="Francesca e Tommaso" class="hero-slide">
+    <img src="Foto matrimonio/Foto_08.JPEG" alt="Francesca e Tommaso" class="hero-slide">
+    <img src="Foto matrimonio/Foto_09.jpg" alt="Francesca e Tommaso" class="hero-slide">
+    <img src="Foto matrimonio/Foto_10.JPG" alt="Francesca e Tommaso" class="hero-slide">
+    <img src="Foto matrimonio/Foto_11.jpg" alt="Francesca e Tommaso" class="hero-slide">
 </div>
 
 <!-- Slideshow Mobile -->
@@ -630,7 +635,11 @@
     <img src="Foto matrimonio/Foto verticale 2.jpg" alt="Francesca e Tommaso" class="hero-slide">
     <img src="Foto matrimonio/Foto verticale 3.jpg" alt="Francesca e Tommaso" class="hero-slide">
     <img src="Foto matrimonio/Foto verticale 4.JPEG" alt="Francesca e Tommaso" class="hero-slide">
-    <img src="Foto matrimonio/Foto verticale 5.png" alt="Francesca e Tommaso" class="hero-slide">
+    <img src="Foto matrimonio/Foto verticale 5.JPG" alt="Francesca e Tommaso" class="hero-slide">
+    <img src="Foto matrimonio/Foto verticale 6.jpg" alt="Francesca e Tommaso" class="hero-slide">
+    <img src="Foto matrimonio/Foto verticale 7.jpg" alt="Francesca e Tommaso" class="hero-slide">
+    <img src="Foto matrimonio/Foto verticale 8.JPG" alt="Francesca e Tommaso" class="hero-slide">
+    <img src="Foto matrimonio/Foto verticale 9.jpg" alt="Francesca e Tommaso" class="hero-slide">
 </div>
 
         <div class="hero-overlay"></div>
@@ -642,6 +651,10 @@
             <div class="slideshow-dot" data-index="2"></div>
             <div class="slideshow-dot" data-index="3"></div>
             <div class="slideshow-dot" data-index="4"></div>
+            <div class="slideshow-dot" data-index="5"></div>
+            <div class="slideshow-dot" data-index="6"></div>
+            <div class="slideshow-dot" data-index="7"></div>
+            <div class="slideshow-dot" data-index="8"></div>
         </div>
         
         <div class="hero-content">
@@ -822,6 +835,7 @@ Se vorrete accompagnarci anche in questo viaggio, potrete regalarci qualche chil
 
 .flipbox-master {
   perspective: 1200px;
+  min-height: 540px;
   border-radius: 1.5rem;
   background: transparent;
   position: relative;
@@ -831,9 +845,10 @@ Se vorrete accompagnarci anche in questo viaggio, potrete regalarci qualche chil
 
 .flipbox-master > .flip-front,
 .flipbox-master > .flip-back {
+  position: absolute;   /* <- Questa deve essere absolute, NON relative! */
+  top: 0; left: 0;
   width: 100%;
-  min-height: 0;                 /* Lascia che crescano in base al contenuto */
-  position: relative;            /* NON absolute (per layout naturale) */
+  height: 100%;          /* height: 100% va bene quando il genitore (flipbox-master) ha min-height o height */
   border-radius: 1.5rem;
   background: #fff;
   box-shadow: none;
@@ -843,13 +858,23 @@ Se vorrete accompagnarci anche in questo viaggio, potrete regalarci qualche chil
 }
 
 .flipbox-master > .flip-front   { z-index: 2; transform: rotateY(0);}
-.flipbox-master > .flip-back    { z-index: 1; transform: rotateY(180deg);}
-.flipbox-master.show-back > .flip-front { transform: rotateY(180deg);}
-.flipbox-master.show-back > .flip-back  { transform: rotateY(0);}
-
+.flipbox-master > .flip-back    { z-index: 1; transform: rotateY(180deg); overflow-y: auto;}
+.flipbox-master.show-back > .flip-front { transform: rotateY(180deg); z-index: 1;}
+.flipbox-master.show-back > .flip-back  { transform: rotateY(0);      z-index: 2;}
+@media (max-width:900px) {
+  .flipbox-master, .flipbox-master > .flip-front, .flipbox-master > .flip-back {
+    min-height: 0 !important;
+  }
+}
+@media (max-width:600px) {
+  .flipbox-master, .flipbox-master > .flip-front, .flipbox-master > .flip-back {
+    min-height: 0 !important;
+  }
+}
 .close-btn-circle.same-bg {
   position: absolute;
-  top: 1.2rem; right: 1.2rem;
+  top: 1.2rem;
+  right: 1.2rem;
   z-index: 10;
   background: rgba(245, 244, 239, 0.98) !important;
   border-radius: 50%;
@@ -871,19 +896,9 @@ Se vorrete accompagnarci anche in questo viaggio, potrete regalarci qualche chil
   outline: none;
 }
 
-@media (max-width:900px) {
-  .flipbox-master, .flipbox-master > .flip-front, .flipbox-master > .flip-back {
-    min-height: 0 !important;
-  }
-  .flip-front, .flip-back { flex-direction: column !important; }
+.same-bg {
+  background: rgba(245, 244, 239, 0.98)!important;
 }
-@media (max-width:600px) {
-  .flipbox-master, .flipbox-master > .flip-front, .flipbox-master > .flip-back {
-    min-height: 0 !important;
-  }
-  .flipbox-master .btn-modern { font-size: 1rem; padding: 13px 1em;}
-}
-
 .flip-back > div > .same-bg {
   min-height: 220px;
   display: flex;
@@ -891,10 +906,12 @@ Se vorrete accompagnarci anche in questo viaggio, potrete regalarci qualche chil
   justify-content: center;
 }
 
-/* Opzionale: mantieni sempre proporzione e aria sui box bonifico/paypal */
-
-
-
+.flip-front > .w-full,
+.flip-back > .w-full {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
 
 </style>
