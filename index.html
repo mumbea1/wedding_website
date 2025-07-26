@@ -832,7 +832,9 @@
   </style>  
 <!-- CSS Flip -->
 <style>
-.flipcard-root {
+
+
+    .flipcard-root {
   perspective: 1200px;
   width: 100%;
   max-width: 900px;
@@ -840,119 +842,81 @@
   min-height: 540px;
   position: relative;
   border-radius: 1.5rem;
+  background: transparent;
 }
 
 .flipcard-inner {
   width: 100%;
   min-height: 540px;
-  transform-style: preserve-3d;
-  transition: transform 0.83s cubic-bezier(.18,.72,.4,.97), box-shadow 0.2s;
   position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(.18,.72,.4,.97);
 }
 
 .flipcard-root.show-back .flipcard-inner {
   transform: rotateY(180deg);
 }
 
-/* FRONTE E RETRO SOVRAPPOSTE */
+/* FRONT & BACK ALWAYS SOVRAPPOSTI! */
 .flipcard-front, .flipcard-back {
   position: absolute;
   top: 0; left: 0;
   width: 100%;
   height: 100%;
   border-radius: 1.5rem;
+  background: #fff;
   box-shadow: none;
   overflow: visible;
   backface-visibility: hidden;
-  display: block;
 }
 
-.flipcard-front {
-  z-index: 2;
-  background: #fff;
-  transform: rotateY(0);
-}
+.flipcard-front { z-index:2; transform: rotateY(0); }
+.flipcard-back  { z-index:1; transform: rotateY(180deg); display: flex; align-items: stretch; justify-content: center; }
 
-.flipcard-back {
-  z-index: 1;
-  background: #fff;
-  transform: rotateY(180deg);
-  display: flex;
-  align-items: stretch;
-  justify-content: center;
-}
+.flipcard-root.show-back .flipcard-front { transform: rotateY(180deg);	z-index:1;}
+.flipcard-root.show-back .flipcard-back  { transform: rotateY(0);		z-index:2; }
 
 .close-btn-circle {
   border-radius: 50%;
-  width: 38px;
-  height: 38px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.8rem;
-  color: #445a4b;
-  border: none;
-  background: #fff;
+  width: 38px; height: 38px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.8rem; color: #445a4b; border: none; background: #fff;
   box-shadow: 0 2px 10px rgba(68,90,75,0.07);
-  cursor: pointer;
-  user-select: none;
-  transition: background 0.21s;
-  position: absolute;
-  top: 1.2rem;
-  right: 1.2rem;
-  z-index: 10;
+  cursor: pointer; user-select: none;
+  transition: background 0.2s;
+  position: absolute; top: 1.2rem; right: 1.2rem; z-index: 10;
 }
-.close-btn-circle:hover, .close-btn-circle:focus {
-  background: #f3f3f1;
-  outline: none;
-}
+.close-btn-circle:hover, .close-btn-circle:focus { background: #f3f3f1; }
 
-/* Responsive fix !*/
 @media (max-width: 900px) {
-  .flipcard-root, .flipcard-inner {
-    min-height: 0 !important;
-    height: auto !important;
-  }
+  .flipcard-root, .flipcard-inner { min-height: 0!important; height: auto!important; }
   .flipcard-front, .flipcard-back {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: auto !important;
-    min-height: 440px;
-    border-radius: 1.5rem !important;
-  }
-  .flipcard-back, .flipcard-front {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
+    height: auto!important;
+    min-height: 480px!important;
+    border-radius: 1.5rem!important;
+    /* Fix centratura generale */
+    display: flex!important;
+    flex-direction: column!important;
+    align-items: stretch!important;
   }
 }
 
-/* Mobile correction per min-height automatica e centratura box retro */
 @media (max-width: 600px) {
-  .flipcard-root, .flipcard-inner {
-    min-height: 0 !important;
-    height: auto !important;
-  }
   .flipcard-front, .flipcard-back {
-    min-height: 550px !important;
-    height: auto !important;
-    border-radius: 1.5rem !important;
+    min-height: 560px!important;
+    height: auto!important;
   }
-  .flipcard-back .p-7,
-  .flipcard-front .p-7 {
-    padding: 1.2rem .6rem !important;
-  }
+  .flipcard-back .p-7, .flipcard-front .p-7 { padding: 1rem 0.5rem!important; }
   .btn-modern { font-size: 1rem; padding: 13px 1em;}
 }
 
+/* I due box del retro */
 .flipcard-back > .flex > div > div,
 .flipcard-back .bg-[#f3f3f1] {
-  min-height: 200px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  min-height: 180px;
+  display: flex; flex-direction: column; justify-content: center;
 }
+
 
 
 
@@ -980,11 +944,19 @@
 }
 @media (max-width: 700px) {
   .hero-content {
-    bottom: 42% !important;    /* Più in alto rispetto a bottom: 20% o 25% */
-    top: 0;
-    transform: translateY(-10%);
+    bottom: unset !important;
+    top: 4vw !important;       /* O scegli un valore come 32px/3rem se vuoi */
+    transform: none !important;
+    width: 100%;
+    left: 0; right: 0;
+    padding: 0 8px;
+    text-align: center;
+  }
+  .hero-content .btn-outline-modern {
+    margin-top: 30vw; /* Spinge i pulsanti molto più in basso rispetto al testo */
   }
 }
+
 
     
 </style>    
