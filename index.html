@@ -976,16 +976,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeBtn = document.getElementById('flipCloseBtn1');
 
   if (flipBox && inner && contribBtn && closeBtn) {
-    contribBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      flipBox.classList.add('show-back');
+    contribBtn.addEventListener('click', () => {
+            flipBox.classList.add('show-back');
     });
 
-    closeBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      flipBox.classList.remove('show-back');
+    closeBtn.addEventListener('click', () => {
+           flipBox.classList.remove('show-back');
     });
   }
 });
