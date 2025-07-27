@@ -732,7 +732,7 @@
         </div>
         <div class="countdown-item">
             <div class="text-3xl md:text-4xl font-normal text-[#445a4b]" id="countdown-seconds">00</div>
-            <div class="text-xs tracking-wider text-[#445a4b]">SECONDI</div>
+            <div class="text-xs tracking-wider text-[#445a4b]">SECOND</div>
         </div>
     </div>
 </div>
@@ -971,24 +971,33 @@
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const flipBox = document.getElementById('honeymoonFlipBox1');
-  const inner = flipBox.querySelector('.flipcard-inner');
   const contribBtn = document.getElementById('contribuisciBtn1');
   const closeBtn = document.getElementById('flipCloseBtn1');
 
-  if (flipBox && inner && contribBtn && closeBtn) {
+  if (flipBox && contribBtn && closeBtn) {
+
+    // Aggiunta classe per mostrare retro
     contribBtn.addEventListener('click', () => {
-            flipBox.classList.add('show-back');
+      console.log("CLICK CONTRIBUISCI");
+      if (!flipBox.classList.contains('show-back')) {
+        flipBox.classList.add('show-back');
+        console.log("Retro mostrato");
+      }
     });
 
+    // Rimozione classe per tornare al fronte
     closeBtn.addEventListener('click', () => {
-           flipBox.classList.remove('show-back');
+      console.log("CLICK CHIUSURA");
+      if (flipBox.classList.contains('show-back')) {
+        flipBox.classList.remove('show-back');
+        console.log("Retro nascosto");
+      }
     });
+  } else {
+    console.warn("Uno o più elementi non trovati!");
   }
 });
 </script>
-
-
-
 
 
     
