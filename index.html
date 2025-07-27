@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Francesca & Tommaso - Matrimonio</title>
-    <script src="https://cdn.tailwind.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0//all.min.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @font-face {
     font-family: 'Quiche Flare';
@@ -748,10 +748,10 @@
     </h2>
     <div class="flex flex-col md:flex-row gap-8 max-w-3xl mx-auto">
 
-<div class="card-root" id="honeymoonBox1">
+<div class="flipcard-root" id="honeymoonFlipBox1">
   <!-- FRONTE -->
-  <div class="card-inner">
-    <div class="card-front">
+  <div class="flipcard-inner">
+    <div class="flipcard-front">
       <div class="flex flex-col md:flex-row w-full h-full rounded-3xl bg-white relative overflow-hidden">
         <div class="w-full md:w-1/2 flex-shrink-0 flex items-stretch">
           <img src="Foto matrimonio/Foto viaggio_01.jpg" alt="Viaggio di nozze"
@@ -769,9 +769,9 @@
       </div>
     </div>
     <!-- RETRO -->
-    <div class="card-back">
+    <div class="flipcard-back">
       <div class="flex flex-col md:flex-row w-full h-full rounded-3xl bg-white justify-center items-stretch relative overflow-hidden">
-        <button id="CloseBtn1" aria-label="Chiudi"
+        <button id="flipCloseBtn1" aria-label="Chiudi"
           class="close-btn-circle absolute top-6 right-6 z-10 bg-white shadow-sm border border-[#f3f3f1] hover:bg-[#f8f8f6] transition">&times;</button>
         <!-- Box BONIFICO -->
         <div class="w-full md:w-1/2 flex justify-center items-center p-7">
@@ -804,7 +804,7 @@
           </div>
         </div>
 </section>
-<!--  RSVP -->
+<!-- CSS RSVP -->
 <style>
  .attendance-btn input[type="radio"]:checked + .radio-display {
     background: #445a4b;
@@ -836,14 +836,14 @@
     width: 80px;
 }   
   </style>  
-<!--   -->
+<!-- CSS Flip -->
 <style>
 
 
-    .card-root {
+    .flipcard-root {
   perspective: 1200px;
   width: 100%;
-  max-width: 1100px;
+  max-width: 1300px;
   margin: 0 auto;
   min-height: 700px;
   position: relative;
@@ -851,7 +851,7 @@
   background: transparent;
 }
 
-.card-inner {
+.flipcard-inner {
   width: 100%;
   min-height: 700px;
   position: relative;
@@ -859,12 +859,12 @@
   transition: transform 0.8s cubic-bezier(.18,.72,.4,.97);
 }
 
-.card-root.show-back .card-inner {
+.flipcard-root.show-back .flipcard-inner {
   transform: rotateY(180deg);
 }
 
 /* FRONT & BACK ALWAYS SOVRAPPOSTI! */
-.card-front, .card-back {
+.flipcard-front, .flipcard-back {
   position: absolute;
   top: 0; left: 0;
   width: 100%;
@@ -876,11 +876,11 @@
   backface-visibility: hidden;
 }
 
-.card-front { z-index:2; transform: rotateY(0); }
-.card-back  { z-index:1; transform: rotateY(180deg); display: flex; align-items: stretch; justify-content: center; }
+.flipcard-front { z-index:2; transform: rotateY(0); }
+.flipcard-back  { z-index:1; transform: rotateY(180deg); display: flex; align-items: stretch; justify-content: center; }
 
-.card-root.show-back .card-front { transform: rotateY(180deg);	z-index:1;}
-.card-root.show-back .card-back  { transform: rotateY(0);		z-index:2; }
+.flipcard-root.show-back .flipcard-front { transform: rotateY(180deg);	z-index:1;}
+.flipcard-root.show-back .flipcard-back  { transform: rotateY(0);		z-index:2; }
 
 .close-btn-circle {
   border-radius: 50%;
@@ -895,8 +895,8 @@
 .close-btn-circle:hover, .close-btn-circle:focus { background: #f3f3f1; }
 
 @media (max-width: 900px) {
-  .card-root, .card-inner { min-height: 0!important; height: auto!important; }
-  .card-front, .card-back {
+  .flipcard-root, .flipcard-inner { min-height: 0!important; height: auto!important; }
+  .flipcard-front, .flipcard-back {
     height: auto!important;
     min-height: 480px!important;
     border-radius: 1.5rem!important;
@@ -908,17 +908,17 @@
 }
 
 @media (max-width: 600px) {
-  .card-front, .card-back {
+  .flipcard-front, .flipcard-back {
     min-height: 560px!important;
     height: auto!important;
   }
-  .card-back .p-7, .card-front .p-7 { padding: 1rem 0.5rem!important; }
+  .flipcard-back .p-7, .flipcard-front .p-7 { padding: 1rem 0.5rem!important; }
   .btn-modern { font-size: 1rem; padding: 13px 1em;}
 }
 
 /* I due box del retro */
-.card-back > .flex > div > div,
-.card-back .bg-[#f3f3f1] {
+.flipcard-back > .flex > div > div,
+.flipcard-back .bg-[#f3f3f1] {
   min-height: 180px;
   display: flex; flex-direction: column; justify-content: center;
 }
@@ -930,7 +930,7 @@
 </style>
 
 
-<!--  slideshow -->
+<!-- CSS slideshow -->
 <style>
 /* Mostra solo lo slideshow desktop sui monitor grandi */
 .desktop-slideshow {
@@ -967,23 +967,23 @@
     
 </style>    
 
-<!-- JS  -->
+<!-- JS Flip -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  const Box = document.getElementById('honeymoonBox1');
+  const flipBox = document.getElementById('honeymoonFlipBox1');
   const contribBtn = document.getElementById('contribuisciBtn1');
-  const closeBtn = document.getElementById('CloseBtn1');
-  if (Box && contribBtn && closeBtn) {
+  const closeBtn = document.getElementById('flipCloseBtn1');
+  if (flipBox && contribBtn && closeBtn) {
     contribBtn.addEventListener('click', (e) => {
       e.stopPropagation(); // <-- crucial!
-      if (!Box.classList.contains('show-back')) {
-        Box.classList.add('show-back');
+      if (!flipBox.classList.contains('show-back')) {
+        flipBox.classList.add('show-back');
       }
     });
     closeBtn.addEventListener('click', (e) => {
       e.stopPropagation();
-      if (Box.classList.contains('show-back')) {
-        Box.classList.remove('show-back');
+      if (flipBox.classList.contains('show-back')) {
+        flipBox.classList.remove('show-back');
       }
     });
   }
@@ -1103,7 +1103,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </button>
         <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-white">
           <div class="px-6 pb-5 text-[#445a4b] text-sm leading-relaxed">
-            Non è previsto un dress code: qualcosa di elegante, casual o colorato, l'importante è che tu sia pronto a festeggiare con noi.
+            Non è previsto un dress code (fa icche tu voi): qualcosa di elegante, casual o colorato, l'importante è che tu sia pronto a festeggiare con noi.
           </div>
         </div>
       </div>
@@ -1136,13 +1136,13 @@ document.addEventListener('DOMContentLoaded', () => {
         </button>
         <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-white">
           <div class="px-6 pb-5 text-[#445a4b] text-sm leading-relaxed">
-            Per chi arriva da fuori città, ci sono diverse opzioni di alloggio nei pressi della location.<br>Saremo felici di darti una mano a trovare la soluzione più adatta alle vostre esigenze: scriveteci e ti forniremo volentieri qualche suggerimento.
+            Per chi arriva da fuori città, ci sono diverse opzioni di alloggio nei pressi della location.<br>Saremo felici di darti una mano a trovare la soluzione più adatta alle vostre esigenze: scrivici e ti forniremo volentieri qualche suggerimento.
           </div>
         </div>
       </div>
       <div class="faq-item">
         <button class="faq-toggle w-full px-6 py-5 flex items-center group text-left transition font-normal" type="button">
-          <span class="faq-question flex-1 text-[#445a4b] text-left transition font-normal">Altre domande o dubbi?</span>
+          <span class="faq-question flex-1 text-[#445a4b] text-left transition font-normal">Domande o dubbi?</span>
           <i class="fas fa-chevron-right text-[#445a4b] opacity-60 ml-4 transition-transform duration-200"></i>
         </button>
         <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-white">
