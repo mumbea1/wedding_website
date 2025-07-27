@@ -764,7 +764,7 @@
             Voleremo in Giappone, la meta che sogniamo da quando ci siamo conosciuti. Esploreremo la cultura, la cucina e, da appassionati di montagna, qualche sciata tra le nevi di Hakuba!<br>
             Se vorrete accompagnarci anche in questo viaggio, potrete regalarci qualche chilometro verso il nostro sogno.
           </p>
-            <button type="button" class="btn-modern w-full max-w-xs mt-2" id="contribuisciBtn1">Contribuisci al viaggio</button>
+          <button type="button" class="btn-modern w-full max-w-xs mt-2" id="contribuisciBtn1">Contribuisci al viaggio</button>
         </div>
       </div>
     </div>
@@ -840,7 +840,7 @@
 <style>
 
 
-    .flipcard-root {
+  .flipcard-root {
   perspective: 1200px;
   width: 100%;
   max-width: 1300px;
@@ -849,38 +849,38 @@
   position: relative;
   border-radius: 1.5rem;
   background: transparent;
+  transition: box-shadow 0.5s;
 }
+
+.flipcard-root.show-back { box-shadow: 0 12px 32px rgba(68,90,75,0.18), 0 1.5px 16px rgba(120, 120, 120, 0.09); }
 
 .flipcard-inner {
   width: 100%;
   min-height: 700px;
   position: relative;
   transform-style: preserve-3d;
-  transition: transform 0.8s cubic-bezier(.18,.72,.4,.97);
+  transition:
+    transform 0.85s cubic-bezier(.18,1.23,.4,.97),
+    box-shadow 0.4s cubic-bezier(.4,1,.33,1),
+    filter 0.24s linear;
 }
 
 .flipcard-root.show-back .flipcard-inner {
-  transform: rotateY(180deg);
+  transform: scale(1.02) rotateY(180deg);
+  filter: blur(0.1px) brightness(0.98);
 }
 
-/* FRONT & BACK ALWAYS SOVRAPPOSTI! */
 .flipcard-front, .flipcard-back {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 1.5rem;
-  background: #fff;
-  box-shadow: none;
-  overflow: visible;
-  backface-visibility: hidden;
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  border-radius: 1.5rem; background: #fff; box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+  overflow: visible; backface-visibility: hidden;
+  transition: box-shadow 0.25s;
 }
-
 .flipcard-front { z-index:2; transform: rotateY(0); }
-.flipcard-back  { z-index:1; transform: rotateY(180deg); display: flex; align-items: stretch; justify-content: center; }
+.flipcard-back  { z-index:1; transform: rotateY(180deg); }
 
-.flipcard-root.show-back .flipcard-front { transform: rotateY(180deg);	z-index:1;}
-.flipcard-root.show-back .flipcard-back  { transform: rotateY(0);		z-index:2; }
+.flipcard-root.show-back .flipcard-front { transform: rotateY(180deg); z-index:1;}
+.flipcard-root.show-back .flipcard-back  { transform: rotateY(0);    z-index:2;}
 
 .close-btn-circle {
   border-radius: 50%;
@@ -900,30 +900,17 @@
     height: auto!important;
     min-height: 480px!important;
     border-radius: 1.5rem!important;
-    /* Fix centratura generale */
     display: flex!important;
     flex-direction: column!important;
     align-items: stretch!important;
   }
 }
-
 @media (max-width: 600px) {
   .flipcard-front, .flipcard-back {
     min-height: 560px!important;
     height: auto!important;
   }
-  .flipcard-back .p-7, .flipcard-front .p-7 { padding: 1rem 0.5rem!important; }
-  .btn-modern { font-size: 1rem; padding: 13px 1em;}
 }
-
-/* I due box del retro */
-.flipcard-back > .flex > div > div,
-.flipcard-back .bg-[#f3f3f1] {
-  min-height: 180px;
-  display: flex; flex-direction: column; justify-content: center;
-}
-
-
 
 
 
@@ -969,26 +956,24 @@
 
 <!-- JS Flip -->
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const flipBox = document.getElementById('honeymoonFlipBox1');
-  const contribBtn = document.getElementById('contribuisciBtn1');
-  const closeBtn = document.getElementById('flipCloseBtn1');
-  if (flipBox && contribBtn && closeBtn) {
-    contribBtn.addEventListener('click', (e) => {
-      e.stopPropagation(); // <-- crucial!
-      if (!flipBox.classList.contains('show-back')) {
-        flipBox.classList.add('show-back');
-      }
+// Inserisci questo DOPO la chiusura della card HTML, prima di </body>
+document.addEventListener('DOMContentLoaded', function(){
+  const root = document.getElementById("honeymoonFlipBox1");
+  if (!root) return;
+  const btnOpen = root.querySelector("#contribuisciBtn1");
+  const btnClose = root.querySelector("#flipCloseBtn1");
+
+  if (btnOpen && btnClose) {
+    btnOpen.addEventListener("click", function(e){
+      e.preventDefault();
+      root.classList.add("show-back");
     });
-    closeBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      if (flipBox.classList.contains('show-back')) {
-        flipBox.classList.remove('show-back');
-      }
+    btnClose.addEventListener("click", function(e){
+      e.preventDefault();
+      root.classList.remove("show-back");
     });
   }
 });
-
 </script>
 
 
@@ -1003,7 +988,7 @@ document.addEventListener('DOMContentLoaded', () => {
             id="rsvpForm" 
             name="rsvp" 
             method="POST" 
-            action="https://script.google.com/macros/s/AKfycbxGmsPS8bw7oiFlCWNMUEIUtKCG8_oLubiNP4mtYhQdGw86DzZh_iiF24690N3q_IOXHQ/exec"
+            action="https://script.google.com/macros/s/AKfycbyxT31hwPHqE8oEhl8sQZamRT8OUxMPV-R3N0dX05EoQWrShifTj2Ygx_bwcs22RlHJaQ/exec"
             target="_blank"
                 class="max-w-lg mx-auto fade-in"
         >
