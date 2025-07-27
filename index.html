@@ -765,10 +765,11 @@
             <p>
               Se vorrete accompagnarci anche in questo viaggio, potrete regalarci qualche chilometro verso il nostro sogno.
             </p>
-            <button type="button" class="flip-btn" id="contribuisciBtn1">
-              <span>Contribuisci al viaggio</span>
-              <i class="fas fa-arrow-right"></i>
-            </button>
+            <div class="button-container">
+              <button type="button" class="flip-btn" id="contribuisciBtn1">
+                <span>Contribuisci al viaggio</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -815,6 +816,7 @@
   </div>
 </div>
 
+
           </div>
         </div>
 </section>
@@ -852,6 +854,7 @@
   </style>  
 <!-- CSS Flip -->
 <style>
+/* Reset e base flip card */
 /* Reset e base flip card */
 .flipcard-root {
   perspective: 1200px;
@@ -969,11 +972,17 @@
   margin-bottom: 2rem;
 }
 
+/* Container per centrare il pulsante */
+.button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
 .flip-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
   background: #445a4b;
   color: white;
   border: none;
@@ -985,7 +994,6 @@
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
-  align-self: flex-start;
 }
 
 .flip-btn::before {
@@ -1007,26 +1015,18 @@
   box-shadow: 0 8px 20px rgba(68,90,75,0.3);
 }
 
-.flip-btn i {
-  transition: transform 0.3s ease;
-}
-
-.flip-btn:hover i {
-  transform: translateX(4px);
-}
-
-/* Contenuto retro */
+/* Contenuto retro - Sfondo beige scuro come RSVP */
 .card-back-wrapper {
   display: flex;
   flex-direction: column;
   height: 100%;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background: #e8e6df; /* Stesso beige della sezione RSVP */
   position: relative;
 }
 
 .close-btn {
   position: absolute;
-  top: 1.5rem; right: 1.5rem;
+  top: 1rem; right: 1rem; /* Più vicino all'angolo */
   z-index: 10;
   width: 40px; height: 40px;
   border-radius: 50%;
@@ -1056,13 +1056,17 @@
 
 .payment-box {
   flex: 1;
-  background: white;
+  background: white; /* Sfondo bianco per entrambi i box */
   border-radius: 20px;
   padding: 2rem 1.5rem;
   text-align: center;
   box-shadow: 0 4px 20px rgba(0,0,0,0.06);
   transition: all 0.3s ease;
   border: 1px solid #f0f0f0;
+  height: 280px; /* Altezza fissa per box uguali */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .payment-box:hover {
@@ -1071,7 +1075,7 @@
 }
 
 .payment-icon {
-  width: 60px; height: 60px;
+  width: 50px; height: 50px; /* Icone ridotte */
   border-radius: 50%;
   background: #445a4b;
   color: white;
@@ -1079,7 +1083,7 @@
   align-items: center;
   justify-content: center;
   margin: 0 auto 1.5rem auto;
-  font-size: 1.5rem;
+  font-size: 1.25rem; /* Dimensione icona ridotta */
 }
 
 .payment-box h4 {
@@ -1094,6 +1098,8 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  flex-grow: 1;
+  justify-content: center;
 }
 
 .label, .iban-label {
@@ -1121,11 +1127,13 @@
 }
 
 .qr-container {
+  display: flex;
+  justify-content: center;
   margin: 1rem 0;
 }
 
 .qr-code {
-  width: 120px; height: 120px;
+  width: 140px; height: 140px; /* QR più grande */
   border-radius: 12px;
   border: 2px solid #e5e7eb;
   background: white;
@@ -1136,13 +1144,14 @@
   font-size: 0.875rem;
   color: #6b7280;
   font-weight: 500;
+  margin-top: 0.5rem;
 }
 
-/* Responsive */
+/* Responsive Mobile - Struttura verticale */
 @media (max-width: 768px) {
   .flipcard-root {
     height: auto;
-    min-height: 500px;
+    min-height: 600px;
   }
   
   .card-content-wrapper {
@@ -1150,12 +1159,13 @@
   }
   
   .card-image-section {
-    height: 200px;
+    height: 250px;
     flex: none;
   }
   
   .card-text-section {
     padding: 2rem 1.5rem;
+    flex: 1;
   }
   
   .card-text-section h3 {
@@ -1168,6 +1178,16 @@
     margin-bottom: 1rem;
   }
   
+  .card-text-section p:last-of-type {
+    margin-bottom: 1.5rem;
+  }
+  
+  .flip-btn {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.9rem;
+  }
+  
+  /* Mobile: Retro in colonna */
   .payment-container {
     flex-direction: column;
     padding: 2rem 1.5rem;
@@ -1175,12 +1195,63 @@
   }
   
   .payment-box {
+    height: auto;
+    min-height: 200px;
     padding: 1.5rem 1rem;
   }
   
   .payment-icon {
-    width: 50px; height: 50px;
-    font-size: 1.25rem;
+    width: 45px; height: 45px;
+    font-size: 1.1rem;
+  }
+  
+  .qr-code {
+    width: 120px; height: 120px;
+  }
+  
+  .close-btn {
+    top: 0.75rem; right: 0.75rem;
+    width: 36px; height: 36px;
+  }
+  
+  .flipcard-inner {
+    min-height: 600px;
+  }
+  
+  .flipcard-front, .flipcard-back {
+    min-height: 600px;
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .flipcard-root {
+    min-height: 550px;
+  }
+  
+  .card-image-section {
+    height: 200px;
+  }
+  
+  .card-text-section {
+    padding: 1.5rem 1rem;
+  }
+  
+  .card-text-section h3 {
+    font-size: 1.3rem;
+  }
+  
+  .payment-container {
+    padding: 1.5rem 1rem;
+  }
+  
+  .payment-box {
+    padding: 1.25rem 0.75rem;
+    min-height: 180px;
+  }
+  
+  .payment-box h4 {
+    font-size: 1.1rem;
   }
   
   .qr-code {
@@ -1230,7 +1301,7 @@
 
 <!-- JS Flip -->
 <script>
-// Flip Card con gestione errori
+
 (function() {
   function initFlipCard() {
     const root = document.getElementById("honeymoonFlipBox1");
