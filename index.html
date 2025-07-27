@@ -757,9 +757,9 @@
           <img src="Foto matrimonio/Foto viaggio_01.jpg" alt="Viaggio di nozze"
             class="w-full h-full object-cover object-center rounded-t-3xl md:rounded-l-3xl md:rounded-tr-none" />
         </div>
-        <div class="w-full md:w-1/2 flex flex-col justify-center items-center px-6 py-10 md:py-12 bg-white/90 rounded-b-3xl md:rounded-r-3xl md:rounded-bl-none relative">
-          <h3 class="text-2xl font-semibold mb-3 tracking-wide text-[#445a4b] text-center md:text-left">Il nostro viaggio</h3>
-          <p class="text-base leading-7 mb-6 text-[#445a4b] text-center md:text-left">
+        <div class="w-full md:w-1/2 flex flex-col justify-center items-center text-center px-6 py-10 md:py-12 bg-white/90 rounded-b-3xl md:rounded-r-3xl md:rounded-bl-none relative">
+          <h3 class="text-2xl font-semibold mb-3 tracking-wide text-[#445a4b] text-center md:text-center">Il nostro viaggio</h3>
+          <p class="text-base leading-7 mb-6 text-[#445a4b] text-center md:text-center">
             Non abbiamo previsto una lista nozze tradizionale, perché ciò che desideriamo davvero è vivere un’esperienza indimenticabile insieme.<br>
             Voleremo in Giappone, la meta che sogniamo da quando ci siamo conosciuti. Esploreremo la cultura, la cucina e, da appassionati di montagna, qualche sciata tra le nevi di Hakuba!<br>
             Se vorrete accompagnarci anche in questo viaggio, potrete regalarci qualche chilometro verso il nostro sogno.
@@ -977,8 +977,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (flipBox && inner && contribBtn && closeBtn) {
     contribBtn.addEventListener('click', (e) => {
-      e.preventDefault();       //Previeni comportamento automatico
-      e.stopPropagation();      //  Blocca propagazione (evita rigiri)
+      e.preventDefault();
+      e.stopPropagation();
       flipBox.classList.add('show-back');
     });
 
@@ -990,6 +990,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 </script>
+
 
 
 
