@@ -974,17 +974,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const inner = flipBox.querySelector('.flipcard-inner');
   const contribBtn = document.getElementById('contribuisciBtn1');
   const closeBtn = document.getElementById('flipCloseBtn1');
+
   if (flipBox && inner && contribBtn && closeBtn) {
-    contribBtn.addEventListener('click', () => flipBox.classList.add('show-back'));
-    closeBtn.addEventListener('click', () => flipBox.classList.remove('show-back'));
+    contribBtn.addEventListener('click', (e) => {
+      e.preventDefault();       //Previeni comportamento automatico
+      e.stopPropagation();      //  Blocca propagazione (evita rigiri)
+      flipBox.classList.add('show-back');
+    });
+
+    closeBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      flipBox.classList.remove('show-back');
+    });
   }
 });
-
-
-
-
-
 </script>
+
 
 
 
