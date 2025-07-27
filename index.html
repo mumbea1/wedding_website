@@ -748,10 +748,10 @@
     </h2>
     <div class="flex flex-col md:flex-row gap-8 max-w-3xl mx-auto">
 
-<div class="flipcard-root" id="honeymoonFlipBox1">
+<div class="card-root" id="honeymoonBox1">
   <!-- FRONTE -->
-  <div class="flipcard-inner">
-    <div class="flipcard-front">
+  <div class="card-inner">
+    <div class="card-front">
       <div class="flex flex-col md:flex-row w-full h-full rounded-3xl bg-white relative overflow-hidden">
         <div class="w-full md:w-1/2 flex-shrink-0 flex items-stretch">
           <img src="Foto matrimonio/Foto viaggio_01.jpg" alt="Viaggio di nozze"
@@ -769,9 +769,9 @@
       </div>
     </div>
     <!-- RETRO -->
-    <div class="flipcard-back">
+    <div class="card-back">
       <div class="flex flex-col md:flex-row w-full h-full rounded-3xl bg-white justify-center items-stretch relative overflow-hidden">
-        <button id="flipCloseBtn1" aria-label="Chiudi"
+        <button id="CloseBtn1" aria-label="Chiudi"
           class="close-btn-circle absolute top-6 right-6 z-10 bg-white shadow-sm border border-[#f3f3f1] hover:bg-[#f8f8f6] transition">&times;</button>
         <!-- Box BONIFICO -->
         <div class="w-full md:w-1/2 flex justify-center items-center p-7">
@@ -836,35 +836,35 @@
     width: 80px;
 }   
   </style>  
-<!--  Flip -->
+<!--   -->
 <style>
 
 
-    .flipcard-root {
+    .card-root {
   perspective: 1200px;
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
-  min-height: 600px;
+  min-height: 700px;
   position: relative;
   border-radius: 1.5rem;
   background: transparent;
 }
 
-.flipcard-inner {
+.card-inner {
   width: 100%;
-  min-height: 600px;
+  min-height: 700px;
   position: relative;
   transform-style: preserve-3d;
   transition: transform 0.8s cubic-bezier(.18,.72,.4,.97);
 }
 
-.flipcard-root.show-back .flipcard-inner {
+.card-root.show-back .card-inner {
   transform: rotateY(180deg);
 }
 
 /* FRONT & BACK ALWAYS SOVRAPPOSTI! */
-.flipcard-front, .flipcard-back {
+.card-front, .card-back {
   position: absolute;
   top: 0; left: 0;
   width: 100%;
@@ -876,11 +876,11 @@
   backface-visibility: hidden;
 }
 
-.flipcard-front { z-index:2; transform: rotateY(0); }
-.flipcard-back  { z-index:1; transform: rotateY(180deg); display: flex; align-items: stretch; justify-content: center; }
+.card-front { z-index:2; transform: rotateY(0); }
+.card-back  { z-index:1; transform: rotateY(180deg); display: flex; align-items: stretch; justify-content: center; }
 
-.flipcard-root.show-back .flipcard-front { transform: rotateY(180deg);	z-index:1;}
-.flipcard-root.show-back .flipcard-back  { transform: rotateY(0);		z-index:2; }
+.card-root.show-back .card-front { transform: rotateY(180deg);	z-index:1;}
+.card-root.show-back .card-back  { transform: rotateY(0);		z-index:2; }
 
 .close-btn-circle {
   border-radius: 50%;
@@ -895,8 +895,8 @@
 .close-btn-circle:hover, .close-btn-circle:focus { background: #f3f3f1; }
 
 @media (max-width: 900px) {
-  .flipcard-root, .flipcard-inner { min-height: 0!important; height: auto!important; }
-  .flipcard-front, .flipcard-back {
+  .card-root, .card-inner { min-height: 0!important; height: auto!important; }
+  .card-front, .card-back {
     height: auto!important;
     min-height: 480px!important;
     border-radius: 1.5rem!important;
@@ -908,17 +908,17 @@
 }
 
 @media (max-width: 600px) {
-  .flipcard-front, .flipcard-back {
+  .card-front, .card-back {
     min-height: 560px!important;
     height: auto!important;
   }
-  .flipcard-back .p-7, .flipcard-front .p-7 { padding: 1rem 0.5rem!important; }
+  .card-back .p-7, .card-front .p-7 { padding: 1rem 0.5rem!important; }
   .btn-modern { font-size: 1rem; padding: 13px 1em;}
 }
 
 /* I due box del retro */
-.flipcard-back > .flex > div > div,
-.flipcard-back .bg-[#f3f3f1] {
+.card-back > .flex > div > div,
+.card-back .bg-[#f3f3f1] {
   min-height: 180px;
   display: flex; flex-direction: column; justify-content: center;
 }
@@ -967,23 +967,23 @@
     
 </style>    
 
-<!-- JS Flip -->
+<!-- JS  -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  const flipBox = document.getElementById('honeymoonFlipBox1');
+  const Box = document.getElementById('honeymoonBox1');
   const contribBtn = document.getElementById('contribuisciBtn1');
-  const closeBtn = document.getElementById('flipCloseBtn1');
-  if (flipBox && contribBtn && closeBtn) {
+  const closeBtn = document.getElementById('CloseBtn1');
+  if (Box && contribBtn && closeBtn) {
     contribBtn.addEventListener('click', (e) => {
       e.stopPropagation(); // <-- crucial!
-      if (!flipBox.classList.contains('show-back')) {
-        flipBox.classList.add('show-back');
+      if (!Box.classList.contains('show-back')) {
+        Box.classList.add('show-back');
       }
     });
     closeBtn.addEventListener('click', (e) => {
       e.stopPropagation();
-      if (flipBox.classList.contains('show-back')) {
-        flipBox.classList.remove('show-back');
+      if (Box.classList.contains('show-back')) {
+        Box.classList.remove('show-back');
       }
     });
   }
