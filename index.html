@@ -843,9 +843,9 @@
     .flipcard-root {
   perspective: 1200px;
   width: 100%;
-  max-width: 900px;
+  max-width: 1100px;
   margin: 0 auto;
-  min-height: 540px;
+  min-height: 640px;
   position: relative;
   border-radius: 1.5rem;
   background: transparent;
@@ -853,7 +853,7 @@
 
 .flipcard-inner {
   width: 100%;
-  min-height: 540px;
+  min-height: 640px;
   position: relative;
   transform-style: preserve-3d;
   transition: transform 0.8s cubic-bezier(.18,.72,.4,.97);
@@ -1288,7 +1288,7 @@ function resetRSVP() {
             </div>
         </div>
         <div class="mt-12 text-center text-xs opacity-70">
-            <p>Made by Bazzi (per debug Francesca)</p>
+            <p>Made by Bazzi (ordini di Francesca)</p>
         </div>
     </div>
 </footer>
@@ -1405,17 +1405,6 @@ window.addEventListener('resize', () => {
 
 showSlide(currentSlide);
 startSlideShow();
-    
-document.addEventListener('DOMContentLoaded', () => {
-  // Per ogni flip-box (puoi gestirne più di una in futuro)
-  [1].forEach(num => {
-    const box = document.getElementById('honeymoonFlipBox' + num);
-    const openBtn = document.getElementById('contribuisciBtn' + num);
-    const closeBtn = document.getElementById('flipCloseBtn' + num); 
-    openBtn && openBtn.addEventListener('click', () => box.classList.add('show-back'));
-    closeBtn && closeBtn.addEventListener('click', () => box.classList.remove('show-back'));
-  });
-});
 
 
 </script>
