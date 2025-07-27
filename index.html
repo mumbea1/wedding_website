@@ -748,57 +748,73 @@
 <div class="max-w-4xl mx-auto">
   <div class="flipcard-root" id="honeymoonFlipBox1">
     <div class="flipcard-inner">
-      <!-- FACCIA FRONTALE -->
+      <!-- FRONTE -->
       <div class="flipcard-front">
-        <div class="flex flex-col md:flex-row w-full h-full min-h-[420px] rounded-3xl bg-white relative overflow-hidden">
-          <div class="w-full md:w-1/2 flex-shrink-0 flex items-stretch min-h-[420px]">
-            <img src="Foto matrimonio/Foto viaggio_01.jpg" alt="Viaggio di nozze"
-              class="w-full h-full object-cover object-center rounded-t-3xl md:rounded-l-3xl md:rounded-tr-none" />
+        <div class="card-content-wrapper">
+          <div class="card-image-section">
+            <img src="Foto matrimonio/Foto viaggio_01.jpg" alt="Viaggio di nozze" />
           </div>
-          <div class="w-full md:w-1/2 flex flex-col justify-center items-center text-center px-6 py-10 md:py-12 bg-white/90 rounded-b-3xl md:rounded-r-3xl md:rounded-bl-none relative min-h-[420px]">
-            <h3 class="text-2xl font-semibold mb-3 tracking-wide text-[#445a4b] text-center md:text-center">Il nostro viaggio</h3>
-            <p class="text-base leading-7 mb-6 text-[#445a4b] text-center md:text-center">
-              Non abbiamo previsto una lista nozze tradizionale, perché ciò che desideriamo davvero è vivere un’esperienza indimenticabile insieme.<br>
-              Voleremo in Giappone, la meta che sogniamo da quando ci siamo conosciuti. Esploreremo la cultura, la cucina e, da appassionati di montagna, qualche sciata tra le nevi di Hakuba!<br>
+          <div class="card-text-section">
+            <h3>Il nostro viaggio</h3>
+            <p>
+              Non abbiamo previsto una lista nozze tradizionale, perché ciò che desideriamo davvero è vivere un'esperienza indimenticabile insieme.
+            </p>
+            <p>
+              Voleremo in Giappone, la meta che sogniamo da quando ci siamo conosciuti. Esploreremo la cultura, la cucina e, da appassionati di montagna, qualche sciata tra le nevi di Hakuba!
+            </p>
+            <p>
               Se vorrete accompagnarci anche in questo viaggio, potrete regalarci qualche chilometro verso il nostro sogno.
             </p>
-            <button type="button" class="btn-modern w-full max-w-xs mt-2" id="contribuisciBtn1">Contribuisci al viaggio</button>
+            <button type="button" class="flip-btn" id="contribuisciBtn1">
+              <span>Contribuisci al viaggio</span>
+              <i class="fas fa-arrow-right"></i>
+            </button>
           </div>
         </div>
       </div>
+      
       <!-- RETRO -->
       <div class="flipcard-back">
-        <div class="flex flex-col md:flex-row w-full h-full min-h-[420px] rounded-3xl bg-white justify-center items-stretch relative overflow-hidden">
-          <button id="flipCloseBtn1" aria-label="Chiudi"
-            class="close-btn-circle absolute top-6 right-6 z-10 bg-white shadow-sm border border-[#f3f3f1] hover:bg-[#f8f8f6] transition">&times;</button>
-          <!-- Box BONIFICO -->
-          <div class="w-full md:w-1/2 flex justify-center items-center p-7 min-h-[420px]">
-            <div class="bg-[#f3f3f1] rounded-2xl shadow flex flex-col items-center w-full max-w-xs mx-auto py-8 px-6 min-h-[220px] justify-center">
-              <h4 class="text-lg font-bold mb-2 tracking-widest text-[#445a4b] text-center">Bonifico bancario</h4>
-              <span class="block text-sm text-[#445a4b] mb-1 text-center">Intestato a:</span>
-              <span class="block text-base font-semibold text-[#445a4b] mb-1 text-center">Tommaso Lenzi</span>
-              <span class="block text-sm font-mono text-[#445a4b] break-all text-center mt-2">
-                IBAN:<br>
-                <strong>IT63D0623009572000057282021</strong>
-              </span>
+        <div class="card-back-wrapper">
+          <button id="flipCloseBtn1" class="close-btn" aria-label="Chiudi">
+            <i class="fas fa-times"></i>
+          </button>
+          
+          <div class="payment-container">
+            <!-- Box BONIFICO -->
+            <div class="payment-box">
+              <div class="payment-icon">
+                <i class="fas fa-university"></i>
+              </div>
+              <h4>Bonifico bancario</h4>
+              <div class="payment-details">
+                <span class="label">Intestato a:</span>
+                <span class="name">Tommaso Lenzi</span>
+                <span class="iban-label">IBAN:</span>
+                <span class="iban">IT63D0623009572000057282021</span>
+              </div>
             </div>
-          </div>
-          <!-- Box PAYPAL -->
-          <div class="w-full md:w-1/2 flex justify-center items-center p-7 min-h-[420px]">
-            <div class="bg-[#f3f3f1] rounded-2xl shadow flex flex-col items-center w-full max-w-xs mx-auto py-8 px-6 min-h-[220px] justify-center">
-              <h4 class="text-lg font-bold mb-2 tracking-widest text-[#445a4b] text-center">PayPal</h4>
-              <img src="qr_code_paypal.png" alt="QR PayPal"
-                class="w-32 h-32 object-contain mb-2 rounded-xl ring-2 ring-[#e5e9e7] shadow-inner bg-white">
-              <span class="text-xs opacity-80 mt-1 font-bold text-[#445a4b]">QR PayPal</span>
-              <span class="text-xs opacity-70 mt-2 text-[#445a4b] text-center">Scansiona per donare</span>
+            
+            <!-- Box PAYPAL -->
+            <div class="payment-box">
+              <div class="payment-icon">
+                <i class="fab fa-paypal"></i>
+              </div>
+              <h4>PayPal</h4>
+              <div class="payment-details">
+                <div class="qr-container">
+                  <img src="qr_code_paypal.png" alt="QR PayPal" class="qr-code">
+                </div>
+                <span class="qr-label">Scansiona per donare</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <!-- /flipcard-back -->
     </div>
   </div>
 </div>
+
           </div>
         </div>
 </section>
@@ -836,78 +852,341 @@
   </style>  
 <!-- CSS Flip -->
 <style>
+/* Reset e base flip card */
 .flipcard-root {
   perspective: 1200px;
   width: 100%;
-  max-width: 64rem; /* ≈max-w-4xl */
+  max-width: 64rem;
   margin: 0 auto;
-  min-height: 420px; /* match dei min-h dei box evento */
+  height: 480px;
   position: relative;
-  border-radius: 1.5rem;
+  border-radius: 24px;
   background: transparent;
-  transition: box-shadow 0.5s;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .flipcard-root.show-back {
-  box-shadow: 0 12px 32px rgba(68,90,75,0.18), 0 1.5px 16px rgba(120,120,120,0.09);
+  transform: scale(1.01);
+  box-shadow: 0 20px 40px rgba(68,90,75,0.15);
 }
+
 .flipcard-inner {
   width: 100%;
-  min-height: 420px;
+  height: 100%;
   position: relative;
   transform-style: preserve-3d;
-  transition: 
-    transform 0.85s cubic-bezier(.18,1.23,.4,.97),
-    box-shadow 0.4s cubic-bezier(.4,1,.33,1),
-    filter 0.24s linear;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .flipcard-root.show-back .flipcard-inner {
-  transform: scale(1.02) rotateY(180deg);
-  filter: blur(0.1px) brightness(0.98);
+  transform: rotateY(180deg);
 }
+
 .flipcard-front, .flipcard-back {
   position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  border-radius: 1.5rem;
+  top: 0; left: 0; 
+  width: 100%; height: 100%;
+  border-radius: 24px;
   background: #fff;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.06);
-  overflow: visible;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
   backface-visibility: hidden;
-  transition: box-shadow 0.25s;
+  -webkit-backface-visibility: hidden;
+  overflow: hidden;
 }
-.flipcard-front { z-index:2; transform: rotateY(0); }
-.flipcard-back  { z-index:1; transform: rotateY(180deg); }
-.flipcard-root.show-back .flipcard-front { transform: rotateY(180deg); z-index:1;}
-.flipcard-root.show-back .flipcard-back  { transform: rotateY(0);    z-index:2;}
-.close-btn-circle {
+
+.flipcard-front { 
+  z-index: 2; 
+  transform: rotateY(0deg); 
+}
+
+.flipcard-back  { 
+  z-index: 1; 
+  transform: rotateY(180deg); 
+}
+
+/* Contenuto fronte - Minimal e dinamico */
+.card-content-wrapper {
+  display: flex;
+  height: 100%;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.card-image-section {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-image-section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.6s ease;
+}
+
+.flipcard-root:hover .card-image-section img {
+  transform: scale(1.02);
+}
+
+.card-text-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem 2.5rem;
+  background: linear-gradient(135deg, #fff 0%, #fafafa 100%);
+  position: relative;
+}
+
+.card-text-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: linear-gradient(to bottom, #445a4b, #6b7c6f);
+}
+
+.card-text-section h3 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #445a4b;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+.card-text-section p {
+  color: #445a4b;
+  line-height: 1.7;
+  margin-bottom: 1.2rem;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+.card-text-section p:last-of-type {
+  margin-bottom: 2rem;
+}
+
+.flip-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background: #445a4b;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  align-self: flex-start;
+}
+
+.flip-btn::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.flip-btn:hover::before {
+  left: 100%;
+}
+
+.flip-btn:hover {
+  background: #36453a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(68,90,75,0.3);
+}
+
+.flip-btn i {
+  transition: transform 0.3s ease;
+}
+
+.flip-btn:hover i {
+  transform: translateX(4px);
+}
+
+/* Contenuto retro */
+.card-back-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 1.5rem; right: 1.5rem;
+  z-index: 10;
+  width: 40px; height: 40px;
   border-radius: 50%;
-  width: 38px; height: 38px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.8rem; color: #445a4b; border: none; background: #fff;
-  box-shadow: 0 2px 10px rgba(68,90,75,0.07);
-  cursor: pointer; user-select: none;
-  transition: background 0.2s;
-  position: absolute; top: 1.2rem; right: 1.2rem; z-index: 10;
-}
-.close-btn-circle:hover, .close-btn-circle:focus { background: #f3f3f1; }
-
-@media (max-width: 900px) {
-  .flipcard-root, .flipcard-inner { min-height: 0!important; height: auto!important; }
-  .flipcard-front, .flipcard-back {
-    height: auto!important;
-    min-height: 400px!important;
-    border-radius: 1.5rem!important;
-    display: flex!important;
-    flex-direction: column!important;
-    align-items: stretch!important;
-  }
-}
-@media (max-width: 600px) {
-  .flipcard-front, .flipcard-back {
-    min-height: 420px!important;
-    height: auto!important;
-  }
+  background: rgba(255,255,255,0.95);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
+.close-btn:hover {
+  background: #445a4b;
+  color: white;
+  transform: rotate(90deg);
+}
+
+.payment-container {
+  display: flex;
+  flex: 1;
+  gap: 2rem;
+  padding: 3rem 2rem 2rem 2rem;
+  align-items: center;
+}
+
+.payment-box {
+  flex: 1;
+  background: white;
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  transition: all 0.3s ease;
+  border: 1px solid #f0f0f0;
+}
+
+.payment-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+}
+
+.payment-icon {
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  background: #445a4b;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem auto;
+  font-size: 1.5rem;
+}
+
+.payment-box h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #445a4b;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.5px;
+}
+
+.payment-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label, .iban-label {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-bottom: 0.25rem;
+}
+
+.name {
+  font-weight: 600;
+  color: #445a4b;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.iban {
+  font-family: 'Courier New', monospace;
+  font-weight: 600;
+  color: #445a4b;
+  font-size: 0.9rem;
+  background: #f8f9fa;
+  padding: 0.75rem;
+  border-radius: 8px;
+  word-break: break-all;
+}
+
+.qr-container {
+  margin: 1rem 0;
+}
+
+.qr-code {
+  width: 120px; height: 120px;
+  border-radius: 12px;
+  border: 2px solid #e5e7eb;
+  background: white;
+  padding: 8px;
+}
+
+.qr-label {
+  font-size: 0.875rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .flipcard-root {
+    height: auto;
+    min-height: 500px;
+  }
+  
+  .card-content-wrapper {
+    flex-direction: column;
+  }
+  
+  .card-image-section {
+    height: 200px;
+    flex: none;
+  }
+  
+  .card-text-section {
+    padding: 2rem 1.5rem;
+  }
+  
+  .card-text-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .card-text-section p {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  
+  .payment-container {
+    flex-direction: column;
+    padding: 2rem 1.5rem;
+    gap: 1.5rem;
+  }
+  
+  .payment-box {
+    padding: 1.5rem 1rem;
+  }
+  
+  .payment-icon {
+    width: 50px; height: 50px;
+    font-size: 1.25rem;
+  }
+  
+  .qr-code {
+    width: 100px; height: 100px;
+  }
+}
 
 </style>
 
@@ -951,23 +1230,41 @@
 
 <!-- JS Flip -->
 <script>
-document.addEventListener('DOMContentLoaded', function(){
-  const root = document.getElementById("honeymoonFlipBox1");
-  if (!root) return;
-  const btnOpen = root.querySelector("#contribuisciBtn1");
-  const btnClose = root.querySelector("#flipCloseBtn1");
+// Flip Card con gestione errori
+(function() {
+  function initFlipCard() {
+    const root = document.getElementById("honeymoonFlipBox1");
+    const btnOpen = document.getElementById("contribuisciBtn1");
+    const btnClose = document.getElementById("flipCloseBtn1");
 
-  if (btnOpen && btnClose) {
-    btnOpen.addEventListener("click", function(e){
+    if (!root || !btnOpen || !btnClose) {
+      console.warn('Flip card: elementi non trovati');
+      return;
+    }
+
+    btnOpen.addEventListener("click", function(e) {
       e.preventDefault();
+      e.stopPropagation();
       root.classList.add("show-back");
     });
-    btnClose.addEventListener("click", function(e){
+
+    btnClose.addEventListener("click", function(e) {
       e.preventDefault();
+      e.stopPropagation();
       root.classList.remove("show-back");
     });
+
+    // Debug
+    console.log('Flip card inizializzata correttamente');
   }
-});
+
+  // Inizializza quando il DOM è pronto
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFlipCard);
+  } else {
+    initFlipCard();
+  }
+})();
 
 </script>
 
