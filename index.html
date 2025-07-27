@@ -740,73 +740,76 @@
 </section>
 
 <!-- Sezione Viaggio di Nozze -->
-<section id="honeymoon" class="bg-[#f5f4ef] py-20 mb-40">
+<section id="honeymoon" class="bg-[#f5f4ef] py-20">
   <div class="container mx-auto px-6 max-w-5xl">
     <h2 class="text-3xl md:text-4xl font-normal mb-16 text-center text-[#445a4b] tracking-wider fade-in">
      LISTA NOZZE
     </h2>
-<div class="max-w-4xl mx-auto">
-  <div class="flipcard-root" id="honeymoonFlipBox1">
-    <div class="flipcard-inner">
-      <!-- FRONTE -->
-      <div class="flipcard-front">
-        <div class="card-content-wrapper">
-          <div class="card-image-section">
-            <img src="Foto matrimonio/Foto viaggio_01.jpg" alt="Viaggio di nozze" />
-          </div>
-          <div class="card-text-section">
-            <h3>Il nostro viaggio</h3>
-            <p>
-              Non abbiamo previsto una lista nozze tradizionale, perché ciò che desideriamo davvero è vivere un'esperienza indimenticabile insieme.
-            </p>
-            <p>
-              Voleremo in Giappone, la meta che sogniamo da quando ci siamo conosciuti. Esploreremo la cultura, la cucina e, da appassionati di montagna, qualche sciata tra le nevi di Hakuba!
-            </p>
-            <p>
-              Se vorrete accompagnarci anche in questo viaggio, potrete regalarci qualche chilometro verso il nostro sogno.
-            </p>
-            <div class="button-container">
-              <button type="button" class="flip-btn" id="contribuisciBtn1">
-                <span>Contribuisci al viaggio</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- RETRO -->
-      <div class="flipcard-back">
-        <div class="card-back-wrapper">
-          <button id="flipCloseBtn1" class="close-btn" aria-label="Chiudi">
-            <i class="fas fa-times"></i>
-          </button>
-          
-          <div class="payment-container">
-            <!-- Box BONIFICO -->
-            <div class="payment-box">
-              <div class="payment-icon">
-                <i class="fas fa-university"></i>
+    
+    <div class="max-w-4xl mx-auto">
+      <div class="flipcard-root" id="honeymoonFlipBox1">
+        <div class="flipcard-inner">
+          <!-- FRONTE -->
+          <div class="flipcard-front">
+            <div class="card-content-wrapper">
+              <div class="card-image-section">
+                <img src="Foto matrimonio/Foto viaggio_01.jpg" alt="Viaggio di nozze" />
               </div>
-              <h4>Bonifico bancario</h4>
-              <div class="payment-details">
-                <span class="label">Intestato a:</span>
-                <span class="name">Tommaso Lenzi</span>
-                <span class="iban-label">IBAN:</span>
-                <span class="iban">IT63D0623009572000057282021</span>
-              </div>
-            </div>
-            
-            <!-- Box PAYPAL -->
-            <div class="payment-box">
-              <div class="payment-icon">
-                <i class="fab fa-paypal"></i>
-              </div>
-              <h4>PayPal</h4>
-              <div class="payment-details">
-                <div class="qr-container">
-                  <img src="qr_code_paypal.png" alt="QR PayPal" class="qr-code">
+              <div class="card-text-section">
+                <h3>Il nostro viaggio</h3>
+                <p>
+                  Non abbiamo previsto una lista nozze tradizionale, perché ciò che desideriamo davvero è vivere un'esperienza indimenticabile insieme.
+                </p>
+                <p>
+                  Voleremo in Giappone, la meta che sogniamo da quando ci siamo conosciuti. Esploreremo la cultura, la cucina e, da appassionati di montagna, qualche sciata tra le nevi di Hakuba!
+                </p>
+                <p>
+                  Se vorrete accompagnarci anche in questo viaggio, potrete regalarci qualche chilometro verso il nostro sogno.
+                </p>
+                <div class="button-container">
+                  <button type="button" class="flip-btn" id="contribuisciBtn1">
+                    <span>Contribuisci al viaggio</span>
+                  </button>
                 </div>
-                <span class="qr-label">Scansiona per donare</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- RETRO -->
+          <div class="flipcard-back">
+            <div class="card-back-wrapper">
+              <button id="flipCloseBtn1" class="close-btn" aria-label="Chiudi">
+                <i class="fas fa-times"></i>
+              </button>
+              
+              <div class="payment-container">
+                <!-- Box BONIFICO -->
+                <div class="payment-box">
+                  <div class="payment-icon">
+                    <i class="fas fa-university"></i>
+                  </div>
+                  <h4>Bonifico bancario</h4>
+                  <div class="payment-details">
+                    <span class="label">Intestato a:</span>
+                    <span class="name">Tommaso Lenzi</span>
+                    <span class="iban-label">IBAN:</span>
+                    <span class="iban">IT63D0623009572000057282021</span>
+                  </div>
+                </div>
+                
+                <!-- Box PAYPAL -->
+                <div class="payment-box">
+                  <div class="payment-icon">
+                    <i class="fab fa-paypal"></i>
+                  </div>
+                  <h4>PayPal</h4>
+                  <div class="payment-details">
+                    <div class="qr-container">
+                      <img src="qr_code_paypal.png" alt="QR PayPal" class="qr-code">
+                    </div>
+                    <span class="qr-label">Scansiona per donare</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -814,12 +817,8 @@
       </div>
     </div>
   </div>
-</div>
-
-
-          </div>
-        </div>
 </section>
+
 <!-- CSS RSVP -->
 <style>
  .attendance-btn input[type="radio"]:checked + .radio-display {
@@ -854,7 +853,6 @@
   </style>  
 <!-- CSS Flip -->
 <style>
-/* Reset e base flip card */
 /* Reset e base flip card */
 .flipcard-root {
   perspective: 1200px;
@@ -907,7 +905,7 @@
   transform: rotateY(180deg); 
 }
 
-/* Contenuto fronte - Minimal e dinamico */
+/* Contenuto fronte */
 .card-content-wrapper {
   display: flex;
   height: 100%;
@@ -969,7 +967,7 @@
 }
 
 .card-text-section p:last-of-type {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 /* Container per centrare il pulsante */
@@ -1015,18 +1013,18 @@
   box-shadow: 0 8px 20px rgba(68,90,75,0.3);
 }
 
-/* Contenuto retro - Sfondo beige scuro come RSVP */
+/* Contenuto retro - Beige come RSVP */
 .card-back-wrapper {
   display: flex;
   flex-direction: column;
   height: 100%;
-  background: #e8e6df; /* Stesso beige della sezione RSVP */
+  background: #e8e6df;
   position: relative;
 }
 
 .close-btn {
   position: absolute;
-  top: 1rem; right: 1rem; /* Più vicino all'angolo */
+  top: 1rem; right: 1rem;
   z-index: 10;
   width: 40px; height: 40px;
   border-radius: 50%;
@@ -1056,14 +1054,14 @@
 
 .payment-box {
   flex: 1;
-  background: white; /* Sfondo bianco per entrambi i box */
+  background: white;
   border-radius: 20px;
   padding: 2rem 1.5rem;
   text-align: center;
   box-shadow: 0 4px 20px rgba(0,0,0,0.06);
   transition: all 0.3s ease;
   border: 1px solid #f0f0f0;
-  height: 280px; /* Altezza fissa per box uguali */
+  height: 280px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1075,7 +1073,7 @@
 }
 
 .payment-icon {
-  width: 50px; height: 50px; /* Icone ridotte */
+  width: 50px; height: 50px;
   border-radius: 50%;
   background: #445a4b;
   color: white;
@@ -1083,7 +1081,7 @@
   align-items: center;
   justify-content: center;
   margin: 0 auto 1.5rem auto;
-  font-size: 1.25rem; /* Dimensione icona ridotta */
+  font-size: 1.25rem;
 }
 
 .payment-box h4 {
@@ -1133,7 +1131,7 @@
 }
 
 .qr-code {
-  width: 140px; height: 140px; /* QR più grande */
+  width: 140px; height: 140px;
   border-radius: 12px;
   border: 2px solid #e5e7eb;
   background: white;
@@ -1147,11 +1145,21 @@
   margin-top: 0.5rem;
 }
 
-/* Responsive Mobile - Struttura verticale */
+/* Responsive CORRETTO */
 @media (max-width: 768px) {
   .flipcard-root {
-    height: auto;
-    min-height: 600px;
+    height: auto !important;
+    min-height: 600px !important;
+  }
+  
+  .flipcard-inner {
+    min-height: 600px !important;
+    height: auto !important;
+  }
+  
+  .flipcard-front, .flipcard-back {
+    min-height: 600px !important;
+    height: auto !important;
   }
   
   .card-content-wrapper {
@@ -1187,7 +1195,6 @@
     font-size: 0.9rem;
   }
   
-  /* Mobile: Retro in colonna */
   .payment-container {
     flex-direction: column;
     padding: 2rem 1.5rem;
@@ -1213,20 +1220,19 @@
     top: 0.75rem; right: 0.75rem;
     width: 36px; height: 36px;
   }
-  
-  .flipcard-inner {
-    min-height: 600px;
-  }
-  
-  .flipcard-front, .flipcard-back {
-    min-height: 600px;
-    height: auto;
-  }
 }
 
 @media (max-width: 480px) {
   .flipcard-root {
-    min-height: 550px;
+    min-height: 550px !important;
+  }
+  
+  .flipcard-inner {
+    min-height: 550px !important;
+  }
+  
+  .flipcard-front, .flipcard-back {
+    min-height: 550px !important;
   }
   
   .card-image-section {
@@ -1258,6 +1264,7 @@
     width: 100px; height: 100px;
   }
 }
+
 
 </style>
 
@@ -1295,47 +1302,74 @@
   }
 }
 
-
-    
 </style>    
 
 <!-- JS Flip -->
 <script>
 
+// Flip Card - Versione robusta con gestione errori
 (function() {
+  'use strict';
+  
   function initFlipCard() {
-    const root = document.getElementById("honeymoonFlipBox1");
-    const btnOpen = document.getElementById("contribuisciBtn1");
-    const btnClose = document.getElementById("flipCloseBtn1");
+    try {
+      const root = document.getElementById("honeymoonFlipBox1");
+      const btnOpen = document.getElementById("contribuisciBtn1");
+      const btnClose = document.getElementById("flipCloseBtn1");
 
-    if (!root || !btnOpen || !btnClose) {
-      console.warn('Flip card: elementi non trovati');
-      return;
+      if (!root) {
+        console.error('Flip card root non trovato');
+        return;
+      }
+      
+      if (!btnOpen) {
+        console.error('Pulsante contribuisci non trovato');
+        return;
+      }
+      
+      if (!btnClose) {
+        console.error('Pulsante chiudi non trovato');
+        return;
+      }
+
+      // Event listener per aprire
+      btnOpen.addEventListener("click", function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        if (!root.classList.contains("show-back")) {
+          root.classList.add("show-back");
+          console.log('Card flip: apertura retro');
+        }
+      });
+
+      // Event listener per chiudere
+      btnClose.addEventListener("click", function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        if (root.classList.contains("show-back")) {
+          root.classList.remove("show-back");
+          console.log('Card flip: chiusura retro');
+        }
+      });
+
+      console.log('Flip card inizializzata correttamente');
+      
+    } catch (error) {
+      console.error('Errore nell\'inizializzazione flip card:', error);
     }
-
-    btnOpen.addEventListener("click", function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      root.classList.add("show-back");
-    });
-
-    btnClose.addEventListener("click", function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      root.classList.remove("show-back");
-    });
-
-    // Debug
-    console.log('Flip card inizializzata correttamente');
   }
 
-  // Inizializza quando il DOM è pronto
+  // Inizializzazione sicura
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initFlipCard);
   } else {
-    initFlipCard();
+    // DOM già pronto
+    setTimeout(initFlipCard, 100);
   }
 })();
+
 
 </script>
 
