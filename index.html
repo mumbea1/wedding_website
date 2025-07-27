@@ -843,9 +843,9 @@
     .flipcard-root {
   perspective: 1200px;
   width: 100%;
-  max-width: 1100px;
+  max-width: 1300px;
   margin: 0 auto;
-  min-height: 640px;
+  min-height: 700px;
   position: relative;
   border-radius: 1.5rem;
   background: transparent;
@@ -853,7 +853,7 @@
 
 .flipcard-inner {
   width: 100%;
-  min-height: 640px;
+  min-height: 700px;
   position: relative;
   transform-style: preserve-3d;
   transition: transform 0.8s cubic-bezier(.18,.72,.4,.97);
@@ -973,30 +973,22 @@ document.addEventListener('DOMContentLoaded', () => {
   const flipBox = document.getElementById('honeymoonFlipBox1');
   const contribBtn = document.getElementById('contribuisciBtn1');
   const closeBtn = document.getElementById('flipCloseBtn1');
-
   if (flipBox && contribBtn && closeBtn) {
-
-    // Aggiunta classe per mostrare retro
-    contribBtn.addEventListener('click', () => {
-      console.log("CLICK CONTRIBUISCI");
+    contribBtn.addEventListener('click', (e) => {
+      e.stopPropagation(); // <-- crucial!
       if (!flipBox.classList.contains('show-back')) {
         flipBox.classList.add('show-back');
-        console.log("Retro mostrato");
       }
     });
-
-    // Rimozione classe per tornare al fronte
-    closeBtn.addEventListener('click', () => {
-      console.log("CLICK CHIUSURA");
+    closeBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
       if (flipBox.classList.contains('show-back')) {
         flipBox.classList.remove('show-back');
-        console.log("Retro nascosto");
       }
     });
-  } else {
-    console.warn("Uno o più elementi non trovati!");
   }
 });
+
 </script>
 
 
@@ -1288,7 +1280,7 @@ function resetRSVP() {
             </div>
         </div>
         <div class="mt-12 text-center text-xs opacity-70">
-            <p>Made by Bazzi (ordini di Francesca)</p>
+            <p>Made by Bazzi (per debug Francesca)</p>
         </div>
     </div>
 </footer>
