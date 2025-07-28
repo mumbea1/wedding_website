@@ -274,48 +274,58 @@
             opacity: 1;
         }
         
-        /* Mobile optimizations */
-        @media (max-width: 768px) {
-            .section {
-                padding: 60px 0;
-                min-height: auto;
-            }
-            
-            .hero-content {
-                bottom: 20%;
-            }
-            
-            .countdown-item {
-                min-width: 60px;
-                padding: 12px;
-            }
-            
-            .location-card {
-                padding: 20px;
-                padding-left: 50px;
-            }
-            
-            .location-icon {
-                left: 15px;
-                top: 20px;
-                font-size: 20px;
-            }
-            
-            .attendance-btn {
-                width: 70px;
-                padding: 10px 15px;
-            }
-            
-            .nav-link {
-                font-size: 16px;
-                padding: 8px 12px;
-            }
-            
-            .btn-modern, .btn-outline-modern {
-                padding: 14px 24px;
-                font-size: 16px;
-            }
-        }
+       /* ========== FIX HERO MOBILE - TESTO PIÙ IN ALTO ========== */
+@media (max-width: 768px) {
+  .hero-content {
+    bottom: 35%; /* Più in alto rispetto al 25% standard */
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: #fff;
+    padding: 0 20px;
+    z-index: 4;
+  }
+  
+  .hero-content h1 {
+    font-size: 2.5rem; /* Leggermente più piccolo su mobile */
+    margin-bottom: 1rem;
+  }
+  
+  .hero-content p {
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+  }
+  
+  /* Pulsanti rimangono nella stessa posizione relativa */
+  .hero-content .flex {
+    margin-top: 1.5rem;
+  }
+  
+  .btn-outline-modern {
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content {
+    bottom: 40%; /* Ancora più in alto per schermi molto piccoli */
+  }
+  
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  
+  .hero-content p {
+    font-size: 1rem;
+  }
+  
+  .btn-outline-modern {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+}
+
 .faq-item.FAQcontent {
   padding-bottom: 0;
 }
@@ -524,28 +534,32 @@
   z-index: 4;
 }
 
+/* Slideshow dots */
 .slideshow-dots {
-  position: absolute;
-  bottom: 40px;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  z-index: 5;
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    z-index: 10;
 }
 
-
-.slideshow-dot:hover {
-    background-color: rgba(255,255,255,0.7);
-    transform: scale(1.1);
+.slideshow-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .slideshow-dot.active {
     background-color: #ffffff;
     transform: scale(1.2);
-    box-shadow: 0 0 8px rgba(255,255,255,0.3);
 }
+
 
 /* Mobile: dots leggermente più grandi */
 @media (max-width: 768px) {
@@ -645,14 +659,6 @@
 
 
 </script>
-
-   <style>
-@media (max-width: 768px) {
-  #honeymoon {
-    margin-bottom: 50rem;
-  }
-}
-</style>
 
 </head>
 <body class="bg-[#f5f4ef]">
@@ -1246,8 +1252,25 @@
   margin-bottom: 1rem;
 }
 
+/* QR Section - Centrata e ingrandita */
+.apple-qr-section {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 0.75rem; /* Spazio uniforme tra gli elementi */
+}
+
+.apple-qr-container {
+  display: flex;
+  justify-content: center;
+  margin: 0; /* Rimuovi margin per centratura perfetta */
+}
+
 .apple-qr-code {
-  width: 120px; height: 120px;
+  width: 140px; height: 140px; /* QR più grande */
   border-radius: 12px;
   border: 1px solid rgba(68,90,75,0.15);
   background: #fff;
@@ -1256,9 +1279,22 @@
 
 .apple-qr-instruction {
   font-size: 0.875rem;
-  color: #86868b; /* Verde più chiaro */
+  color: #6b7c6f; /* Verde coordinato */
   margin: 0;
   font-weight: 500;
+}
+
+/* Mobile: QR leggermente più piccolo */
+@media (max-width: 768px) {
+  .apple-qr-code {
+    width: 120px; height: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .apple-qr-code {
+    width: 110px; height: 110px;
+  }
 }
 
 /* Footer */
@@ -1274,95 +1310,61 @@
   font-style: italic;
 }
 
-/* ========== RESPONSIVE MOBILE ========== */
+/* ========== FIX ALTEZZE FRONT/BACK UGUALI ========== */
 @media (max-width: 768px) {
   .flipcard-root {
     height: auto !important;
-    min-height: 600px !important;
+    min-height: 500px !important; /* Altezza fissa per entrambi */
   }
   
   .flipcard-inner {
-    min-height: 600px !important;
+    min-height: 500px !important;
     height: auto !important;
   }
   
   .flipcard-front, .flipcard-back {
-    min-height: 600px !important;
+    min-height: 500px !important; /* Stessa altezza per front e back */
     height: auto !important;
   }
 
   .card-content-wrapper {
     flex-direction: column;
-  }
-  
-  .card-image-section {
-    height: 200px;
-    flex: none;
+    min-height: 500px; /* Consistente */
   }
   
   .card-text-section {
     padding: 2rem 1.5rem;
+    flex: 1;
+    min-height: 300px; /* Garantisce spazio sufficiente */
   }
 
-  /* Mobile: Retro in colonna */
-  .apple-header {
-    padding: 1.5rem 1.5rem 1rem;
-  }
-
-  .apple-title {
-    font-size: 1.25rem;
-  }
-
-  .apple-close-btn {
-    top: 1rem; right: 1rem;
-    width: 28px; height: 28px;
+  /* Mobile: Retro con stessa altezza */
+  .apple-back-container {
+    min-height: 500px; /* Stessa altezza del front */
   }
 
   .apple-payment-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
     padding: 1.5rem;
-  }
-
-  .apple-payment-card {
-    border-radius: 12px;
-    min-height: 180px;
-  }
-
-  .apple-card-header {
-    padding: 1.25rem 1.25rem 0.75rem;
-  }
-
-  .apple-payment-details {
-    padding: 1rem 1.25rem 1.25rem;
-  }
-
-  .apple-qr-code {
-    width: 100px; height: 100px;
-  }
-
-  .apple-footer {
-    padding: 1rem 1.5rem;
+    flex: 1;
   }
 }
 
 @media (max-width: 480px) {
-  .apple-header {
-    padding: 1rem 1rem 0.75rem;
+  .flipcard-root,
+  .flipcard-inner,
+  .flipcard-front,
+  .flipcard-back {
+    min-height: 480px !important;
   }
 
-  .apple-payment-grid {
-    padding: 1rem;
-  }
-
-  .apple-iban {
-    font-size: 0.8rem;
-  }
-
-  .apple-payment-card {
-    min-height: 160px;
+  .card-content-wrapper,
+  .apple-back-container {
+    min-height: 480px;
   }
 }
+
 
 
 </style>    
