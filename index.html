@@ -41,50 +41,6 @@
             overflow: hidden;
         }
         
-        .hero-slideshow {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-        
-        .hero-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0;
-            transition: opacity 1.5s ease-in-out;
-        }
-        
-        .hero-slide.active {
-            opacity: 1;
-        }
-        
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.2);
-            z-index: -1;
-        }
-        
-        .hero-content {
-            position: absolute;
-            bottom: 25%;
-            left: 0;
-            right: 0;
-            text-align: center;
-            color: #fff;
-            padding: 0 20px;
-        }
-        
         .nav-link {
             position: relative;
             transition: all 0.3s ease;
@@ -307,32 +263,7 @@
             background-color: #445a4b !important;
         }
         
-        /* Slideshow dots */
-        .slideshow-dots {
-            position: absolute;
-            bottom: 40px;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            z-index: 10;
-        }
-        
-        .slideshow-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: rgba(255,255,255,0.5);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .slideshow-dot.active {
-            background-color: #ffffff;
-            transform: scale(1.2);
-        }
-        
+       
         /* Hide nav links initially */
         .nav-links {
             opacity: 0;
@@ -508,7 +439,103 @@
   }
 }
 
+/* ========== FIX SLIDESHOW MOBILE ========== */
+.hero-slideshow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
 
+.hero-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+  z-index: 1;
+}
+
+.hero-slide.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+/* Gestione dispositivi diversi */
+.desktop-slideshow {
+  display: block;
+}
+
+.mobile-slideshow {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktop-slideshow {
+    display: none;
+  }
+  
+  .mobile-slideshow {
+    display: block;
+  }
+  
+  .hero-slide {
+    object-position: center center;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  
+  /* Fix per evitare accavallamenti */
+  .hero-slide:not(.active) {
+    pointer-events: none;
+    visibility: hidden;
+  }
+  
+  .hero-slide.active {
+    pointer-events: auto;
+    visibility: visible;
+  }
+}
+
+/* Overlay e contenuti con z-index corretti */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.2);
+  z-index: 3;
+}
+
+.hero-content {
+  position: absolute;
+  bottom: 25%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: #fff;
+  padding: 0 20px;
+  z-index: 4;
+}
+
+.slideshow-dots {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  z-index: 5;
+}
+
+        
     </style>
 <!-- FontAwesome per l'icona occhio -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -1765,13 +1792,45 @@ let slides = slideshowContainer.querySelectorAll('.hero-slide');
 let dots = document.querySelectorAll('.slideshow-dot');
 let currentSlide = 0;
 let slideInterval;
+let isTransitioning = false;
 
-function showSlide(n) {
-  slides.forEach(slide => slide.classList.remove('active'));
+function showSlide(n, forceTransition = false) {
+  if (isTransitioning && !forceTransition) return;
+  
+  isTransitioning = true;
+  
+  // Rimuovi active da tutti
+  slides.forEach(slide => {
+    slide.classList.remove('active');
+    // Fix per mobile: nascondi completamente le slide non attive
+    if (window.innerWidth <= 768) {
+      slide.style.visibility = 'hidden';
+      slide.style.pointerEvents = 'none';
+    }
+  });
+  
   dots.forEach(dot => dot.classList.remove('active'));
+  
+  // Calcola nuovo slide
   currentSlide = (n + slides.length) % slides.length;
-  slides[currentSlide].classList.add('active');
-  if (dots[currentSlide]) dots[currentSlide].classList.add('active');
+  
+  // Attiva nuovo slide
+  if (slides[currentSlide]) {
+    slides[currentSlide].classList.add('active');
+    if (window.innerWidth <= 768) {
+      slides[currentSlide].style.visibility = 'visible';
+      slides[currentSlide].style.pointerEvents = 'auto';
+    }
+  }
+  
+  if (dots[currentSlide]) {
+    dots[currentSlide].classList.add('active');
+  }
+  
+  // Reset flag dopo transizione
+  setTimeout(() => {
+    isTransitioning = false;
+  }, 1500);
 }
 
 function nextSlide() {
@@ -1783,25 +1842,52 @@ function startSlideShow() {
   slideInterval = setInterval(nextSlide, 5000);
 }
 
-dots.forEach(dot => {
+function updateSlideshowOnResize() {
+  // NON resettare currentSlide - mantieni la slide attuale
+  const newSlideshowContainer = getActiveSlideshow();
+  
+  if (newSlideshowContainer !== slideshowContainer) {
+    // Cambio da desktop a mobile o viceversa
+    slideshowContainer = newSlideshowContainer;
+    slides = slideshowContainer.querySelectorAll('.hero-slide');
+    
+    // Mantieni lo stesso indice se possibile
+    if (currentSlide >= slides.length) {
+      currentSlide = 0;
+    }
+    
+    // Applica immediatamente senza transizione
+    showSlide(currentSlide, true);
+    startSlideShow();
+  }
+}
+
+// Event listeners per i dots
+dots.forEach((dot, index) => {
   dot.addEventListener('click', () => {
     clearInterval(slideInterval);
-    showSlide(parseInt(dot.dataset.index));
+    showSlide(index);
     startSlideShow();
   });
 });
 
+// Resize handler che NON resetta lo slideshow
+let resizeTimeout;
 window.addEventListener('resize', () => {
-  // Al resize, aggiorna le variabili per lo slideshow attivo
-  slideshowContainer = getActiveSlideshow();
-  slides = slideshowContainer.querySelectorAll('.hero-slide');
-  currentSlide = 0;
-  showSlide(currentSlide);
-  startSlideShow();
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(() => {
+    updateSlideshowOnResize();
+  }, 250);
 });
 
+// Inizializzazione
 showSlide(currentSlide);
 startSlideShow();
+
+// Pausa/riprendi al focus/blur della finestra
+window.addEventListener('blur', () => clearInterval(slideInterval));
+window.addEventListener('focus', startSlideShow);
+
 
 
 </script>
