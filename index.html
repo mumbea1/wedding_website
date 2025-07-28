@@ -1343,13 +1343,16 @@
 
 
 
-
+    section + section { margin-top: 2rem; }
 /* ========== FIX SPACING SEZIONI ========== */
 #honeymoon {
   padding-bottom: 3rem; /* oppure margin-bottom, scegli in base a come vuoi gestire lo spazio */
+
 }
 @media (max-width: 768px) {
+     section + section { margin-top: 2rem; }
   #honeymoon {
+      padding-top: 0; 
     margin-bottom: 5rem !important;  /* Spazio extra per separare visivamente dalle sezioni sotto */
   }
 }
