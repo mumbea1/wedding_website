@@ -274,14 +274,42 @@
             opacity: 1;
         }
         
-       /* ========== FIX HERO MOBILE - TESTO PIÙ IN ALTO ========== */
-/* ========== Hero mobile – titolo più in alto ========== */
-@media(max-width:768px){
-  .hero-content{bottom:75% !important}         
+       /* ========== HERO MOBILE - TESTO PIÙ IN ALTO ========== */
+@media (max-width: 768px) {
+  /* Imposta la hero-content come relativa */
+  .hero-content {
+    position: relative;
+    height: 100%;
+  }
+
+  /* Scritta a 50% dal basso */
+  .hero-text-only {
+    position: absolute;
+    bottom: 50%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    transform: translateY(50%);
+    z-index: 4;
+    color: #fff;
+  }
+
+  /* Pulsanti a 25% dal basso */
+  .hero-buttons-only {
+    position: absolute;
+    bottom: 25%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 4;
+  }
+
+  /* Dots a 10% dal basso */
+  .slideshow-dots {
+    bottom: 10% !important;
+  }
 }
-@media(max-width:480px){
-  .hero-content{bottom:75% !important}
-}
+
 
 
 
@@ -622,7 +650,7 @@
         <div class="container mx-auto px-6 flex justify-between items-center">
             <div class="flex space-x-4 nav-links">
                 <a href="#event" class="nav-link text-white hover:text-white green-on-scroll">Evento</a>
-                <a href="#honeymoon" class="nav-link text-white hover:text-white green-on-scroll">Lista nozze</a>
+                <a href="#honeymoon" class="nav-link text-white hover:text-white green-on-scroll">Lista di nozze</a>
             </div>
             <a href="#rsvp" class="btn-modern px-6 py-3">
                 RSVP
@@ -676,19 +704,20 @@
             <div class="slideshow-dot" data-index="9"></div>
         </div>
         
-        <div class="hero-content">
-             <h1 class="text-5xl md:text-7xl font-normal mb-4 tracking-wider">
-        <span class="font-quiche-special">Francesca </span>
-        <span class="font-bohemienne text-9xl md:text-10xl relative top-2">e</span>
-        <span class="font-quiche-special"> Tommaso</span>
-            </h1>
-             <p class="text-lg md:text-4xl mb-8 tracking-widest font-quiche-special">7 dicembre 2025</p> 
-            <div class="flex justify-center space-x-4">
-                <a href="#event" class="btn-outline-modern">DETTAGLI EVENTO</a>
-                <a href="#honeymoon" class="btn-outline-modern">IL NOSTRO VIAGGIO DI NOZZE</a>
-
-            </div>
-        </div>
+<div class="hero-content">
+  <div class="hero-text-only">
+    <h1>
+      <span class="font-quiche-special">Francesca </span>
+      <span class="font-bohemienne">e</span>
+      <span class="font-quiche-special"> Tommaso</span>
+    </h1>
+    <p>7 dicembre 2025</p>
+  </div>
+  <div class="hero-buttons-only">
+    <a href="#event" class="btn-outline-modern">DETTAGLI EVENTO</a>
+    <a href="#honeymoon" class="btn-outline-modern">LISTA DI NOZZE</a>
+  </div>
+</div>
         
         <div class="absolute bottom-10 left-0 right-0 flex justify-center">
             <a href="#story" class="text-white animate-bounce">
@@ -757,7 +786,7 @@
 <section id="honeymoon" class="bg-[#f5f4ef] py-20">
   <div class="container mx-auto px-6 max-w-5xl">
     <h2 class="text-3xl md:text-4xl font-normal mb-16 text-center text-[#445a4b] tracking-wider fade-in">
-     LISTA NOZZE
+     LISTA DI NOZZE
     </h2>
 <div class="max-w-4xl mx-auto">
   <div class="flipcard-root" id="honeymoonFlipBox1">
@@ -770,7 +799,7 @@
           </div>
           <div class="card-text-section">
             <h3>Il nostro viaggio</h3>
-            <p>Non abbiamo previsto una lista nozze tradizionale, perché ciò che desideriamo davvero è vivere un'esperienza indimenticabile insieme.</p>
+            <p>Non abbiamo previsto una lista di nozze tradizionale, perché ciò che desideriamo davvero è vivere un'esperienza indimenticabile insieme.</p>
             <p>Voleremo in Giappone, la meta che sogniamo da quando ci siamo conosciuti. Esploreremo la cultura, la cucina e, da appassionati di montagna, qualche sciata tra le nevi di Hakuba!</p>
             <p>Se vorrete accompagnarci anche in questo viaggio, potrete regalarci qualche chilometro verso il nostro sogno.</p>
             <div class="button-container">
