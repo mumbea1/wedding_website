@@ -113,28 +113,32 @@
             box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
         
-        .btn-outline-modern {
-  display: flex;                  /* Centra il contenuto in entrambe le direzioni */
+ .btn-outline-modern {
+  display: flex;
   align-items: center;
   justify-content: center;
-  background-color: transparent;  /* Sfondo trasparente */
-  color: #ffffff;                 /* Testo bianco */
+  background-color: transparent;
+  color: #ffffff;
   padding: 16px 32px;
   border-radius: 50px;
   transition: all 0.3s ease;
   font-size: 18px;
-  border: 1px solid #ffffff;      /* Bordo bianco */
-  text-align: center;             /* Ridondante, ma ok */
-  font-family: 'Quiche Flare', serif; /* Font elegante */
+  border: 1px solid #ffffff;
+  text-align: center;
+  font-family: 'Quiche Flare', serif;
   font-weight: 400;
   cursor: pointer;
-  min-width: 0;                   /* Impedisce problemi con testo lungo */
+  min-width: 0;
   width: auto;
   outline: none;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.07); /* Leggera ombra, opzionale */
-  gap: 0.5em;                     /* Spazio orizzontale tra eventuali icone e testo */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.07);
+  gap: 0.5em;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
-.btn-outline-modern:hover, .btn-outline-modern:focus {
+
+.btn-outline-modern:hover,
+.btn-outline-modern:focus {
   background-color: #ffffff;
   color: #445a4b;
   border-color: #445a4b;
@@ -143,13 +147,42 @@
   text-decoration: none;
 }
 
-/* Responsive: padding minore su schermi piccoli */
 @media (max-width: 768px) {
   .btn-outline-modern {
     padding: 13px 18px;
     font-size: 16px;
   }
 }
+
+/* HERO SEPARAZIONE MOBILE */
+@media (max-width: 768px) {
+  .hero-content {
+    position: relative;
+    height: 100%;
+  }
+  .hero-text-only {
+    position: absolute;
+    bottom: 50%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    transform: translateY(50%);
+    z-index: 4;
+    color: #fff;
+  }
+  .hero-buttons-only {
+    position: absolute;
+    bottom: 25%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 4;
+  }
+  .slideshow-dots {
+    bottom: 10% !important;
+  }
+}
+
 
         .btn-back-visible {
             background-color: #445a4b;
@@ -662,9 +695,9 @@
     </nav>
 
     <!-- Hero Section with Slideshow -->
-    <section class="hero" id="home">
-       <!-- Slideshow Desktop -->
-<div class="hero-slideshow desktop-slideshow">
+<section class="hero" id="home">
+  <!-- Slideshow Desktop -->
+  <div class="hero-slideshow desktop-slideshow">
     <img src="Foto matrimonio/Foto_07.jpg" alt="Francesca e Tommaso" class="hero-slide active">
     <img src="Foto matrimonio/Foto_11.jpg" alt="Francesca e Tommaso" class="hero-slide">
     <img src="Foto matrimonio/Foto_05.jpg" alt="Francesca e Tommaso" class="hero-slide">
@@ -675,11 +708,11 @@
     <img src="Foto matrimonio/Foto_09.jpg" alt="Francesca e Tommaso" class="hero-slide">
     <img src="Foto matrimonio/Foto_10.JPG" alt="Francesca e Tommaso" class="hero-slide">
     <img src="Foto matrimonio/Foto_02.jpg" alt="Francesca e Tommaso" class="hero-slide">
-</div>
+  </div>
 
-<!-- Slideshow Mobile -->
-<div class="hero-slideshow mobile-slideshow">
-    <img src="Foto matrimonio/Foto_07.jpg" alt="Francesca e Tommaso" class="hero-slide active">
+  <!-- Slideshow Mobile -->
+  <div class="hero-slideshow mobile-slideshow">
+      <img src="Foto matrimonio/Foto_07.jpg" alt="Francesca e Tommaso" class="hero-slide active">
     <img src="Foto matrimonio/Foto verticale 1.jpg" alt="Francesca e Tommaso" class="hero-slide">
     <img src="Foto matrimonio/Foto verticale 2.jpg" alt="Francesca e Tommaso" class="hero-slide">
     <img src="Foto matrimonio/Foto verticale 3.jpg" alt="Francesca e Tommaso" class="hero-slide">
@@ -689,45 +722,46 @@
     <img src="Foto matrimonio/Foto verticale 7.jpg" alt="Francesca e Tommaso" class="hero-slide">
     <img src="Foto matrimonio/Foto verticale 8.JPG" alt="Francesca e Tommaso" class="hero-slide">
     <img src="Foto matrimonio/Foto verticale 9.jpg" alt="Francesca e Tommaso" class="hero-slide">
-</div>
+  </div>
 
-        <div class="hero-overlay"></div>
-        
-        <!-- Slideshow dots -->
-        <div class="slideshow-dots">
-            <div class="slideshow-dot active" data-index="0"></div>
-            <div class="slideshow-dot" data-index="1"></div>
-            <div class="slideshow-dot" data-index="2"></div>
-            <div class="slideshow-dot" data-index="3"></div>
-            <div class="slideshow-dot" data-index="4"></div>
-            <div class="slideshow-dot" data-index="5"></div>
-            <div class="slideshow-dot" data-index="6"></div>
-            <div class="slideshow-dot" data-index="7"></div>
-            <div class="slideshow-dot" data-index="8"></div>
-            <div class="slideshow-dot" data-index="9"></div>
-        </div>
-        
-<div class="hero-content">
-  <div class="hero-text-only">
-    <h1>
-      <span class="font-quiche-special">Francesca </span>
-      <span class="font-bohemienne">e</span>
-      <span class="font-quiche-special"> Tommaso</span>
-    </h1>
-    <p>7 dicembre 2025</p>
+  <div class="hero-overlay"></div>
+  <!-- Dots per slideshow -->
+  <div class="slideshow-dots">
+    <div class="slideshow-dot active" data-index="0"></div>
+    <div class="slideshow-dot" data-index="1"></div>
+    <div class="slideshow-dot" data-index="2"></div>
+    <div class="slideshow-dot" data-index="3"></div>
+    <div class="slideshow-dot" data-index="4"></div>
+    <div class="slideshow-dot" data-index="5"></div>
+    <div class="slideshow-dot" data-index="6"></div>
+    <div class="slideshow-dot" data-index="7"></div>
+    <div class="slideshow-dot" data-index="8"></div>
+    <div class="slideshow-dot" data-index="9"></div>
   </div>
-  <div class="hero-buttons-only">
-    <a href="#event" class="btn-outline-modern">DETTAGLI EVENTO</a>
-    <a href="#honeymoon" class="btn-outline-modern">LISTA DI NOZZE</a>
+
+  <div class="hero-content">
+    <div class="hero-text-only">
+      <h1 class="text-5xl md:text-7xl font-normal mb-4 tracking-wider">
+        <span class="font-quiche-special">Francesca </span>
+        <span class="font-bohemienne text-9xl md:text-10xl relative top-2">e</span>
+        <span class="font-quiche-special"> Tommaso</span>
+      </h1>
+      <p class="text-lg md:text-4xl mb-8 tracking-widest font-quiche-special">7 dicembre 2025</p>
+    </div>
+    <div class="hero-buttons-only">
+      <div class="flex justify-center space-x-4">
+        <a href="#event" class="btn-outline-modern">DETTAGLI EVENTO</a>
+        <a href="#honeymoon" class="btn-outline-modern">IL NOSTRO VIAGGIO DI NOZZE</a>
+      </div>
+    </div>
   </div>
-</div>
-        
-        <div class="absolute bottom-10 left-0 right-0 flex justify-center">
-            <a href="#story" class="text-white animate-bounce">
-                <i class="fas fa-chevron-down text-xl"></i>
-            </a>
-        </div>
-    </section>
+
+  <div class="absolute bottom-10 left-0 right-0 flex justify-center">
+    <a href="#story" class="text-white animate-bounce">
+      <i class="fas fa-chevron-down text-xl"></i>
+    </a>
+  </div>
+</section>
 
     <!-- Event Section -->
     <section id="event" class="section bg-[#f5f4ef]">
@@ -1287,84 +1321,38 @@
   .flipcard-inner,
   .flipcard-front,
   .flipcard-back {
-    min-height: 280px !important;
+    min-height: 420px !important; /* Aumentato da 260px secondo necessità */
     height: auto !important;
-    border-radius: 18px;
-  } 
+  }
   .card-content-wrapper,
-  .apple-back-container {
-    flex-direction: column !important;
-    min-height: 280px;
-  }
-  .card-image-section {
-    height: 180px;
-    min-height: 120px;
-    max-height: 200px;
-  }
-  .card-image-section img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
-  .card-text-section {
-    min-height: 120px;
-    padding: 1.1rem .75rem;
-  }
+  .apple-back-container { min-height: 420px; }
+  .card-image-section { height: 180px; }
+  .card-text-section { min-height: 220px; padding: 1.5rem 1rem; }
 }
 @media (max-width: 480px) {
   .flipcard-root,
   .flipcard-inner,
   .flipcard-front,
   .flipcard-back {
-    min-height: 220px !important;
+    min-height: 390px !important;
+    height: auto !important;
   }
-  .card-image-section {
-    height: 110px;
-    min-height: 80px;
-    max-height: 130px;
-  }
-  .card-text-section {
-    min-height: 90px;
-    padding: 0.7rem 0.4rem;
-  }
+  .card-content-wrapper,
+  .apple-back-container { min-height: 390px; }
 }
+
 
 
 
 /* ========== FIX SPACING SEZIONI ========== */
 #honeymoon {
-  padding-bottom: 2rem; /* ✅ Spazio ridotto sotto la sezione */
+  padding-bottom: 3rem; /* oppure margin-bottom, scegli in base a come vuoi gestire lo spazio */
 }
-
 @media (max-width: 768px) {
   #honeymoon {
-    margin-bottom: 5em !important;  /* O anche più, se serve spazio extra */
+    margin-bottom: 5rem !important;  /* Spazio extra per separare visivamente dalle sezioni sotto */
   }
 }
-
-@media (max-width: 600px) {
-  #honeymoon {
-    margin-bottom: 3rem !important; /* Ancora più spazio su mobile piccolo */
-  }
-}
-@media (max-width: 768px) {
-  .flipcard-root,
-  .flipcard-inner,
-  .flipcard-front,
-  .flipcard-back {
-    min-height: 260px !important;
-    height: auto !important;
-  }
-}
-@media (max-width: 768px) {
-  .flipcard-root {
-    margin-bottom: 2em !important;
-  }
-}
-
-
-
 
 </style>    
 
