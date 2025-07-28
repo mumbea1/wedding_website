@@ -277,10 +277,10 @@
        /* ========== FIX HERO MOBILE - TESTO PIÙ IN ALTO ========== */
 /* ========== Hero mobile – titolo più in alto ========== */
 @media(max-width:768px){
-  .hero-content{bottom:25%}          /* ¾ altezza */
+  .hero-content{bottom:75% !important}         
 }
 @media(max-width:480px){
-  .hero-content{bottom:25%}
+  .hero-content{bottom:75% !important}
 }
 
 
@@ -492,7 +492,7 @@
   padding: 0 20px;
   z-index: 4;
 }
-
+        
 /* Slideshow dots – desktop e mobile */
 .slideshow-dots{
   position:absolute;
@@ -514,14 +514,17 @@
   background:#fff;
   transform:scale(1.2);
 }
-/* mobile */
-@media(max-width:768px){
-  .slideshow-dot{width:10px;height:10px;}
-  .slideshow-dots{bottom:50px;gap:8px;} /* spostati più in alto */
+@media (max-width: 768px) {
+  .slideshow-dots {
+    bottom: 21%;       /* Avvicina i dots alla hero-content, sotto i pulsanti */
+  }
 }
-@media(max-width:480px){
-  .slideshow-dots{bottom:45px;}
+@media (max-width: 480px) {
+  .slideshow-dots {
+    bottom: 27%;       /* Ancora più su nei cellulari piccoli, regola finché sta bene */
+  }
 }
+
 
 
 
@@ -1248,27 +1251,28 @@
 
 /* ========== Flip-card responsive ========== */
 @media(max-width:768px){
-  .flipcard-root,
+    .flipcard-root,
   .flipcard-inner,
   .flipcard-front,
-  .flipcard-back{
-    min-height:360px!important;   /* stesse dimensioni */
-    height:auto!important;
+  .flipcard-back {
+    min-height: 260px !important;
+    height: auto !important;
   }
   .card-content-wrapper,
-  .apple-back-container{min-height:360px;}
+  .apple-back-container{min-height:260px;}
   .card-image-section{height:180px;}
   .card-text-section{min-height:220px;padding:1.5rem 1rem;}
 }
 @media(max-width:480px){
-  .flipcard-root,
+   .flipcard-root,
   .flipcard-inner,
   .flipcard-front,
-  .flipcard-back{
-    min-height:360px!important;
+  .flipcard-back {
+    min-height: 260px !important;
+    height: auto !important;
   }
   .card-content-wrapper,
-  .apple-back-container{min-height:360px;}
+  .apple-back-container{min-height:260px;}
   .card-image-section{height:160px;}
   .card-text-section{min-height:200px;padding:1rem 0.75rem;}
 }
@@ -1281,25 +1285,25 @@
 
 @media (max-width: 768px) {
   #honeymoon {
-    padding-top: 3rem; /* ✅ Padding top ridotto */
-    padding-bottom: 1.5rem; /* ✅ Padding bottom minimo */
-  }
-  
-  #honeymoon h2 {
-    margin-bottom: 2rem; /* ✅ Margin titolo ridotto */
+    margin-bottom: 3rem !important; /* Spazio extra sotto la honeymoon card */
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   #honeymoon {
-    padding-top: 2rem;
-    padding-bottom: 1rem;
-  }
-  
-  #honeymoon h2 {
-    margin-bottom: 1.5rem; /* ✅ Ancora più compatto */
+    margin-bottom: 3rem !important; /* Ancora più spazio su mobile piccolo */
   }
 }
+@media (max-width: 768px) {
+  .flipcard-root,
+  .flipcard-inner,
+  .flipcard-front,
+  .flipcard-back {
+    min-height: 260px !important;
+    height: auto !important;
+  }
+}
+
 
 
 
