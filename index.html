@@ -496,8 +496,8 @@
 /* Slideshow dots – desktop e mobile */
 .slideshow-dots{
   position:absolute;
-  bottom:40px;          /* desktop */
   left:0;right:0;
+  bottom:40px;                /* desktop */
   display:flex;
   justify-content:center;
   gap:10px;
@@ -514,14 +514,15 @@
   background:#fff;
   transform:scale(1.2);
 }
-/* mobile ↘︎ dots leggermente più piccoli e più alti */
+/* mobile */
 @media(max-width:768px){
   .slideshow-dot{width:10px;height:10px;}
-  .slideshow-dots{bottom:50px;gap:8px;} /* tirati su */
+  .slideshow-dots{bottom:50px;gap:8px;} /* spostati più in alto */
 }
 @media(max-width:480px){
   .slideshow-dots{bottom:45px;}
 }
+
 
 
         
@@ -644,7 +645,8 @@
 
 <!-- Slideshow Mobile -->
 <div class="hero-slideshow mobile-slideshow">
-    <img src="Foto matrimonio/Foto verticale 1.jpg" alt="Francesca e Tommaso" class="hero-slide active">
+    <img src="Foto matrimonio/Foto_07.jpg" alt="Francesca e Tommaso" class="hero-slide active">
+    <img src="Foto matrimonio/Foto verticale 1.jpg" alt="Francesca e Tommaso" class="hero-slide">
     <img src="Foto matrimonio/Foto verticale 2.jpg" alt="Francesca e Tommaso" class="hero-slide">
     <img src="Foto matrimonio/Foto verticale 3.jpg" alt="Francesca e Tommaso" class="hero-slide">
     <img src="Foto matrimonio/Foto verticale 4.JPEG" alt="Francesca e Tommaso" class="hero-slide">
@@ -668,6 +670,7 @@
             <div class="slideshow-dot" data-index="6"></div>
             <div class="slideshow-dot" data-index="7"></div>
             <div class="slideshow-dot" data-index="8"></div>
+            <div class="slideshow-dot" data-index="9"></div>
         </div>
         
         <div class="hero-content">
@@ -1249,11 +1252,11 @@
   .flipcard-inner,
   .flipcard-front,
   .flipcard-back{
-    min-height:400px!important;   /* stesse dimensioni */
+    min-height:360px!important;   /* stesse dimensioni */
     height:auto!important;
   }
   .card-content-wrapper,
-  .apple-back-container{min-height:400px;}
+  .apple-back-container{min-height:360px;}
   .card-image-section{height:180px;}
   .card-text-section{min-height:220px;padding:1.5rem 1rem;}
 }
