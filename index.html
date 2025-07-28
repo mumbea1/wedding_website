@@ -294,7 +294,6 @@
     color: #fff;
   }
 
-  /* Pulsanti a 25% dal basso */
   .hero-buttons-only {
     position: absolute;
     bottom: 25%;
@@ -302,6 +301,10 @@
     right: 0;
     text-align: center;
     z-index: 4;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1.5em; /* Spazio identico tra i bottoni */
   }
 
   /* Dots a 10% dal basso */
@@ -1279,32 +1282,54 @@
 }
 
 /* ========== Flip-card responsive ========== */
-@media(max-width:768px){
-    .flipcard-root,
+@media (max-width: 768px) {
+  .flipcard-root,
   .flipcard-inner,
   .flipcard-front,
   .flipcard-back {
-    min-height: 260px !important;
+    min-height: 280px !important;
     height: auto !important;
-  }
+    border-radius: 18px;
+  } 
   .card-content-wrapper,
-  .apple-back-container{min-height:260px;}
-  .card-image-section{height:180px;}
-  .card-text-section{min-height:220px;padding:1.5rem 1rem;}
+  .apple-back-container {
+    flex-direction: column !important;
+    min-height: 280px;
+  }
+  .card-image-section {
+    height: 180px;
+    min-height: 120px;
+    max-height: 200px;
+  }
+  .card-image-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .card-text-section {
+    min-height: 120px;
+    padding: 1.1rem .75rem;
+  }
 }
-@media(max-width:480px){
-   .flipcard-root,
+@media (max-width: 480px) {
+  .flipcard-root,
   .flipcard-inner,
   .flipcard-front,
   .flipcard-back {
-    min-height: 260px !important;
-    height: auto !important;
+    min-height: 220px !important;
   }
-  .card-content-wrapper,
-  .apple-back-container{min-height:260px;}
-  .card-image-section{height:160px;}
-  .card-text-section{min-height:200px;padding:1rem 0.75rem;}
+  .card-image-section {
+    height: 110px;
+    min-height: 80px;
+    max-height: 130px;
+  }
+  .card-text-section {
+    min-height: 90px;
+    padding: 0.7rem 0.4rem;
+  }
 }
+
 
 
 /* ========== FIX SPACING SEZIONI ========== */
@@ -1314,7 +1339,7 @@
 
 @media (max-width: 768px) {
   #honeymoon {
-    margin-bottom: 3rem !important; /* Spazio extra sotto la honeymoon card */
+    margin-bottom: 5em !important;  /* O anche più, se serve spazio extra */
   }
 }
 
@@ -1330,6 +1355,11 @@
   .flipcard-back {
     min-height: 260px !important;
     height: auto !important;
+  }
+}
+@media (max-width: 768px) {
+  .flipcard-root {
+    margin-bottom: 2em !important;
   }
 }
 
