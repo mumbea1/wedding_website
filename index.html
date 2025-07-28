@@ -277,7 +277,7 @@
        /* ========== FIX HERO MOBILE - TESTO PIÙ IN ALTO ========== */
 @media (max-width: 768px) {
   .hero-content {
-    bottom: 35%; /* Più in alto rispetto al 25% standard */
+    bottom: 25%; /* ✅ Tre quarti altezza = bottom 25% */
     left: 0;
     right: 0;
     text-align: center;
@@ -287,7 +287,7 @@
   }
   
   .hero-content h1 {
-    font-size: 2.5rem; /* Leggermente più piccolo su mobile */
+    font-size: 2.5rem; /* ✅ Dimensione appropriata */
     margin-bottom: 1rem;
   }
   
@@ -309,7 +309,7 @@
 
 @media (max-width: 480px) {
   .hero-content {
-    bottom: 40%; /* Ancora più in alto per schermi molto piccoli */
+    bottom: 25%; /* ✅ Mantieni tre quarti anche su mobile piccolo */
   }
   
   .hero-content h1 {
@@ -325,6 +325,7 @@
     font-size: 13px;
   }
 }
+
 
 .faq-item.FAQcontent {
   padding-bottom: 0;
@@ -569,10 +570,17 @@
     }
     
     .slideshow-dots {
-        bottom: 30px;
+        bottom: 50px; /* ✅ Tirati su di 20px */
         gap: 8px;
     }
 }
+
+@media (max-width: 480px) {
+    .slideshow-dots {
+        bottom: 45px; /* ✅ Leggermente più bassi su schermi molto piccoli */
+    }
+}
+
         
     </style>
 <!-- FontAwesome per l'icona occhio -->
@@ -1310,44 +1318,87 @@
   font-style: italic;
 }
 
-/* ========== FIX ALTEZZE FRONT/BACK UGUALI ========== */
+/* ========== FIX ALTEZZE RESPONSIVE CORRETTE ========== */
 @media (max-width: 768px) {
   .flipcard-root {
     height: auto !important;
-    min-height: 500px !important; /* Altezza fissa per entrambi */
+    min-height: 400px !important; /* ✅ Ridotto da 500px */
   }
   
   .flipcard-inner {
-    min-height: 500px !important;
+    min-height: 400px !important;
     height: auto !important;
   }
   
   .flipcard-front, .flipcard-back {
-    min-height: 500px !important; /* Stessa altezza per front e back */
+    min-height: 400px !important; /* ✅ Stessa altezza, ridotta */
     height: auto !important;
   }
 
   .card-content-wrapper {
     flex-direction: column;
-    min-height: 500px; /* Consistente */
+    min-height: 400px; /* ✅ Consistente */
+  }
+  
+  .card-image-section {
+    height: 180px; /* ✅ Ridotto da 200px */
+    flex: none;
   }
   
   .card-text-section {
-    padding: 2rem 1.5rem;
+    padding: 1.5rem 1rem; /* ✅ Padding ridotto */
     flex: 1;
-    min-height: 300px; /* Garantisce spazio sufficiente */
+    min-height: 220px; /* ✅ Ridotto da 300px */
+  }
+
+  .card-text-section h3 {
+    font-size: 1.4rem; /* ✅ Più compatto */
+    margin-bottom: 0.75rem;
+  }
+
+  .card-text-section p {
+    font-size: 0.85rem; /* ✅ Testo più piccolo */
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+  }
+
+  .flip-btn {
+    padding: 0.75rem 1.25rem; /* ✅ Bottone più compatto */
+    font-size: 0.85rem;
   }
 
   /* Mobile: Retro con stessa altezza */
   .apple-back-container {
-    min-height: 500px; /* Stessa altezza del front */
+    min-height: 400px; /* ✅ Stessa altezza del front */
+  }
+
+  .apple-header {
+    padding: 1rem 1.5rem 0.75rem; /* ✅ Header più compatto */
   }
 
   .apple-payment-grid {
     grid-template-columns: 1fr;
-    gap: 1rem;
-    padding: 1.5rem;
+    gap: 0.75rem; /* ✅ Gap ridotto */
+    padding: 1rem; /* ✅ Padding ridotto */
     flex: 1;
+  }
+
+  .apple-payment-card {
+    border-radius: 12px;
+    min-height: 140px; /* ✅ Ridotto da 180px */
+    padding: 1rem 0.75rem;
+  }
+
+  .apple-card-header {
+    padding: 0.75rem 0.75rem 0.5rem; /* ✅ Più compatto */
+  }
+
+  .apple-payment-details {
+    padding: 0.75rem; /* ✅ Padding ridotto */
+  }
+
+  .apple-qr-code {
+    width: 100px; height: 100px; /* ✅ QR più piccolo su mobile */
   }
 }
 
@@ -1356,12 +1407,56 @@
   .flipcard-inner,
   .flipcard-front,
   .flipcard-back {
-    min-height: 480px !important;
+    min-height: 360px !important; /* ✅ Ancora più compatto per schermi piccoli */
   }
 
   .card-content-wrapper,
   .apple-back-container {
-    min-height: 480px;
+    min-height: 360px;
+  }
+
+  .card-image-section {
+    height: 160px; /* ✅ Immagine più piccola */
+  }
+
+  .card-text-section {
+    min-height: 200px; /* ✅ Testo più compatto */
+    padding: 1rem 0.75rem;
+  }
+
+  .apple-payment-card {
+    min-height: 120px; /* ✅ Card payment molto compatte */
+  }
+
+  .apple-qr-code {
+    width: 90px; height: 90px; /* ✅ QR ancora più piccolo */
+  }
+}
+
+/* ========== FIX SPACING SEZIONI ========== */
+#honeymoon {
+  padding-bottom: 2rem; /* ✅ Spazio ridotto sotto la sezione */
+}
+
+@media (max-width: 768px) {
+  #honeymoon {
+    padding-top: 3rem; /* ✅ Padding top ridotto */
+    padding-bottom: 1.5rem; /* ✅ Padding bottom minimo */
+  }
+  
+  #honeymoon h2 {
+    margin-bottom: 2rem; /* ✅ Margin titolo ridotto */
+  }
+}
+
+@media (max-width: 480px) {
+  #honeymoon {
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+  }
+  
+  #honeymoon h2 {
+    margin-bottom: 1.5rem; /* ✅ Ancora più compatto */
   }
 }
 
