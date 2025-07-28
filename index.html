@@ -745,7 +745,7 @@
     <h2 class="text-3xl md:text-4xl font-normal mb-16 text-center text-[#445a4b] tracking-wider fade-in">
      LISTA NOZZE
     </h2>
-    <div class="max-w-4xl mx-auto">
+<div class="max-w-4xl mx-auto">
   <div class="flipcard-root" id="honeymoonFlipBox1">
     <div class="flipcard-inner">
       <!-- FRONTE (invariato) -->
@@ -768,7 +768,7 @@
         </div>
       </div>
       
-      <!-- RETRO - Design Apple Style -->
+      <!-- RETRO - Versione Semplificata -->
       <div class="flipcard-back">
         <div class="apple-back-container">
           <!-- Header elegante -->
@@ -782,18 +782,11 @@
             <p class="apple-subtitle">Scegli il metodo che preferisci</p>
           </div>
 
-          <!-- Payment Options - Stile Apple Card -->
+          <!-- Payment Options - Allineati -->
           <div class="apple-payment-grid">
             <!-- Bonifico Bancario -->
-            <div class="apple-payment-card" id="bankCard">
+            <div class="apple-payment-card">
               <div class="apple-card-header">
-                <div class="apple-payment-icon bank-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M2 10L12 3L22 10V11H2V10Z" stroke="currentColor" stroke-width="1.5"/>
-                    <path d="M4 11V19H8V15H16V19H20V11" stroke="currentColor" stroke-width="1.5"/>
-                    <path d="M9 21H15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                  </svg>
-                </div>
                 <h3 class="apple-payment-title">Bonifico bancario</h3>
               </div>
               
@@ -818,13 +811,8 @@
             </div>
 
             <!-- PayPal -->
-            <div class="apple-payment-card" id="paypalCard">
+            <div class="apple-payment-card">
               <div class="apple-card-header">
-                <div class="apple-payment-icon paypal-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M7.076 21.337H2.47a.641.641 0 01-.633-.74L4.944 2.65C5.026 2.289 5.35 2 5.717 2h7.672c1.91 0 3.578.702 4.526 1.686.91.943 1.316 2.293 1.316 4.344 0 2.61-.81 4.563-2.067 5.886a5.5 5.5 0 01-3.652 1.402l-2.756.017-1.222 6.998z" stroke="currentColor" stroke-width="1.5"/>
-                  </svg>
-                </div>
                 <h3 class="apple-payment-title">PayPal</h3>
               </div>
               
@@ -834,22 +822,18 @@
                     <img src="qr_code_paypal.png" alt="QR Code PayPal" class="apple-qr-code">
                   </div>
                   <p class="apple-qr-instruction">Inquadra con la fotocamera</p>
-                  <button class="apple-open-paypal">Apri PayPal</button>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Footer con messaggio -->
-          <div class="apple-footer">
-            <p class="apple-footer-text">Ogni contributo ci aiuterà a realizzare il nostro sogno giapponese ✨</p>
-          </div>
+         
         </div>
       </div>
     </div>
   </div>
 </div>
-
+ 
     </div>
   </div>
 </section>
@@ -940,7 +924,7 @@
   transform: rotateY(180deg); 
 }
 
-/* FRONTE (CSS esistente invariato per brevità) */
+/* FRONTE (CSS esistente per brevità) */
 .card-content-wrapper {
   display: flex;
   height: 100%;
@@ -1024,7 +1008,7 @@
   box-shadow: 0 8px 20px rgba(68,90,75,0.3);
 }
 
-/* ========== RETRO - APPLE DESIGN ========== */
+/* ========== RETRO - VERSIONE SEMPLIFICATA ========== */
 
 .apple-back-container {
   display: flex;
@@ -1032,7 +1016,6 @@
   height: 100%;
   background: linear-gradient(135deg, #fafafa 0%, #f5f5f7 100%);
   position: relative;
-  padding: 0;
 }
 
 /* Header elegante */
@@ -1080,14 +1063,14 @@
   font-weight: 400;
 }
 
-/* Payment Grid */
+/* Payment Grid - Box allineati */
 .apple-payment-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
   padding: 2rem 2.5rem;
   flex: 1;
-  align-items: start;
+  align-items: stretch; /* Importante per l'allineamento */
 }
 
 .apple-payment-card {
@@ -1097,6 +1080,9 @@
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
   box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  min-height: 220px; /* Altezza minima per allineamento */
 }
 
 .apple-payment-card:hover {
@@ -1108,26 +1094,7 @@
 .apple-card-header {
   padding: 1.5rem 1.5rem 1rem;
   text-align: center;
-}
-
-.apple-payment-icon {
-  width: 44px; height: 44px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 1rem;
-  transition: all 0.3s ease;
-}
-
-.bank-icon {
-  background: linear-gradient(135deg, #445a4b 0%, #6b7c6f 100%);
-  color: white;
-}
-
-.paypal-icon {
-  background: linear-gradient(135deg, #0070ba 0%, #003087 100%);
-  color: white;
+  border-bottom: 1px solid rgba(0,0,0,0.04);
 }
 
 .apple-payment-title {
@@ -1138,15 +1105,19 @@
   letter-spacing: -0.01em;
 }
 
-/* Payment Details */
+/* Payment Details - Allineamento perfetto */
 .apple-payment-details {
-  padding: 0 1.5rem 1.5rem;
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .apple-detail-row {
   display: flex;
   flex-direction: column;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
 }
 
 .apple-detail-row:last-child {
@@ -1157,7 +1128,7 @@
   font-size: 0.875rem;
   color: #86868b;
   font-weight: 500;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -1175,6 +1146,7 @@
   border-radius: 8px;
   padding: 0.75rem;
   gap: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 .apple-iban {
@@ -1206,9 +1178,14 @@
   transform: scale(1.05);
 }
 
-/* QR Section */
+/* QR Section - Centrata perfettamente */
 .apple-qr-section {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
 .apple-qr-container {
@@ -1228,25 +1205,8 @@
 .apple-qr-instruction {
   font-size: 0.875rem;
   color: #86868b;
-  margin: 0 0 1rem 0;
+  margin: 0;
   font-weight: 500;
-}
-
-.apple-open-paypal {
-  background: #0070ba;
-  color: white;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 20px;
-  font-size: 0.875rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.apple-open-paypal:hover {
-  background: #005a94;
-  transform: translateY(-1px);
 }
 
 /* Footer */
@@ -1265,7 +1225,93 @@
 /* ========== RESPONSIVE MOBILE ========== */
 @media (max-width: 768px) {
   .flipcard-root {
-    height:
+    height: auto !important;
+    min-height: 600px !important;
+  }
+  
+  .flipcard-inner {
+    min-height: 600px !important;
+    height: auto !important;
+  }
+  
+  .flipcard-front, .flipcard-back {
+    min-height: 600px !important;
+    height: auto !important;
+  }
+
+  .card-content-wrapper {
+    flex-direction: column;
+  }
+  
+  .card-image-section {
+    height: 200px;
+    flex: none;
+  }
+  
+  .card-text-section {
+    padding: 2rem 1.5rem;
+  }
+
+  /* Mobile: Retro in colonna */
+  .apple-header {
+    padding: 1.5rem 1.5rem 1rem;
+  }
+
+  .apple-title {
+    font-size: 1.25rem;
+  }
+
+  .apple-close-btn {
+    top: 1rem; right: 1rem;
+    width: 28px; height: 28px;
+  }
+
+  .apple-payment-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+
+  .apple-payment-card {
+    border-radius: 12px;
+    min-height: 180px;
+  }
+
+  .apple-card-header {
+    padding: 1.25rem 1.25rem 0.75rem;
+  }
+
+  .apple-payment-details {
+    padding: 1rem 1.25rem 1.25rem;
+  }
+
+  .apple-qr-code {
+    width: 100px; height: 100px;
+  }
+
+  .apple-footer {
+    padding: 1rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .apple-header {
+    padding: 1rem 1rem 0.75rem;
+  }
+
+  .apple-payment-grid {
+    padding: 1rem;
+  }
+
+  .apple-iban {
+    font-size: 0.8rem;
+  }
+
+  .apple-payment-card {
+    min-height: 160px;
+  }
+}
+
 
 </style>
 
@@ -1323,14 +1369,12 @@
         return;
       }
 
-      // Event listener per aprire
       btnOpen.addEventListener("click", function(e) {
         e.preventDefault();
         e.stopPropagation();
         root.classList.add("show-back");
       });
 
-      // Event listener per chiudere
       btnClose.addEventListener("click", function(e) {
         e.preventDefault();
         e.stopPropagation();
@@ -1344,7 +1388,7 @@
     }
   }
 
-  // Funzione copia IBAN (stile Apple)
+  // Funzione copia IBAN
   window.copyIban = function() {
     const iban = "IT63D0623009572000057282021";
     
@@ -1353,7 +1397,6 @@
         showCopyFeedback();
       });
     } else {
-      // Fallback per browser più vecchi
       const textArea = document.createElement("textarea");
       textArea.value = iban;
       document.body.appendChild(textArea);
@@ -1364,7 +1407,6 @@
     }
   };
 
-  // Feedback visivo per copia (stile iOS)
   function showCopyFeedback() {
     const btn = document.querySelector('.apple-copy-btn');
     const originalContent = btn.innerHTML;
@@ -1378,13 +1420,13 @@
     }, 1500);
   }
 
-  // Inizializzazione
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initFlipCard);
   } else {
     initFlipCard();
   }
 })();
+
 
 
 </script>
